@@ -1,0 +1,6768 @@
+{
+  "Bangkok": {
+    "country": "Thailand",
+    "hotels": [
+      {
+        "name": "Lub d Bangkok Siam",
+        "price_per_night_gbp": 18,
+        "rating": 4.2,
+        "stars": 3,
+        "amenities": [
+          "Free WiFi",
+          "Rooftop pool",
+          "24h reception"
+        ],
+        "room_type": "Dormitory Bed",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Ibis Bangkok Riverside",
+        "price_per_night_gbp": 35,
+        "rating": 4.0,
+        "stars": 3,
+        "amenities": [
+          "Free WiFi",
+          "Pool",
+          "River shuttle boat"
+        ],
+        "room_type": "Standard Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Mandarin Oriental Bangkok",
+        "price_per_night_gbp": 320,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Spa",
+          "Pool",
+          "River view",
+          "Butler service",
+          "Michelin dining"
+        ],
+        "room_type": "Deluxe River View Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Thai Airways",
+        "airline_code": "TG",
+        "price_gbp": 420,
+        "departure_time": "21:30",
+        "arrival_time": "15:45",
+        "duration": "11h 15m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Emirates",
+        "airline_code": "EK",
+        "price_gbp": 385,
+        "departure_time": "14:15",
+        "arrival_time": "07:30",
+        "duration": "14h 15m",
+        "stops": 1,
+        "stops_label": "1 stop (Dubai)"
+      },
+      {
+        "airline": "Qatar Airways",
+        "airline_code": "QR",
+        "price_gbp": 395,
+        "departure_time": "19:00",
+        "arrival_time": "13:20",
+        "duration": "13h 20m",
+        "stops": 1,
+        "stops_label": "1 stop (Doha)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Jay Fai",
+        "cuisine": "Thai Street Food",
+        "price_level": "££",
+        "rating": 4.8,
+        "dietary": [
+          "halal-options"
+        ],
+        "address": "327 Maha Chai Rd, Samran Rat",
+        "must_try": "Crab omelette"
+      },
+      {
+        "name": "Gaggan Anand",
+        "cuisine": "Progressive Indian",
+        "price_level": "££££",
+        "rating": 4.9,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "68/1 Soi Langsuan",
+        "must_try": "25-course tasting menu"
+      },
+      {
+        "name": "Thipsamai",
+        "cuisine": "Thai",
+        "price_level": "£",
+        "rating": 4.6,
+        "dietary": [
+          "halal-options",
+          "vegan-options"
+        ],
+        "address": "313 Maha Chai Rd",
+        "must_try": "Pad Thai wrapped in egg"
+      },
+      {
+        "name": "Sorn",
+        "cuisine": "Southern Thai",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "56 Sukhumvit 26",
+        "must_try": "Crab curry"
+      },
+      {
+        "name": "May Veggie Home",
+        "cuisine": "Vegan Thai",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "Phraeng Phuthon",
+        "must_try": "Vegan Pad See Ew"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Grand Palace",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Na Phra Lan Rd, Phra Borom Maha Ratchawang",
+        "price": "£12",
+        "hours": "08:30-15:30"
+      },
+      {
+        "name": "Wat Pho (Reclining Buddha)",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "2 Sanam Chai Rd",
+        "price": "£4",
+        "hours": "08:00-18:30"
+      },
+      {
+        "name": "Chatuchak Weekend Market",
+        "category": "Shopping",
+        "rating": 4.5,
+        "address": "Kamphaeng Phet 2 Rd",
+        "price": "Free",
+        "hours": "Sat-Sun 09:00-18:00"
+      },
+      {
+        "name": "Chinatown (Yaowarat)",
+        "category": "Food & Drink",
+        "rating": 4.6,
+        "address": "Yaowarat Road",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Jim Thompson House Museum",
+        "category": "Arts & Culture",
+        "rating": 4.5,
+        "address": "6 Kasem San 2 Alley",
+        "price": "£5",
+        "hours": "09:00-18:00"
+      }
+    ]
+  },
+  "Barcelona": {
+    "country": "Spain",
+    "hotels": [
+      {
+        "name": "Generator Barcelona",
+        "price_per_night_gbp": 25,
+        "rating": 4.1,
+        "stars": 3,
+        "amenities": [
+          "Free WiFi",
+          "Rooftop terrace",
+          "Bar"
+        ],
+        "room_type": "Private Double Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel 1898",
+        "price_per_night_gbp": 145,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Rooftop pool",
+          "Spa",
+          "Free WiFi",
+          "Las Ramblas location"
+        ],
+        "room_type": "Superior Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "W Barcelona",
+        "price_per_night_gbp": 280,
+        "rating": 4.7,
+        "stars": 5,
+        "amenities": [
+          "Beachfront",
+          "Infinity pool",
+          "Spa",
+          "Fine dining",
+          "Sea view"
+        ],
+        "room_type": "Fabulous Room Sea View",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "price_gbp": 35,
+        "departure_time": "06:25",
+        "arrival_time": "09:40",
+        "duration": "2h 15m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Vueling",
+        "airline_code": "VY",
+        "price_gbp": 52,
+        "departure_time": "10:30",
+        "arrival_time": "13:40",
+        "duration": "2h 10m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 115,
+        "departure_time": "08:00",
+        "arrival_time": "11:10",
+        "duration": "2h 10m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Cal Pep",
+        "cuisine": "Catalan Tapas",
+        "price_level": "££",
+        "rating": 4.6,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Plaça de les Olles 8",
+        "must_try": "Fried baby squid"
+      },
+      {
+        "name": "Tickets Bar",
+        "cuisine": "Modern Spanish",
+        "price_level": "£££",
+        "rating": 4.8,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Av. del Paral·lel 164",
+        "must_try": "Liquid olive"
+      },
+      {
+        "name": "La Boqueria Market",
+        "cuisine": "Market Food",
+        "price_level": "£-££",
+        "rating": 4.5,
+        "dietary": [
+          "vegan-options",
+          "vegetarian-options",
+          "halal-options",
+          "gluten-free-options"
+        ],
+        "address": "La Rambla 91",
+        "must_try": "Fresh fruit juice and jamón"
+      },
+      {
+        "name": "Flax & Kale",
+        "cuisine": "Flexitarian",
+        "price_level": "££",
+        "rating": 4.4,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "Carrer dels Tallers 74B",
+        "must_try": "Vegan pizza with cashew cheese"
+      },
+      {
+        "name": "Cervecería Catalana",
+        "cuisine": "Spanish Tapas",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "halal-options"
+        ],
+        "address": "Carrer de Mallorca 236",
+        "must_try": "Patatas bravas and croquetas"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Sagrada Família",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.8,
+        "address": "C/ de Mallorca 401",
+        "price": "£22",
+        "hours": "09:00-20:00"
+      },
+      {
+        "name": "Park Güell",
+        "category": "Outdoors & Nature",
+        "rating": 4.6,
+        "address": "Carrer d'Olot",
+        "price": "£8",
+        "hours": "09:30-19:30"
+      },
+      {
+        "name": "La Rambla",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.3,
+        "address": "La Rambla",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Gothic Quarter",
+        "category": "Arts & Culture",
+        "rating": 4.7,
+        "address": "Barri Gòtic",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Barceloneta Beach",
+        "category": "Outdoors & Nature",
+        "rating": 4.4,
+        "address": "Passeig Marítim",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ]
+  },
+  "Bali": {
+    "country": "Indonesia",
+    "hotels": [
+      {
+        "name": "Puri Garden Hotel Ubud",
+        "price_per_night_gbp": 22,
+        "rating": 4.3,
+        "stars": 3,
+        "amenities": [
+          "Pool",
+          "Free WiFi",
+          "Garden view",
+          "Free breakfast"
+        ],
+        "room_type": "Deluxe Garden View",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Alila Seminyak",
+        "price_per_night_gbp": 120,
+        "rating": 4.6,
+        "stars": 4,
+        "amenities": [
+          "Beachfront",
+          "Pool",
+          "Spa",
+          "Free WiFi"
+        ],
+        "room_type": "Deluxe Suite",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Four Seasons Bali at Sayan",
+        "price_per_night_gbp": 450,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Infinity pool",
+          "Spa",
+          "Yoga pavilion",
+          "River valley view",
+          "Private villa"
+        ],
+        "room_type": "Valley Villa",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Singapore Airlines",
+        "airline_code": "SQ",
+        "price_gbp": 520,
+        "departure_time": "09:35",
+        "arrival_time": "11:50",
+        "duration": "17h 15m",
+        "stops": 1,
+        "stops_label": "1 stop (Singapore)"
+      },
+      {
+        "airline": "Qatar Airways",
+        "airline_code": "QR",
+        "price_gbp": 480,
+        "departure_time": "19:00",
+        "arrival_time": "19:30",
+        "duration": "18h 30m",
+        "stops": 1,
+        "stops_label": "1 stop (Doha)"
+      },
+      {
+        "airline": "Emirates",
+        "airline_code": "EK",
+        "price_gbp": 510,
+        "departure_time": "14:15",
+        "arrival_time": "15:20",
+        "duration": "18h 05m",
+        "stops": 1,
+        "stops_label": "1 stop (Dubai)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Locavore",
+        "cuisine": "Modern Indonesian",
+        "price_level": "££££",
+        "rating": 4.9,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Jl. Dewi Sita, Ubud",
+        "must_try": "7-course tasting menu"
+      },
+      {
+        "name": "Warung Babi Guling Ibu Oka",
+        "cuisine": "Balinese",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [],
+        "address": "Jl. Tegal Sari, Ubud",
+        "must_try": "Babi guling (suckling pig)"
+      },
+      {
+        "name": "The Shady Shack",
+        "cuisine": "Vegan/Vegetarian",
+        "price_level": "£",
+        "rating": 4.6,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "Jl. Tanah Barak, Canggu",
+        "must_try": "Nasi campur bowl"
+      },
+      {
+        "name": "Sardine",
+        "cuisine": "Seafood",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Jl. Petitenget, Seminyak",
+        "must_try": "Grilled whole fish"
+      },
+      {
+        "name": "Milk & Madu",
+        "cuisine": "International Cafe",
+        "price_level": "££",
+        "rating": 4.4,
+        "dietary": [
+          "vegan-options",
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Jl. Pantai Berawa, Canggu",
+        "must_try": "Acai bowl"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Tegallalang Rice Terraces",
+        "category": "Outdoors & Nature",
+        "rating": 4.6,
+        "address": "Tegallalang, Gianyar",
+        "price": "£1",
+        "hours": "08:00-18:00"
+      },
+      {
+        "name": "Tanah Lot Temple",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Beraban, Tabanan",
+        "price": "£3",
+        "hours": "07:00-19:00"
+      },
+      {
+        "name": "Sacred Monkey Forest",
+        "category": "Outdoors & Nature",
+        "rating": 4.5,
+        "address": "Jl. Monkey Forest, Ubud",
+        "price": "£3",
+        "hours": "08:30-18:00"
+      },
+      {
+        "name": "Uluwatu Temple",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Pecatu, South Kuta",
+        "price": "£3",
+        "hours": "07:00-19:00"
+      },
+      {
+        "name": "Mount Batur Sunrise Trek",
+        "category": "Outdoors & Adventure",
+        "rating": 4.6,
+        "address": "Kintamani",
+        "price": "£25 (guided)",
+        "hours": "02:00-10:00"
+      }
+    ]
+  },
+  "Paris": {
+    "country": "France",
+    "hotels": [
+      {
+        "name": "Generator Paris",
+        "price_per_night_gbp": 30,
+        "rating": 4.1,
+        "stars": 3,
+        "amenities": [
+          "Free WiFi",
+          "Bar",
+          "Canal views"
+        ],
+        "room_type": "Private Twin Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hôtel des Arts Montmartre",
+        "price_per_night_gbp": 110,
+        "rating": 4.4,
+        "stars": 4,
+        "amenities": [
+          "Free WiFi",
+          "Montmartre location",
+          "Concierge"
+        ],
+        "room_type": "Superior Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Le Meurice",
+        "price_per_night_gbp": 650,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Spa",
+          "Michelin restaurant",
+          "Tuileries view",
+          "Butler service"
+        ],
+        "room_type": "Deluxe Room Tuileries View",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "price_gbp": 38,
+        "departure_time": "07:00",
+        "arrival_time": "09:15",
+        "duration": "1h 15m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Air France",
+        "airline_code": "AF",
+        "price_gbp": 85,
+        "departure_time": "09:30",
+        "arrival_time": "11:45",
+        "duration": "1h 15m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Eurostar",
+        "airline_code": "ES",
+        "price_gbp": 65,
+        "departure_time": "08:01",
+        "arrival_time": "11:17",
+        "duration": "2h 16m",
+        "stops": 0,
+        "stops_label": "Direct (train)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Le Bouillon Chartier",
+        "cuisine": "Classic French",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "7 Rue du Faubourg Montmartre",
+        "must_try": "Duck confit"
+      },
+      {
+        "name": "L'As du Fallafel",
+        "cuisine": "Middle Eastern",
+        "price_level": "£",
+        "rating": 4.6,
+        "dietary": [
+          "vegetarian",
+          "halal",
+          "vegan-options"
+        ],
+        "address": "34 Rue des Rosiers, Le Marais",
+        "must_try": "Falafel pitta"
+      },
+      {
+        "name": "Le Comptoir du Panthéon",
+        "cuisine": "French Bistro",
+        "price_level": "££",
+        "rating": 4.4,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "5 Rue Soufflot",
+        "must_try": "Steak tartare"
+      },
+      {
+        "name": "Breizh Café",
+        "cuisine": "French Crêperie",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "109 Rue Vieille du Temple",
+        "must_try": "Galette complète"
+      },
+      {
+        "name": "Gentle Gourmet",
+        "cuisine": "Vegan French",
+        "price_level": "£££",
+        "rating": 4.3,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "24 Boulevard de la Bastille",
+        "must_try": "Vegan foie gras"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Eiffel Tower",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Champ de Mars, 5 Av. Anatole France",
+        "price": "£22 (summit)",
+        "hours": "09:30-23:45"
+      },
+      {
+        "name": "Louvre Museum",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "Rue de Rivoli",
+        "price": "£14",
+        "hours": "09:00-18:00 (closed Tues)"
+      },
+      {
+        "name": "Sacré-Cœur Basilica",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "35 Rue du Chevalier de la Barre",
+        "price": "Free",
+        "hours": "06:30-22:30"
+      },
+      {
+        "name": "Musée d'Orsay",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "1 Rue de la Légion d'Honneur",
+        "price": "£13",
+        "hours": "09:30-18:00 (closed Mon)"
+      },
+      {
+        "name": "Seine River Cruise",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.5,
+        "address": "Port de la Bourdonnais",
+        "price": "£12",
+        "hours": "10:00-22:30"
+      }
+    ]
+  },
+  "Tokyo": {
+    "country": "Japan",
+    "hotels": [
+      {
+        "name": "Khaosan Tokyo Kabuki",
+        "price_per_night_gbp": 20,
+        "rating": 4.0,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Capsule pods",
+          "Lounge"
+        ],
+        "room_type": "Capsule Pod",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel Gracery Shinjuku",
+        "price_per_night_gbp": 95,
+        "rating": 4.4,
+        "stars": 4,
+        "amenities": [
+          "Free WiFi",
+          "Godzilla terrace",
+          "Shinjuku location"
+        ],
+        "room_type": "Superior Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Aman Tokyo",
+        "price_per_night_gbp": 680,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Spa",
+          "Pool",
+          "City views",
+          "Fine dining",
+          "Onsen"
+        ],
+        "room_type": "Deluxe Room",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Japan Airlines",
+        "airline_code": "JL",
+        "price_gbp": 620,
+        "departure_time": "10:00",
+        "arrival_time": "06:30",
+        "duration": "11h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "ANA",
+        "airline_code": "NH",
+        "price_gbp": 580,
+        "departure_time": "19:00",
+        "arrival_time": "15:00",
+        "duration": "11h 00m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Turkish Airlines",
+        "airline_code": "TK",
+        "price_gbp": 440,
+        "departure_time": "18:30",
+        "arrival_time": "18:00",
+        "duration": "17h 30m",
+        "stops": 1,
+        "stops_label": "1 stop (Istanbul)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Ichiran Ramen Shibuya",
+        "cuisine": "Japanese Ramen",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "halal-options"
+        ],
+        "address": "1-22-7 Jinnan, Shibuya",
+        "must_try": "Tonkotsu ramen with extra noodles"
+      },
+      {
+        "name": "Sushi Dai",
+        "cuisine": "Sushi",
+        "price_level": "£££",
+        "rating": 4.8,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Tsukiji Outer Market, Chuo",
+        "must_try": "Omakase set"
+      },
+      {
+        "name": "Afuri Ramen",
+        "cuisine": "Japanese Ramen",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "vegan-options"
+        ],
+        "address": "Various locations",
+        "must_try": "Yuzu shio ramen (vegan version available)"
+      },
+      {
+        "name": "T's TanTan",
+        "cuisine": "Vegan Japanese",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegan",
+          "vegetarian"
+        ],
+        "address": "Tokyo Station, Keiyo Street",
+        "must_try": "Vegan tantanmen ramen"
+      },
+      {
+        "name": "Narisawa",
+        "cuisine": "Innovative Japanese",
+        "price_level": "££££",
+        "rating": 4.9,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "2-6-15 Minami-Aoyama",
+        "must_try": "Forest breadth course"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Senso-ji Temple",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "2-3-1 Asakusa, Taito",
+        "price": "Free",
+        "hours": "06:00-17:00"
+      },
+      {
+        "name": "Shibuya Crossing",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.5,
+        "address": "Shibuya Station",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "teamLab Borderless",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "Azabudai Hills, Minato",
+        "price": "£25",
+        "hours": "10:00-21:00"
+      },
+      {
+        "name": "Meiji Shrine",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "1-1 Yoyogikamizonocho",
+        "price": "Free",
+        "hours": "Sunrise-Sunset"
+      },
+      {
+        "name": "Tsukiji Outer Market",
+        "category": "Food & Drink",
+        "rating": 4.6,
+        "address": "4-16-2 Tsukiji, Chuo",
+        "price": "Free",
+        "hours": "05:00-14:00"
+      }
+    ]
+  },
+  "Rome": {
+    "country": "Italy",
+    "hotels": [
+      {
+        "name": "The Yellow Hostel",
+        "price_per_night_gbp": 22,
+        "rating": 4.2,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Bar",
+          "Termini area"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel Raphael",
+        "price_per_night_gbp": 180,
+        "rating": 4.6,
+        "stars": 5,
+        "amenities": [
+          "Rooftop terrace",
+          "Piazza Navona views",
+          "Restaurant"
+        ],
+        "room_type": "Classic Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Hotel de Russie",
+        "price_per_night_gbp": 420,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Secret garden",
+          "Spa",
+          "Piazza del Popolo location"
+        ],
+        "room_type": "Deluxe Room Garden View",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "price_gbp": 32,
+        "departure_time": "06:40",
+        "arrival_time": "10:15",
+        "duration": "2h 35m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Wizz Air",
+        "airline_code": "W6",
+        "price_gbp": 40,
+        "departure_time": "15:30",
+        "arrival_time": "19:00",
+        "duration": "2h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 110,
+        "departure_time": "09:00",
+        "arrival_time": "12:35",
+        "duration": "2h 35m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Da Enzo al 29",
+        "cuisine": "Roman Trattoria",
+        "price_level": "££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Via dei Vascellari 29, Trastevere",
+        "must_try": "Cacio e pepe"
+      },
+      {
+        "name": "Pizzarium Bonci",
+        "cuisine": "Roman Pizza",
+        "price_level": "£",
+        "rating": 4.6,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Via della Meloria 43",
+        "must_try": "Pizza al taglio with seasonal toppings"
+      },
+      {
+        "name": "Roscioli",
+        "cuisine": "Italian Deli & Restaurant",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Via dei Giubbonari 21",
+        "must_try": "Carbonara"
+      },
+      {
+        "name": "Ops! Cucina Mediterranea",
+        "cuisine": "Vegan Italian",
+        "price_level": "££",
+        "rating": 4.3,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "Via Bergamo 56",
+        "must_try": "Vegan tiramisu"
+      },
+      {
+        "name": "Supplizio",
+        "cuisine": "Roman Street Food",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Via dei Banchi Vecchi 143",
+        "must_try": "Classic supplì"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Colosseum",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.8,
+        "address": "Piazza del Colosseo 1",
+        "price": "£14",
+        "hours": "09:00-19:00"
+      },
+      {
+        "name": "Vatican Museums & Sistine Chapel",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "Viale Vaticano",
+        "price": "£15",
+        "hours": "09:00-18:00 (closed Sun)"
+      },
+      {
+        "name": "Trevi Fountain",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.6,
+        "address": "Piazza di Trevi",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Pantheon",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.8,
+        "address": "Piazza della Rotonda",
+        "price": "£4",
+        "hours": "09:00-19:00"
+      },
+      {
+        "name": "Trastevere Evening Walk",
+        "category": "Food & Drink",
+        "rating": 4.7,
+        "address": "Trastevere neighbourhood",
+        "price": "Free",
+        "hours": "Evening"
+      }
+    ]
+  },
+  "Dubai": {
+    "country": "UAE",
+    "hotels": [
+      {
+        "name": "Rove Downtown",
+        "price_per_night_gbp": 55,
+        "rating": 4.3,
+        "stars": 3,
+        "amenities": [
+          "Pool",
+          "Free WiFi",
+          "Near Dubai Mall"
+        ],
+        "room_type": "Rover Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Atlantis The Palm",
+        "price_per_night_gbp": 250,
+        "rating": 4.6,
+        "stars": 5,
+        "amenities": [
+          "Aquaventure waterpark",
+          "Beach",
+          "Aquarium",
+          "15 restaurants"
+        ],
+        "room_type": "Ocean King Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Burj Al Arab Jumeirah",
+        "price_per_night_gbp": 1200,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Butler service",
+          "Private beach",
+          "9 restaurants",
+          "Helicopter pad"
+        ],
+        "room_type": "Deluxe One-Bedroom Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Emirates",
+        "airline_code": "EK",
+        "price_gbp": 310,
+        "departure_time": "09:00",
+        "arrival_time": "19:30",
+        "duration": "6h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 340,
+        "departure_time": "14:30",
+        "arrival_time": "01:00",
+        "duration": "6h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "flydubai",
+        "airline_code": "FZ",
+        "price_gbp": 220,
+        "departure_time": "22:00",
+        "arrival_time": "08:30",
+        "duration": "6h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Al Ustad Special Kabab",
+        "cuisine": "Iranian/Persian",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "halal",
+          "gluten-free-options"
+        ],
+        "address": "Al Fahidi St, Bur Dubai",
+        "must_try": "Lamb kebab platter"
+      },
+      {
+        "name": "Ravi Restaurant",
+        "cuisine": "Pakistani",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "halal",
+          "vegetarian-options"
+        ],
+        "address": "Al Satwa Road",
+        "must_try": "Butter chicken and naan"
+      },
+      {
+        "name": "Zuma Dubai",
+        "cuisine": "Japanese",
+        "price_level": "££££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options",
+          "vegetarian-options"
+        ],
+        "address": "DIFC, Gate Village 6",
+        "must_try": "Black cod miso"
+      },
+      {
+        "name": "SALT Burger",
+        "cuisine": "American/Emirati fusion",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "halal"
+        ],
+        "address": "Kite Beach, Jumeirah",
+        "must_try": "SALT classic with cheese"
+      },
+      {
+        "name": "Wild & The Moon",
+        "cuisine": "Vegan Cafe",
+        "price_level": "££",
+        "rating": 4.2,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "Alserkal Avenue",
+        "must_try": "Green warrior smoothie bowl"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Burj Khalifa (At the Top)",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "1 Sheikh Mohammed bin Rashid Blvd",
+        "price": "£30",
+        "hours": "10:00-00:00"
+      },
+      {
+        "name": "Dubai Mall & Aquarium",
+        "category": "Shopping",
+        "rating": 4.5,
+        "address": "Financial Centre Rd",
+        "price": "Free (mall), £25 (aquarium)",
+        "hours": "10:00-00:00"
+      },
+      {
+        "name": "Desert Safari with BBQ",
+        "category": "Outdoors & Adventure",
+        "rating": 4.6,
+        "address": "Dubai Desert Conservation Reserve",
+        "price": "£40",
+        "hours": "15:00-21:00"
+      },
+      {
+        "name": "Dubai Frame",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.4,
+        "address": "Zabeel Park",
+        "price": "£10",
+        "hours": "09:00-21:00"
+      },
+      {
+        "name": "Al Fahidi Historical District",
+        "category": "Arts & Culture",
+        "rating": 4.5,
+        "address": "Al Fahidi, Bur Dubai",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ]
+  },
+  "New York City": {
+    "country": "USA",
+    "hotels": [
+      {
+        "name": "HI NYC Hostel",
+        "price_per_night_gbp": 40,
+        "rating": 4.0,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Communal kitchen",
+          "Upper West Side"
+        ],
+        "room_type": "Private Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "The Pod 51",
+        "price_per_night_gbp": 95,
+        "rating": 4.2,
+        "stars": 3,
+        "amenities": [
+          "Free WiFi",
+          "Rooftop bar",
+          "Midtown location"
+        ],
+        "room_type": "Full Pod",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "The Plaza Hotel",
+        "price_per_night_gbp": 550,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Central Park views",
+          "Spa",
+          "Butler service",
+          "Palm Court"
+        ],
+        "room_type": "Park View King",
+        "cancellation": "Non-refundable",
+        "board_type": "Room Only"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Norwegian",
+        "airline_code": "DY",
+        "price_gbp": 280,
+        "departure_time": "09:30",
+        "arrival_time": "12:30",
+        "duration": "8h 00m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 420,
+        "departure_time": "08:00",
+        "arrival_time": "11:00",
+        "duration": "8h 00m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Virgin Atlantic",
+        "airline_code": "VS",
+        "price_gbp": 380,
+        "departure_time": "11:00",
+        "arrival_time": "14:00",
+        "duration": "8h 00m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Joe's Pizza",
+        "cuisine": "New York Pizza",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "7 Carmine St, Greenwich Village",
+        "must_try": "Classic cheese slice"
+      },
+      {
+        "name": "Katz's Delicatessen",
+        "cuisine": "Jewish Deli",
+        "price_level": "££",
+        "rating": 4.6,
+        "dietary": [
+          "kosher"
+        ],
+        "address": "205 E Houston St, Lower East Side",
+        "must_try": "Pastrami on rye"
+      },
+      {
+        "name": "Le Bernardin",
+        "cuisine": "French Seafood",
+        "price_level": "££££",
+        "rating": 4.9,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "155 W 51st St, Midtown",
+        "must_try": "Tasting menu"
+      },
+      {
+        "name": "By Chloe",
+        "cuisine": "Vegan Fast-Casual",
+        "price_level": "£",
+        "rating": 4.2,
+        "dietary": [
+          "vegan",
+          "vegetarian"
+        ],
+        "address": "Multiple locations",
+        "must_try": "Classic burger"
+      },
+      {
+        "name": "The Halal Guys",
+        "cuisine": "Middle Eastern",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "halal"
+        ],
+        "address": "W 53rd St & 6th Ave",
+        "must_try": "Chicken and rice platter"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Statue of Liberty & Ellis Island",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Liberty Island",
+        "price": "£19",
+        "hours": "09:30-17:00"
+      },
+      {
+        "name": "Central Park",
+        "category": "Outdoors & Nature",
+        "rating": 4.8,
+        "address": "Manhattan",
+        "price": "Free",
+        "hours": "06:00-01:00"
+      },
+      {
+        "name": "Metropolitan Museum of Art",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "1000 5th Ave",
+        "price": "£22",
+        "hours": "10:00-17:00"
+      },
+      {
+        "name": "Brooklyn Bridge Walk",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Brooklyn Bridge",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Times Square",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.2,
+        "address": "Broadway & 7th Ave",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ]
+  },
+  "Istanbul": {
+    "country": "Turkey",
+    "hotels": [
+      {
+        "name": "Cheers Hostel",
+        "price_per_night_gbp": 15,
+        "rating": 4.3,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Rooftop terrace",
+          "Sultanahmet location"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Hotel Amira Istanbul",
+        "price_per_night_gbp": 65,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Turkish bath",
+          "Sea view terrace",
+          "Breakfast included"
+        ],
+        "room_type": "Deluxe Sea View",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Four Seasons at Sultanahmet",
+        "price_per_night_gbp": 380,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Former prison",
+          "Spa",
+          "Blue Mosque views",
+          "Fine dining"
+        ],
+        "room_type": "Deluxe Room",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Pegasus Airlines",
+        "airline_code": "PC",
+        "price_gbp": 55,
+        "departure_time": "06:30",
+        "arrival_time": "12:45",
+        "duration": "3h 45m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Turkish Airlines",
+        "airline_code": "TK",
+        "price_gbp": 120,
+        "departure_time": "10:15",
+        "arrival_time": "16:15",
+        "duration": "3h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 135,
+        "departure_time": "09:00",
+        "arrival_time": "15:00",
+        "duration": "3h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Karaköy Lokantası",
+        "cuisine": "Turkish",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "halal",
+          "vegetarian-options"
+        ],
+        "address": "Kemankeş Cad. 37A, Karaköy",
+        "must_try": "Lamb shank"
+      },
+      {
+        "name": "Çiya Sofrası",
+        "cuisine": "Anatolian",
+        "price_level": "£",
+        "rating": 4.6,
+        "dietary": [
+          "halal",
+          "vegan-options",
+          "vegetarian-options"
+        ],
+        "address": "Caferağa Mah, Kadıköy",
+        "must_try": "Daily stew specials"
+      },
+      {
+        "name": "Hafız Mustafa 1864",
+        "cuisine": "Turkish Desserts",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "halal",
+          "vegetarian"
+        ],
+        "address": "Hobyar Mah, Eminönü",
+        "must_try": "Baklava and Turkish delight"
+      },
+      {
+        "name": "Mikla",
+        "cuisine": "Modern Turkish",
+        "price_level": "££££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options",
+          "vegetarian-options"
+        ],
+        "address": "The Marmara Pera, Beyoğlu",
+        "must_try": "Tasting menu"
+      },
+      {
+        "name": "Vegan Istanbul",
+        "cuisine": "Vegan Turkish",
+        "price_level": "£",
+        "rating": 4.2,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "Siraselviler Cd, Beyoğlu",
+        "must_try": "Vegan döner"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Hagia Sophia",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.8,
+        "address": "Sultan Ahmet, Ayasofya Meydanı",
+        "price": "Free",
+        "hours": "09:00-19:00"
+      },
+      {
+        "name": "Grand Bazaar",
+        "category": "Shopping",
+        "rating": 4.5,
+        "address": "Beyazıt Mah",
+        "price": "Free",
+        "hours": "08:30-19:00 (closed Sun)"
+      },
+      {
+        "name": "Bosphorus Cruise",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.6,
+        "address": "Eminönü ferry terminal",
+        "price": "£8",
+        "hours": "10:35-16:00"
+      },
+      {
+        "name": "Topkapi Palace",
+        "category": "Arts & Culture",
+        "rating": 4.7,
+        "address": "Cankurtaran Mah",
+        "price": "£12",
+        "hours": "09:00-18:00"
+      },
+      {
+        "name": "Basilica Cistern",
+        "category": "Arts & Culture",
+        "rating": 4.6,
+        "address": "Alemdar Mah, Yerebatan Cd",
+        "price": "£8",
+        "hours": "09:00-19:00"
+      }
+    ]
+  },
+  "Lisbon": {
+    "country": "Portugal",
+    "hotels": [
+      {
+        "name": "Home Lisbon Hostel",
+        "price_per_night_gbp": 18,
+        "rating": 4.6,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Free dinner",
+          "Walking tours"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel do Chiado",
+        "price_per_night_gbp": 130,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Rooftop bar",
+          "Free WiFi",
+          "Chiado location"
+        ],
+        "room_type": "Deluxe Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Bairro Alto Hotel",
+        "price_per_night_gbp": 250,
+        "rating": 4.7,
+        "stars": 5,
+        "amenities": [
+          "Rooftop terrace",
+          "Spa",
+          "River views",
+          "BAHR restaurant"
+        ],
+        "room_type": "Deluxe Room",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "price_gbp": 28,
+        "departure_time": "06:45",
+        "arrival_time": "09:15",
+        "duration": "2h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "TAP Portugal",
+        "airline_code": "TP",
+        "price_gbp": 75,
+        "departure_time": "10:00",
+        "arrival_time": "12:30",
+        "duration": "2h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "price_gbp": 42,
+        "departure_time": "14:20",
+        "arrival_time": "16:50",
+        "duration": "2h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Time Out Market",
+        "cuisine": "Food Hall",
+        "price_level": "£-£££",
+        "rating": 4.5,
+        "dietary": [
+          "vegan-options",
+          "vegetarian-options",
+          "gluten-free-options",
+          "halal-options"
+        ],
+        "address": "Av. 24 de Julho 49",
+        "must_try": "Pastel de nata from Manteigaria"
+      },
+      {
+        "name": "Cervejaria Ramiro",
+        "cuisine": "Seafood",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Av. Almirante Reis 1-H",
+        "must_try": "Tiger prawns and steak sandwich"
+      },
+      {
+        "name": "Belcanto",
+        "cuisine": "Modern Portuguese",
+        "price_level": "££££",
+        "rating": 4.8,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "R. Serpa Pinto 10A",
+        "must_try": "Tasting menu by José Avillez"
+      },
+      {
+        "name": "The Green Affair",
+        "cuisine": "Vegan",
+        "price_level": "££",
+        "rating": 4.3,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "R. Rodrigues Sampaio 33",
+        "must_try": "Mushroom risotto"
+      },
+      {
+        "name": "Café A Brasileira",
+        "cuisine": "Portuguese Café",
+        "price_level": "£",
+        "rating": 4.2,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "R. Garrett 120, Chiado",
+        "must_try": "Bica coffee and pastéis de nata"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Belém Tower",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.6,
+        "address": "Av. Brasília",
+        "price": "£7",
+        "hours": "10:00-18:30"
+      },
+      {
+        "name": "Tram 28 Ride",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.4,
+        "address": "Various stops",
+        "price": "£2.50",
+        "hours": "06:00-23:00"
+      },
+      {
+        "name": "Alfama District",
+        "category": "Arts & Culture",
+        "rating": 4.7,
+        "address": "Alfama",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Jerónimos Monastery",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.8,
+        "address": "Praça do Império",
+        "price": "£8",
+        "hours": "10:00-18:30"
+      },
+      {
+        "name": "LX Factory",
+        "category": "Shopping",
+        "rating": 4.5,
+        "address": "R. Rodrigues de Faria 103",
+        "price": "Free",
+        "hours": "10:00-00:00"
+      }
+    ]
+  },
+  "Maldives": {
+    "country": "Maldives",
+    "hotels": [
+      {
+        "name": "Arena Beach Hotel",
+        "price_per_night_gbp": 60,
+        "rating": 4.1,
+        "stars": 3,
+        "amenities": [
+          "Beach access",
+          "Free WiFi",
+          "Snorkelling gear"
+        ],
+        "room_type": "Beach View Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Anantara Dhigu Resort",
+        "price_per_night_gbp": 350,
+        "rating": 4.7,
+        "stars": 5,
+        "amenities": [
+          "Overwater bungalow",
+          "Spa",
+          "Diving centre",
+          "4 restaurants"
+        ],
+        "room_type": "Overwater Suite",
+        "cancellation": "Free cancellation",
+        "board_type": "Half Board"
+      },
+      {
+        "name": "Soneva Fushi",
+        "price_per_night_gbp": 1500,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Private island",
+          "Barefoot luxury",
+          "Observatory",
+          "Cinema Paradiso",
+          "10 dining options"
+        ],
+        "room_type": "Beach Villa with Pool",
+        "cancellation": "Non-refundable",
+        "board_type": "All Inclusive"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Emirates",
+        "airline_code": "EK",
+        "price_gbp": 480,
+        "departure_time": "09:00",
+        "arrival_time": "04:30",
+        "duration": "13h 30m",
+        "stops": 1,
+        "stops_label": "1 stop (Dubai)"
+      },
+      {
+        "airline": "Sri Lankan Airlines",
+        "airline_code": "UL",
+        "price_gbp": 420,
+        "departure_time": "21:15",
+        "arrival_time": "15:45",
+        "duration": "14h 30m",
+        "stops": 1,
+        "stops_label": "1 stop (Colombo)"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 550,
+        "departure_time": "10:00",
+        "arrival_time": "00:30",
+        "duration": "10h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Ithaa Undersea Restaurant",
+        "cuisine": "International Fine Dining",
+        "price_level": "££££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options",
+          "vegetarian-options"
+        ],
+        "address": "Conrad Maldives Rangali Island",
+        "must_try": "6-course underwater dining experience"
+      },
+      {
+        "name": "Sea Fire",
+        "cuisine": "Seafood Grill",
+        "price_level": "£££",
+        "rating": 4.5,
+        "dietary": [
+          "halal",
+          "gluten-free-options"
+        ],
+        "address": "Anantara Dhigu",
+        "must_try": "Lobster on the grill"
+      },
+      {
+        "name": "Maafannu Fish Market",
+        "cuisine": "Maldivian",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "halal",
+          "gluten-free-options"
+        ],
+        "address": "Malé Fish Market",
+        "must_try": "Mas huni with roshi"
+      },
+      {
+        "name": "Sala Thai",
+        "cuisine": "Thai",
+        "price_level": "£££",
+        "rating": 4.4,
+        "dietary": [
+          "vegetarian-options",
+          "vegan-options"
+        ],
+        "address": "Anantara Veli",
+        "must_try": "Green curry"
+      },
+      {
+        "name": "Fresh in the Garden",
+        "cuisine": "Organic/Vegan",
+        "price_level": "£££",
+        "rating": 4.5,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "Soneva Fushi",
+        "must_try": "Farm-to-table tasting menu"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Snorkelling at House Reef",
+        "category": "Outdoors & Adventure",
+        "rating": 4.8,
+        "address": "Various resort reefs",
+        "price": "Free (at resort)",
+        "hours": "All day"
+      },
+      {
+        "name": "Malé Fish Market & Old Friday Mosque",
+        "category": "Arts & Culture",
+        "rating": 4.3,
+        "address": "Malé",
+        "price": "Free",
+        "hours": "06:00-18:00"
+      },
+      {
+        "name": "Sunset Dolphin Cruise",
+        "category": "Outdoors & Adventure",
+        "rating": 4.7,
+        "address": "Various departure points",
+        "price": "£35",
+        "hours": "16:30-18:30"
+      },
+      {
+        "name": "Diving at Banana Reef",
+        "category": "Outdoors & Adventure",
+        "rating": 4.8,
+        "address": "North Malé Atoll",
+        "price": "£60 (2 dives)",
+        "hours": "08:00-12:00"
+      },
+      {
+        "name": "Sandbank Picnic",
+        "category": "Outdoors & Nature",
+        "rating": 4.6,
+        "address": "Private sandbank excursion",
+        "price": "£80",
+        "hours": "10:00-15:00"
+      }
+    ]
+  },
+  "Hanoi": {
+    "country": "Vietnam",
+    "hotels": [
+      {
+        "name": "Hanoi Old Quarter Hostel",
+        "price_per_night_gbp": 8,
+        "rating": 4.1,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Free breakfast",
+          "Tour desk"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Hanoi La Siesta Hotel",
+        "price_per_night_gbp": 55,
+        "rating": 4.6,
+        "stars": 4,
+        "amenities": [
+          "Spa",
+          "Free WiFi",
+          "Old Quarter location",
+          "Rooftop bar"
+        ],
+        "room_type": "Deluxe City View",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Sofitel Legend Metropole Hanoi",
+        "price_per_night_gbp": 280,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Historic hotel",
+          "Spa",
+          "Pool",
+          "Le Beaulieu restaurant",
+          "Bamboo Bar"
+        ],
+        "room_type": "Premium Room",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Vietnam Airlines",
+        "airline_code": "VN",
+        "price_gbp": 450,
+        "departure_time": "11:30",
+        "arrival_time": "06:30",
+        "duration": "11h 00m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Qatar Airways",
+        "airline_code": "QR",
+        "price_gbp": 410,
+        "departure_time": "19:00",
+        "arrival_time": "15:45",
+        "duration": "14h 45m",
+        "stops": 1,
+        "stops_label": "1 stop (Doha)"
+      },
+      {
+        "airline": "Emirates",
+        "airline_code": "EK",
+        "price_gbp": 430,
+        "departure_time": "14:15",
+        "arrival_time": "11:20",
+        "duration": "15h 05m",
+        "stops": 1,
+        "stops_label": "1 stop (Dubai)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Pho Thin",
+        "cuisine": "Vietnamese",
+        "price_level": "£",
+        "rating": 4.6,
+        "dietary": [
+          "halal-options",
+          "gluten-free-options"
+        ],
+        "address": "13 Lo Duc, Hai Ba Trung",
+        "must_try": "Pho bo (beef pho)"
+      },
+      {
+        "name": "Bun Cha Huong Lien",
+        "cuisine": "Vietnamese Street Food",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "24 Le Van Huu, Hai Ba Trung",
+        "must_try": "Bun cha (Obama's order)"
+      },
+      {
+        "name": "La Badiane",
+        "cuisine": "French-Vietnamese Fusion",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "10 Nam Ngu, Hoan Kiem",
+        "must_try": "Tasting menu"
+      },
+      {
+        "name": "Nha Hang Ngon",
+        "cuisine": "Vietnamese",
+        "price_level": "££",
+        "rating": 4.4,
+        "dietary": [
+          "vegetarian-options",
+          "vegan-options"
+        ],
+        "address": "18 Phan Boi Chau, Hoan Kiem",
+        "must_try": "Spring rolls and banh xeo"
+      },
+      {
+        "name": "Minh Chay Vegan",
+        "cuisine": "Vegan Vietnamese",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "12 Nha Chung, Hoan Kiem",
+        "must_try": "Vegan pho"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Hoan Kiem Lake & Ngoc Son Temple",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.6,
+        "address": "Hang Trong, Hoan Kiem",
+        "price": "£1.50",
+        "hours": "07:00-18:00"
+      },
+      {
+        "name": "Old Quarter Walking Tour",
+        "category": "Arts & Culture",
+        "rating": 4.7,
+        "address": "36 streets, Hoan Kiem District",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Ho Chi Minh Mausoleum",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.4,
+        "address": "2 Hung Vuong, Ba Dinh",
+        "price": "Free",
+        "hours": "08:00-11:00 (Tue-Thu, Sat-Sun)"
+      },
+      {
+        "name": "Temple of Literature",
+        "category": "Arts & Culture",
+        "rating": 4.6,
+        "address": "58 Quoc Tu Giam, Dong Da",
+        "price": "£1.50",
+        "hours": "08:00-17:00"
+      },
+      {
+        "name": "Train Street",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.3,
+        "address": "Tran Phu, Hoan Kiem",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ]
+  },
+  "Marrakech": {
+    "country": "Morocco",
+    "hotels": [
+      {
+        "name": "Riad Laayoun",
+        "price_per_night_gbp": 25,
+        "rating": 4.3,
+        "stars": 3,
+        "amenities": [
+          "Free WiFi",
+          "Rooftop terrace",
+          "Traditional courtyard"
+        ],
+        "room_type": "Standard Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Riad Kniza",
+        "price_per_night_gbp": 95,
+        "rating": 4.7,
+        "stars": 4,
+        "amenities": [
+          "Pool",
+          "Spa",
+          "Hammam",
+          "Restaurant"
+        ],
+        "room_type": "Superior Suite",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Royal Mansour Marrakech",
+        "price_per_night_gbp": 650,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Private riads",
+          "3 Michelin restaurants",
+          "Spa",
+          "Pool",
+          "Gardens"
+        ],
+        "room_type": "Riad (3 floors)",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "price_gbp": 35,
+        "departure_time": "06:30",
+        "arrival_time": "09:50",
+        "duration": "3h 20m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "price_gbp": 55,
+        "departure_time": "10:15",
+        "arrival_time": "13:35",
+        "duration": "3h 20m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 130,
+        "departure_time": "09:00",
+        "arrival_time": "12:20",
+        "duration": "3h 20m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Jemaa el-Fnaa Food Stalls",
+        "cuisine": "Moroccan Street Food",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "halal",
+          "vegetarian-options"
+        ],
+        "address": "Jemaa el-Fnaa Square",
+        "must_try": "Lamb tagine and fresh orange juice"
+      },
+      {
+        "name": "Nomad",
+        "cuisine": "Modern Moroccan",
+        "price_level": "££",
+        "rating": 4.6,
+        "dietary": [
+          "halal",
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "1 Derb Aarjane, Rahba Lakdima",
+        "must_try": "Lamb tangia with date chutney"
+      },
+      {
+        "name": "Le Jardin",
+        "cuisine": "Moroccan-Mediterranean",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "halal",
+          "vegetarian-options",
+          "vegan-options"
+        ],
+        "address": "32 Souk Sidi Abdelaziz, Medina",
+        "must_try": "Pastilla and couscous"
+      },
+      {
+        "name": "Al Fassia",
+        "cuisine": "Traditional Moroccan",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "halal",
+          "gluten-free-options"
+        ],
+        "address": "55 Boulevard Zerktouni, Guéliz",
+        "must_try": "Slow-cooked lamb shoulder"
+      },
+      {
+        "name": "Earth Café",
+        "cuisine": "Vegan Moroccan",
+        "price_level": "£",
+        "rating": 4.2,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "2 Derb Zaouia, Riad Zitoun Kedim",
+        "must_try": "Buddha bowl with harissa"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Jemaa el-Fnaa Square",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Medina",
+        "price": "Free",
+        "hours": "All day (best at sunset)"
+      },
+      {
+        "name": "Majorelle Garden",
+        "category": "Outdoors & Nature",
+        "rating": 4.6,
+        "address": "Rue Yves Saint Laurent",
+        "price": "£6",
+        "hours": "08:00-18:00"
+      },
+      {
+        "name": "Bahia Palace",
+        "category": "Arts & Culture",
+        "rating": 4.5,
+        "address": "Rue Riad Zitoun el Jdid",
+        "price": "£6",
+        "hours": "09:00-17:00"
+      },
+      {
+        "name": "Souk Shopping",
+        "category": "Shopping",
+        "rating": 4.5,
+        "address": "Medina Souks",
+        "price": "Free",
+        "hours": "09:00-21:00"
+      },
+      {
+        "name": "Saadian Tombs",
+        "category": "Arts & Culture",
+        "rating": 4.4,
+        "address": "Rue de la Kasbah",
+        "price": "£6",
+        "hours": "09:00-17:00"
+      }
+    ]
+  },
+  "Budapest": {
+    "country": "Hungary",
+    "hotels": [
+      {
+        "name": "Maverick City Lodge",
+        "price_per_night_gbp": 18,
+        "rating": 4.3,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Bar",
+          "Central location"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Aria Hotel Budapest",
+        "price_per_night_gbp": 140,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Rooftop bar",
+          "Spa",
+          "Music garden",
+          "Free WiFi"
+        ],
+        "room_type": "Harmony Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Four Seasons Gresham Palace",
+        "price_per_night_gbp": 380,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Spa",
+          "Pool",
+          "Chain Bridge views",
+          "Fine dining"
+        ],
+        "room_type": "Danube Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "price_gbp": 25,
+        "departure_time": "06:20",
+        "arrival_time": "10:00",
+        "duration": "2h 40m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Wizz Air",
+        "airline_code": "W6",
+        "price_gbp": 30,
+        "departure_time": "14:30",
+        "arrival_time": "18:10",
+        "duration": "2h 40m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 95,
+        "departure_time": "09:15",
+        "arrival_time": "12:55",
+        "duration": "2h 40m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Karvaan Budapest",
+        "cuisine": "Indian-Middle Eastern Fusion",
+        "price_level": "££",
+        "rating": 4.6,
+        "dietary": [
+          "halal",
+          "vegetarian-options",
+          "vegan-options"
+        ],
+        "address": "Dob utca 40",
+        "must_try": "Butter chicken naan wrap"
+      },
+      {
+        "name": "Központ",
+        "cuisine": "Hungarian Bistro",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Madách Imre tér 3",
+        "must_try": "Goulash soup and chimney cake"
+      },
+      {
+        "name": "Onyx Restaurant",
+        "cuisine": "Modern Hungarian",
+        "price_level": "££££",
+        "rating": 4.8,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Vörösmarty tér 7-8",
+        "must_try": "Tasting menu"
+      },
+      {
+        "name": "For Sale Pub",
+        "cuisine": "Hungarian Pub Food",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Vámház körút 2",
+        "must_try": "Lángos with sour cream"
+      },
+      {
+        "name": "Napfényes Restaurant",
+        "cuisine": "Vegan Hungarian",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "Ferenciek tere 2",
+        "must_try": "Vegan goulash"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Széchenyi Thermal Bath",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Állatkerti krt. 9-11",
+        "price": "£18",
+        "hours": "06:00-22:00"
+      },
+      {
+        "name": "Buda Castle",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.6,
+        "address": "Szent György tér 2",
+        "price": "£10",
+        "hours": "10:00-18:00"
+      },
+      {
+        "name": "Hungarian Parliament",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.8,
+        "address": "Kossuth Lajos tér 1-3",
+        "price": "£8",
+        "hours": "08:00-18:00"
+      },
+      {
+        "name": "Ruin Bars (Szimpla Kert)",
+        "category": "Food & Drink",
+        "rating": 4.5,
+        "address": "Kazinczy utca 14",
+        "price": "Free entry",
+        "hours": "12:00-04:00"
+      },
+      {
+        "name": "Fisherman's Bastion",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Szentháromság tér",
+        "price": "£4",
+        "hours": "09:00-23:00"
+      }
+    ]
+  },
+  "Mexico City": {
+    "country": "Mexico",
+    "hotels": [
+      {
+        "name": "Hostal Centro Histórico Regina",
+        "price_per_night_gbp": 15,
+        "rating": 4.1,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Rooftop terrace",
+          "Historic centre"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel Carlota",
+        "price_per_night_gbp": 70,
+        "rating": 4.4,
+        "stars": 4,
+        "amenities": [
+          "Pool",
+          "Restaurant",
+          "Free WiFi",
+          "Reforma location"
+        ],
+        "room_type": "Standard Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Four Seasons Mexico City",
+        "price_per_night_gbp": 350,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Courtyard garden",
+          "Spa",
+          "Pool",
+          "Fine dining"
+        ],
+        "room_type": "Deluxe Room",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Aeromexico",
+        "airline_code": "AM",
+        "price_gbp": 420,
+        "departure_time": "11:30",
+        "arrival_time": "17:30",
+        "duration": "12h 00m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 480,
+        "departure_time": "15:00",
+        "arrival_time": "20:45",
+        "duration": "11h 45m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "KLM",
+        "airline_code": "KL",
+        "price_gbp": 380,
+        "departure_time": "09:15",
+        "arrival_time": "19:00",
+        "duration": "15h 45m",
+        "stops": 1,
+        "stops_label": "1 stop (Amsterdam)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Pujol",
+        "cuisine": "Modern Mexican",
+        "price_level": "££££",
+        "rating": 4.9,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Tennyson 133, Polanco",
+        "must_try": "Mole madre and mole nuevo"
+      },
+      {
+        "name": "Tacos El Califa de León",
+        "cuisine": "Mexican Street Tacos",
+        "price_level": "£",
+        "rating": 4.6,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Calle De San Antonio Abad 23A",
+        "must_try": "Bistec taco"
+      },
+      {
+        "name": "Contramar",
+        "cuisine": "Mexican Seafood",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Calle de Durango 200, Roma Norte",
+        "must_try": "Tuna tostadas and grilled fish"
+      },
+      {
+        "name": "Los Cocuyos",
+        "cuisine": "Mexican Street Food",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "halal-options"
+        ],
+        "address": "Centro Histórico",
+        "must_try": "Suadero tacos"
+      },
+      {
+        "name": "Por Siempre Vegana Taquería",
+        "cuisine": "Vegan Mexican",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "Manzanillo 46, Roma Sur",
+        "must_try": "Vegan al pastor tacos"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Frida Kahlo Museum (Casa Azul)",
+        "category": "Arts & Culture",
+        "rating": 4.7,
+        "address": "Londres 247, Coyoacán",
+        "price": "£10",
+        "hours": "10:00-17:30 (closed Mon)"
+      },
+      {
+        "name": "Teotihuacán Pyramids",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.8,
+        "address": "San Juan Teotihuacán (50km NE)",
+        "price": "£4",
+        "hours": "08:00-17:00"
+      },
+      {
+        "name": "Chapultepec Castle",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.6,
+        "address": "Bosque de Chapultepec",
+        "price": "£4",
+        "hours": "09:00-17:00 (closed Mon)"
+      },
+      {
+        "name": "Zócalo (Main Square)",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.5,
+        "address": "Plaza de la Constitución",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Roma & Condesa Neighbourhood Walk",
+        "category": "Food & Drink",
+        "rating": 4.6,
+        "address": "Colonia Roma / Condesa",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ]
+  },
+  "Kraków": {
+    "country": "Poland",
+    "hotels": [
+      {
+        "name": "Greg & Tom Beer House Hostel",
+        "price_per_night_gbp": 10,
+        "rating": 4.4,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Free beer hour",
+          "Bar"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel Stary",
+        "price_per_night_gbp": 90,
+        "rating": 4.7,
+        "stars": 5,
+        "amenities": [
+          "Spa",
+          "Pool",
+          "Old Town location",
+          "Restaurant"
+        ],
+        "room_type": "Deluxe Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Hotel Copernicus",
+        "price_per_night_gbp": 200,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Rooftop pool",
+          "Wawel views",
+          "Medieval cellar restaurant"
+        ],
+        "room_type": "Deluxe Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "price_gbp": 20,
+        "departure_time": "06:10",
+        "arrival_time": "09:40",
+        "duration": "2h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Wizz Air",
+        "airline_code": "W6",
+        "price_gbp": 28,
+        "departure_time": "17:00",
+        "arrival_time": "20:30",
+        "duration": "2h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 85,
+        "departure_time": "09:00",
+        "arrival_time": "12:30",
+        "duration": "2h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Starka",
+        "cuisine": "Polish",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Józefa 14, Kazimierz",
+        "must_try": "Pierogi and żurek soup"
+      },
+      {
+        "name": "Zapiekanka at Plac Nowy",
+        "cuisine": "Polish Street Food",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Plac Nowy, Kazimierz",
+        "must_try": "Zapiekanka (Polish open-face sandwich)"
+      },
+      {
+        "name": "Pod Baranem",
+        "cuisine": "Traditional Polish",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Świętego Gertrudy 21",
+        "must_try": "Bigos (hunter's stew)"
+      },
+      {
+        "name": "Bottiglieria 1881",
+        "cuisine": "Modern Polish",
+        "price_level": "££££",
+        "rating": 4.8,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Bracka 5",
+        "must_try": "Tasting menu"
+      },
+      {
+        "name": "Veganic",
+        "cuisine": "Vegan",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "Krowoderska 14",
+        "must_try": "Vegan burger with beet patty"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Wawel Royal Castle",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.8,
+        "address": "Wawel 5",
+        "price": "£8-£15 (per exhibition)",
+        "hours": "09:30-17:00"
+      },
+      {
+        "name": "Main Market Square (Rynek Główny)",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Rynek Główny",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Wieliczka Salt Mine",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "Daniłowicza 10, Wieliczka",
+        "price": "£18",
+        "hours": "09:00-17:00"
+      },
+      {
+        "name": "Kazimierz Jewish Quarter",
+        "category": "Arts & Culture",
+        "rating": 4.6,
+        "address": "Kazimierz District",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Auschwitz-Birkenau Memorial",
+        "category": "Arts & Culture",
+        "rating": 4.9,
+        "address": "Oświęcim (70km west)",
+        "price": "Free (guided tour £12)",
+        "hours": "08:00-15:00"
+      }
+    ]
+  },
+  "Colombo": {
+    "country": "Sri Lanka",
+    "hotels": [
+      {
+        "name": "Clock Inn Colombo",
+        "price_per_night_gbp": 12,
+        "rating": 4.0,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Air conditioning",
+          "City centre"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Cinnamon Red Colombo",
+        "price_per_night_gbp": 45,
+        "rating": 4.3,
+        "stars": 4,
+        "amenities": [
+          "Pool",
+          "Free WiFi",
+          "Gym",
+          "Restaurant"
+        ],
+        "room_type": "Superior Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Shangri-La Colombo",
+        "price_per_night_gbp": 160,
+        "rating": 4.7,
+        "stars": 5,
+        "amenities": [
+          "Ocean views",
+          "Pool",
+          "Spa",
+          "6 restaurants"
+        ],
+        "room_type": "Deluxe Ocean View",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Sri Lankan Airlines",
+        "airline_code": "UL",
+        "price_gbp": 380,
+        "departure_time": "21:15",
+        "arrival_time": "12:00",
+        "duration": "10h 45m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Emirates",
+        "airline_code": "EK",
+        "price_gbp": 360,
+        "departure_time": "14:15",
+        "arrival_time": "09:30",
+        "duration": "13h 15m",
+        "stops": 1,
+        "stops_label": "1 stop (Dubai)"
+      },
+      {
+        "airline": "Qatar Airways",
+        "airline_code": "QR",
+        "price_gbp": 370,
+        "departure_time": "19:00",
+        "arrival_time": "13:00",
+        "duration": "14h 00m",
+        "stops": 1,
+        "stops_label": "1 stop (Doha)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Ministry of Crab",
+        "cuisine": "Seafood",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Old Dutch Hospital, Fort",
+        "must_try": "Garlic crab"
+      },
+      {
+        "name": "Upali's",
+        "cuisine": "Sri Lankan",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "halal-options",
+          "vegetarian-options"
+        ],
+        "address": "65 CWW Kannangara Mawatha",
+        "must_try": "Rice and curry platter"
+      },
+      {
+        "name": "Nihonbashi",
+        "cuisine": "Japanese-Sri Lankan",
+        "price_level": "£££",
+        "rating": 4.6,
+        "dietary": [
+          "gluten-free-options",
+          "vegetarian-options"
+        ],
+        "address": "11 Galle Face Terrace",
+        "must_try": "Tuna sashimi"
+      },
+      {
+        "name": "Hotel de Pilawoos",
+        "cuisine": "Sri Lankan",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "halal"
+        ],
+        "address": "417 Galle Rd, Wellawatta",
+        "must_try": "Kottu roti"
+      },
+      {
+        "name": "The Nuga Gama",
+        "cuisine": "Traditional Sri Lankan",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian",
+          "vegan-options",
+          "gluten-free-options"
+        ],
+        "address": "Cinnamon Grand Hotel",
+        "must_try": "Hoppers and sambol"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Gangaramaya Temple",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.5,
+        "address": "61 Sri Jinarathana Rd",
+        "price": "Free (donation)",
+        "hours": "06:00-22:00"
+      },
+      {
+        "name": "Galle Face Green",
+        "category": "Outdoors & Nature",
+        "rating": 4.3,
+        "address": "Galle Face Green, Fort",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "National Museum of Colombo",
+        "category": "Arts & Culture",
+        "rating": 4.2,
+        "address": "Sir Marcus Fernando Mawatha",
+        "price": "£3",
+        "hours": "09:00-17:00"
+      },
+      {
+        "name": "Pettah Market",
+        "category": "Shopping",
+        "rating": 4.4,
+        "address": "Pettah, Colombo 11",
+        "price": "Free",
+        "hours": "08:00-18:00"
+      },
+      {
+        "name": "Mount Lavinia Beach",
+        "category": "Outdoors & Nature",
+        "rating": 4.3,
+        "address": "Mount Lavinia (12km south)",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ]
+  },
+  "Athens": {
+    "country": "Greece",
+    "hotels": [
+      {
+        "name": "Athens Backpackers",
+        "price_per_night_gbp": 18,
+        "rating": 4.2,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Rooftop bar",
+          "Acropolis views"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel Grande Bretagne",
+        "price_per_night_gbp": 250,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Rooftop pool",
+          "Spa",
+          "Acropolis views",
+          "Fine dining"
+        ],
+        "room_type": "Deluxe Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Electra Metropolis Hotel",
+        "price_per_night_gbp": 110,
+        "rating": 4.5,
+        "stars": 5,
+        "amenities": [
+          "Rooftop restaurant",
+          "Spa",
+          "Pool",
+          "Free WiFi"
+        ],
+        "room_type": "Superior Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "price_gbp": 35,
+        "departure_time": "06:30",
+        "arrival_time": "12:30",
+        "duration": "3h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "price_gbp": 48,
+        "departure_time": "11:00",
+        "arrival_time": "16:50",
+        "duration": "3h 50m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 120,
+        "departure_time": "09:00",
+        "arrival_time": "14:50",
+        "duration": "3h 50m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Thanasis",
+        "cuisine": "Greek",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "halal-options",
+          "gluten-free-options"
+        ],
+        "address": "Mitropoleos 69, Monastiraki",
+        "must_try": "Kebab platter with pitta"
+      },
+      {
+        "name": "Karamanlidika tou Fani",
+        "cuisine": "Greek Deli",
+        "price_level": "££",
+        "rating": 4.6,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Sokratous 1, Athens",
+        "must_try": "Pastourma and soujuk platters"
+      },
+      {
+        "name": "Spondi",
+        "cuisine": "French-Greek Fine Dining",
+        "price_level": "££££",
+        "rating": 4.8,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Pyrronos 5, Pangrati",
+        "must_try": "Tasting menu"
+      },
+      {
+        "name": "Ta Karamanlidika",
+        "cuisine": "Meze",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Evripidou & Sokratous",
+        "must_try": "Mixed meze with dips and bread"
+      },
+      {
+        "name": "Avocado",
+        "cuisine": "Vegetarian/Vegan",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "Nikis 30, Syntagma",
+        "must_try": "Vegan moussaka"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Acropolis & Parthenon",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.8,
+        "address": "Athens 105 58",
+        "price": "£18",
+        "hours": "08:00-20:00"
+      },
+      {
+        "name": "Plaka Neighbourhood",
+        "category": "Arts & Culture",
+        "rating": 4.6,
+        "address": "Plaka, Athens",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "National Archaeological Museum",
+        "category": "Arts & Culture",
+        "rating": 4.7,
+        "address": "28is Oktovriou 44",
+        "price": "£10",
+        "hours": "08:00-20:00"
+      },
+      {
+        "name": "Temple of Olympian Zeus",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.5,
+        "address": "Athens 105 57",
+        "price": "£5",
+        "hours": "08:00-17:00"
+      },
+      {
+        "name": "Monastiraki Flea Market",
+        "category": "Shopping",
+        "rating": 4.4,
+        "address": "Monastiraki Square",
+        "price": "Free",
+        "hours": "08:00-19:00 (best on Sun)"
+      }
+    ]
+  },
+  "Prague": {
+    "country": "Czech Republic",
+    "hotels": [
+      {
+        "name": "Hostel One Home",
+        "price_per_night_gbp": 15,
+        "rating": 4.5,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Free dinner",
+          "Walking tours",
+          "Bar"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel Josef",
+        "price_per_night_gbp": 95,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Free WiFi",
+          "Design hotel",
+          "Old Town location"
+        ],
+        "room_type": "Superior Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Four Seasons Hotel Prague",
+        "price_per_night_gbp": 350,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "River views",
+          "Spa",
+          "CottoCrudo restaurant",
+          "Charles Bridge views"
+        ],
+        "room_type": "Premier Vltava River Room",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "price_gbp": 22,
+        "departure_time": "06:30",
+        "arrival_time": "09:25",
+        "duration": "1h 55m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "price_gbp": 38,
+        "departure_time": "10:45",
+        "arrival_time": "13:40",
+        "duration": "1h 55m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 95,
+        "departure_time": "09:00",
+        "arrival_time": "11:55",
+        "duration": "1h 55m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Lokál Dlouhááá",
+        "cuisine": "Czech",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Dlouhá 33, Staré Město",
+        "must_try": "Svíčková na smetaně (beef in cream sauce)"
+      },
+      {
+        "name": "Kantýna",
+        "cuisine": "Czech Bistro",
+        "price_level": "££",
+        "rating": 4.4,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Politických vězňů 5",
+        "must_try": "Beef tartare and craft beer"
+      },
+      {
+        "name": "Field Restaurant",
+        "cuisine": "Modern Czech",
+        "price_level": "££££",
+        "rating": 4.8,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "U Milosrdných 12",
+        "must_try": "Tasting menu"
+      },
+      {
+        "name": "Trdelník Stands",
+        "cuisine": "Czech Street Food",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegetarian"
+        ],
+        "address": "Old Town Square area",
+        "must_try": "Trdelník with ice cream"
+      },
+      {
+        "name": "Maitrea",
+        "cuisine": "Vegetarian/Vegan",
+        "price_level": "££",
+        "rating": 4.4,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "Týnská ulička 6",
+        "must_try": "Vegan burger with halloumi"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Prague Castle",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Hradčany",
+        "price": "£12",
+        "hours": "06:00-22:00"
+      },
+      {
+        "name": "Charles Bridge",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Karlův most",
+        "price": "Free",
+        "hours": "All day (best at sunrise)"
+      },
+      {
+        "name": "Old Town Square & Astronomical Clock",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.6,
+        "address": "Staroměstské náměstí",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Jewish Quarter (Josefov)",
+        "category": "Arts & Culture",
+        "rating": 4.5,
+        "address": "Josefov",
+        "price": "£12",
+        "hours": "09:00-18:00"
+      },
+      {
+        "name": "Petřín Hill & Tower",
+        "category": "Outdoors & Nature",
+        "rating": 4.5,
+        "address": "Petřínské sady",
+        "price": "£5",
+        "hours": "10:00-22:00"
+      }
+    ]
+  },
+  "San José": {
+    "country": "Costa Rica",
+    "hotels": [
+      {
+        "name": "Hostel Pangea",
+        "price_per_night_gbp": 12,
+        "rating": 4.1,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Pool",
+          "Bar",
+          "Tours desk"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel Grano de Oro",
+        "price_per_night_gbp": 85,
+        "rating": 4.6,
+        "stars": 4,
+        "amenities": [
+          "Rooftop jacuzzi",
+          "Restaurant",
+          "Garden",
+          "Free WiFi"
+        ],
+        "room_type": "Deluxe Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Nayara Gardens (Arenal)",
+        "price_per_night_gbp": 350,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Volcano views",
+          "Hot springs",
+          "Spa",
+          "Private casitas"
+        ],
+        "room_type": "Arenal Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Iberia",
+        "airline_code": "IB",
+        "price_gbp": 440,
+        "departure_time": "10:30",
+        "arrival_time": "19:00",
+        "duration": "14h 30m",
+        "stops": 1,
+        "stops_label": "1 stop (Madrid)"
+      },
+      {
+        "airline": "KLM",
+        "airline_code": "KL",
+        "price_gbp": 480,
+        "departure_time": "09:15",
+        "arrival_time": "18:45",
+        "duration": "15h 30m",
+        "stops": 1,
+        "stops_label": "1 stop (Amsterdam)"
+      },
+      {
+        "airline": "United Airlines",
+        "airline_code": "UA",
+        "price_gbp": 520,
+        "departure_time": "08:00",
+        "arrival_time": "19:30",
+        "duration": "17h 30m",
+        "stops": 1,
+        "stops_label": "1 stop (Houston)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Soda Tapia",
+        "cuisine": "Costa Rican",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Calle 42, San José",
+        "must_try": "Casado (traditional plate)"
+      },
+      {
+        "name": "Restaurante Silvestre",
+        "cuisine": "Farm-to-Table",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "vegan-options",
+          "gluten-free-options"
+        ],
+        "address": "Barrio Escalante",
+        "must_try": "Tasting menu with local ingredients"
+      },
+      {
+        "name": "Mercado Central",
+        "cuisine": "Market Food",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "vegetarian-options",
+          "halal-options"
+        ],
+        "address": "Av. Central, San José",
+        "must_try": "Gallo pinto and empanadas"
+      },
+      {
+        "name": "Al Mercat",
+        "cuisine": "Mediterranean-Tico",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Barrio Escalante",
+        "must_try": "Grilled octopus"
+      },
+      {
+        "name": "Mantras Veggie Café",
+        "cuisine": "Vegan",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "Calle 35, Los Yoses",
+        "must_try": "Vegan Buddha bowl"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Arenal Volcano National Park",
+        "category": "Outdoors & Adventure",
+        "rating": 4.7,
+        "address": "La Fortuna (130km NW)",
+        "price": "£12",
+        "hours": "08:00-16:00"
+      },
+      {
+        "name": "Monteverde Cloud Forest",
+        "category": "Outdoors & Nature",
+        "rating": 4.8,
+        "address": "Monteverde (170km NW)",
+        "price": "£20",
+        "hours": "07:00-16:00"
+      },
+      {
+        "name": "Manuel Antonio Beach & Park",
+        "category": "Outdoors & Nature",
+        "rating": 4.6,
+        "address": "Quepos (160km SW)",
+        "price": "£14",
+        "hours": "07:00-16:00 (closed Tue)"
+      },
+      {
+        "name": "Central Market San José",
+        "category": "Food & Drink",
+        "rating": 4.3,
+        "address": "Avenida Central",
+        "price": "Free",
+        "hours": "06:00-18:00"
+      },
+      {
+        "name": "La Paz Waterfall Gardens",
+        "category": "Outdoors & Nature",
+        "rating": 4.5,
+        "address": "Vara Blanca (40km N)",
+        "price": "£38",
+        "hours": "08:00-17:00"
+      }
+    ]
+  },
+  "Amsterdam": {
+    "country": "Netherlands",
+    "hotels": [
+      {
+        "name": "The Flying Pig Downtown",
+        "price_per_night_gbp": 25,
+        "rating": 4.2,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Bar",
+          "Canal location",
+          "Smoking lounge"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel V Nesplein",
+        "price_per_night_gbp": 130,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Free WiFi",
+          "Restaurant",
+          "Central location",
+          "Bike rental"
+        ],
+        "room_type": "Comfort Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Waldorf Astoria Amsterdam",
+        "price_per_night_gbp": 450,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Canal mansion",
+          "Spa",
+          "Pool",
+          "2 Michelin restaurant",
+          "Garden"
+        ],
+        "room_type": "Deluxe King Canal View",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "price_gbp": 35,
+        "departure_time": "07:00",
+        "arrival_time": "09:20",
+        "duration": "1h 20m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "KLM",
+        "airline_code": "KL",
+        "price_gbp": 85,
+        "departure_time": "10:00",
+        "arrival_time": "12:20",
+        "duration": "1h 20m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 110,
+        "departure_time": "08:30",
+        "arrival_time": "10:50",
+        "duration": "1h 20m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "The Pancake Bakery",
+        "cuisine": "Dutch",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Prinsengracht 191",
+        "must_try": "Dutch bacon and cheese pancake"
+      },
+      {
+        "name": "Foodhallen",
+        "cuisine": "Food Hall",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegan-options",
+          "vegetarian-options",
+          "halal-options",
+          "gluten-free-options"
+        ],
+        "address": "Bellamyplein 51",
+        "must_try": "Bitterballen and stroopwafels"
+      },
+      {
+        "name": "Rijks Restaurant",
+        "cuisine": "Modern Dutch",
+        "price_level": "££££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Museumstraat 2",
+        "must_try": "Dutch tasting menu"
+      },
+      {
+        "name": "Winkel 43",
+        "cuisine": "Dutch Café",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Noordermarkt 43",
+        "must_try": "Apple pie (best in Amsterdam)"
+      },
+      {
+        "name": "Mr & Mrs Watson",
+        "cuisine": "Vegan",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "Linnaeusstraat 2G",
+        "must_try": "Vegan cheese platter"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Rijksmuseum",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "Museumstraat 1",
+        "price": "£18",
+        "hours": "09:00-17:00"
+      },
+      {
+        "name": "Anne Frank House",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "Prinsengracht 263-267",
+        "price": "£12",
+        "hours": "09:00-22:00"
+      },
+      {
+        "name": "Van Gogh Museum",
+        "category": "Arts & Culture",
+        "rating": 4.7,
+        "address": "Museumplein 6",
+        "price": "£17",
+        "hours": "09:00-18:00"
+      },
+      {
+        "name": "Canal Cruise",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.5,
+        "address": "Various departure points",
+        "price": "£12",
+        "hours": "10:00-22:00"
+      },
+      {
+        "name": "Vondelpark",
+        "category": "Outdoors & Nature",
+        "rating": 4.6,
+        "address": "Vondelpark",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ]
+  },
+  "Reykjavík": {
+    "country": "Iceland",
+    "hotels": [
+      {
+        "name": "KEX Hostel",
+        "price_per_night_gbp": 35,
+        "rating": 4.2,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Bar",
+          "Live music",
+          "Restaurant"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel Borg",
+        "price_per_night_gbp": 180,
+        "rating": 4.6,
+        "stars": 4,
+        "amenities": [
+          "Spa",
+          "Art deco design",
+          "Central location",
+          "Restaurant"
+        ],
+        "room_type": "Deluxe Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "The Retreat at Blue Lagoon",
+        "price_per_night_gbp": 750,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Private lagoon",
+          "Spa",
+          "In-water bar",
+          "Moss Restaurant"
+        ],
+        "room_type": "Retreat Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "PLAY",
+        "airline_code": "OG",
+        "price_gbp": 55,
+        "departure_time": "07:00",
+        "arrival_time": "09:30",
+        "duration": "3h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Icelandair",
+        "airline_code": "FI",
+        "price_gbp": 120,
+        "departure_time": "12:00",
+        "arrival_time": "14:30",
+        "duration": "3h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 150,
+        "departure_time": "09:00",
+        "arrival_time": "11:30",
+        "duration": "3h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Bæjarins Beztu Pylsur",
+        "cuisine": "Icelandic Street Food",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [],
+        "address": "Tryggvagata 1",
+        "must_try": "Icelandic hot dog with everything"
+      },
+      {
+        "name": "Grillið",
+        "cuisine": "Icelandic Fine Dining",
+        "price_level": "££££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options",
+          "vegetarian-options"
+        ],
+        "address": "Hagatorg, Tower Suites",
+        "must_try": "Arctic char with skyr"
+      },
+      {
+        "name": "Hlöllabátar",
+        "cuisine": "Icelandic Subs",
+        "price_level": "£",
+        "rating": 4.2,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Ingólfsstræti 3a",
+        "must_try": "Lobster sub"
+      },
+      {
+        "name": "Messinn",
+        "cuisine": "Icelandic Seafood",
+        "price_level": "££",
+        "rating": 4.6,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Lækjargata 6b",
+        "must_try": "Fish pan with potatoes"
+      },
+      {
+        "name": "Kaffi Vínyl",
+        "cuisine": "Vegan",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "Hverfisgata 76",
+        "must_try": "Vegan burger with mushroom"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Blue Lagoon",
+        "category": "Outdoors & Nature",
+        "rating": 4.6,
+        "address": "Norðurljósavegur 9, Grindavík",
+        "price": "£65",
+        "hours": "07:00-23:00"
+      },
+      {
+        "name": "Golden Circle Tour",
+        "category": "Outdoors & Adventure",
+        "rating": 4.8,
+        "address": "Various (full day tour)",
+        "price": "£60 (tour)",
+        "hours": "08:00-18:00"
+      },
+      {
+        "name": "Hallgrímskirkja Church",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.6,
+        "address": "Hallgrímstorg 1",
+        "price": "£7 (tower)",
+        "hours": "09:00-21:00"
+      },
+      {
+        "name": "Northern Lights Tour",
+        "category": "Outdoors & Adventure",
+        "rating": 4.5,
+        "address": "Various departure points",
+        "price": "£45",
+        "hours": "20:00-01:00 (Sep-Mar)"
+      },
+      {
+        "name": "Whale Watching",
+        "category": "Outdoors & Adventure",
+        "rating": 4.5,
+        "address": "Old Harbour, Reykjavík",
+        "price": "£55",
+        "hours": "09:00-17:00"
+      }
+    ]
+  },
+  "Cape Town": {
+    "country": "South Africa",
+    "hotels": [
+      {
+        "name": "Once in Cape Town",
+        "price_per_night_gbp": 15,
+        "rating": 4.3,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Pool",
+          "Bar",
+          "Tour desk"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "More Quarters",
+        "price_per_night_gbp": 90,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Pool",
+          "Free WiFi",
+          "Gardens location",
+          "Kitchenette"
+        ],
+        "room_type": "Luxury Apartment",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "One&Only Cape Town",
+        "price_per_night_gbp": 380,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Spa island",
+          "Pool",
+          "Nobu restaurant",
+          "V&A Waterfront"
+        ],
+        "room_type": "Marina Room",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "South African Airways",
+        "airline_code": "SA",
+        "price_gbp": 480,
+        "departure_time": "19:00",
+        "arrival_time": "08:30",
+        "duration": "11h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 520,
+        "departure_time": "18:30",
+        "arrival_time": "07:45",
+        "duration": "11h 15m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "Emirates",
+        "airline_code": "EK",
+        "price_gbp": 420,
+        "departure_time": "14:15",
+        "arrival_time": "10:30",
+        "duration": "16h 15m",
+        "stops": 1,
+        "stops_label": "1 stop (Dubai)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "The Test Kitchen",
+        "cuisine": "Modern South African",
+        "price_level": "££££",
+        "rating": 4.8,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "375 Albert Rd, Woodstock",
+        "must_try": "Tasting menu"
+      },
+      {
+        "name": "Mzansi Restaurant",
+        "cuisine": "South African",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "halal-options",
+          "vegetarian-options"
+        ],
+        "address": "151 Long St",
+        "must_try": "Bunny chow and boerewors"
+      },
+      {
+        "name": "Harbour House",
+        "cuisine": "Seafood",
+        "price_level": "£££",
+        "rating": 4.6,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "V&A Waterfront",
+        "must_try": "West Coast oysters"
+      },
+      {
+        "name": "The Pot Luck Club",
+        "cuisine": "Tapas-Style",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "373b Albert Rd, Woodstock",
+        "must_try": "Sharing plates menu"
+      },
+      {
+        "name": "Plant",
+        "cuisine": "Vegan",
+        "price_level": "££",
+        "rating": 4.4,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "8 Buiten St",
+        "must_try": "Vegan bobotie"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Table Mountain Cable Car",
+        "category": "Outdoors & Nature",
+        "rating": 4.8,
+        "address": "Tafelberg Rd",
+        "price": "£15",
+        "hours": "08:00-18:00"
+      },
+      {
+        "name": "Cape of Good Hope",
+        "category": "Outdoors & Nature",
+        "rating": 4.7,
+        "address": "Cape Point (70km south)",
+        "price": "£12",
+        "hours": "06:00-18:00"
+      },
+      {
+        "name": "Boulders Beach Penguins",
+        "category": "Outdoors & Nature",
+        "rating": 4.6,
+        "address": "Kleintuin Rd, Simon's Town",
+        "price": "£6",
+        "hours": "08:00-17:00"
+      },
+      {
+        "name": "V&A Waterfront",
+        "category": "Shopping",
+        "rating": 4.5,
+        "address": "V&A Waterfront",
+        "price": "Free",
+        "hours": "09:00-21:00"
+      },
+      {
+        "name": "Robben Island Museum",
+        "category": "Arts & Culture",
+        "rating": 4.6,
+        "address": "Nelson Mandela Gateway",
+        "price": "£18",
+        "hours": "09:00-15:00"
+      }
+    ]
+  },
+  "Interlaken": {
+    "country": "Switzerland",
+    "hotels": [
+      {
+        "name": "Balmers Hostel",
+        "price_per_night_gbp": 30,
+        "rating": 4.3,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Bar",
+          "Adventure desk",
+          "BBQ area"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel Interlaken",
+        "price_per_night_gbp": 160,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Garden",
+          "Restaurant",
+          "Spa",
+          "Mountain views"
+        ],
+        "room_type": "Superior Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Victoria Jungfrau Grand Hotel",
+        "price_per_night_gbp": 500,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Spa",
+          "Pool",
+          "Jungfrau views",
+          "4 restaurants",
+          "Tennis"
+        ],
+        "room_type": "Junior Suite Mountain View",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "price_gbp": 45,
+        "departure_time": "07:00",
+        "arrival_time": "09:45",
+        "duration": "1h 45m",
+        "stops": 0,
+        "stops_label": "Direct to Bern (+train)"
+      },
+      {
+        "airline": "Swiss",
+        "airline_code": "LX",
+        "price_gbp": 120,
+        "departure_time": "10:00",
+        "arrival_time": "12:45",
+        "duration": "1h 45m",
+        "stops": 0,
+        "stops_label": "Direct to Zurich (+train)"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 140,
+        "departure_time": "09:00",
+        "arrival_time": "11:45",
+        "duration": "1h 45m",
+        "stops": 0,
+        "stops_label": "Direct to Zurich (+train)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Bären Restaurant",
+        "cuisine": "Swiss",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Hauptstrasse 20, Unterseen",
+        "must_try": "Cheese fondue"
+      },
+      {
+        "name": "Restaurant Schuh",
+        "cuisine": "Swiss-International",
+        "price_level": "£££",
+        "rating": 4.4,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Höheweg 56",
+        "must_try": "Rösti with veal Zürich-style"
+      },
+      {
+        "name": "Goldener Anker",
+        "cuisine": "Swiss",
+        "price_level": "££",
+        "rating": 4.3,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Marktgasse 57",
+        "must_try": "Raclette"
+      },
+      {
+        "name": "Benacus",
+        "cuisine": "Italian-Swiss",
+        "price_level": "£££",
+        "rating": 4.6,
+        "dietary": [
+          "vegetarian-options",
+          "vegan-options"
+        ],
+        "address": "Victoria Jungfrau Hotel",
+        "must_try": "Truffle pasta"
+      },
+      {
+        "name": "Little Thai",
+        "cuisine": "Thai",
+        "price_level": "££",
+        "rating": 4.2,
+        "dietary": [
+          "vegan-options",
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Hauptstrasse 19",
+        "must_try": "Green curry"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Jungfraujoch (Top of Europe)",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.8,
+        "address": "Jungfraujoch Railway",
+        "price": "£180 (return train)",
+        "hours": "First train 06:35"
+      },
+      {
+        "name": "Paragliding",
+        "category": "Outdoors & Adventure",
+        "rating": 4.9,
+        "address": "Various operators, Interlaken",
+        "price": "£140",
+        "hours": "Weather dependent"
+      },
+      {
+        "name": "Lake Brienz Boat Cruise",
+        "category": "Outdoors & Nature",
+        "rating": 4.6,
+        "address": "Interlaken Ost pier",
+        "price": "£25",
+        "hours": "09:00-17:00"
+      },
+      {
+        "name": "Harder Kulm Viewpoint",
+        "category": "Outdoors & Nature",
+        "rating": 4.7,
+        "address": "Funicular from Interlaken Ost",
+        "price": "£28 (return funicular)",
+        "hours": "09:10-21:40"
+      },
+      {
+        "name": "Grindelwald First Cliff Walk",
+        "category": "Outdoors & Adventure",
+        "rating": 4.6,
+        "address": "Grindelwald (20min by train)",
+        "price": "£50 (gondola + walk)",
+        "hours": "08:30-17:00"
+      }
+    ]
+  },
+  "Santorini": {
+    "country": "Greece",
+    "hotels": [
+      {
+        "name": "Caveland Hostel",
+        "price_per_night_gbp": 25,
+        "rating": 4.2,
+        "stars": 2,
+        "amenities": [
+          "Cave rooms",
+          "Pool",
+          "Free WiFi",
+          "Bar"
+        ],
+        "room_type": "Private Cave Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Andronis Boutique Hotel",
+        "price_per_night_gbp": 220,
+        "rating": 4.7,
+        "stars": 5,
+        "amenities": [
+          "Caldera views",
+          "Pool",
+          "Spa",
+          "Restaurant"
+        ],
+        "room_type": "Deluxe Suite",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Canaves Oia Suites",
+        "price_per_night_gbp": 550,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Infinity pool",
+          "Caldera views",
+          "Spa",
+          "Private dining",
+          "Sunset views"
+        ],
+        "room_type": "Senior Suite with Plunge Pool",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "price_gbp": 65,
+        "departure_time": "06:30",
+        "arrival_time": "12:30",
+        "duration": "4h 00m",
+        "stops": 0,
+        "stops_label": "Direct (seasonal)"
+      },
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "price_gbp": 55,
+        "departure_time": "07:00",
+        "arrival_time": "13:00",
+        "duration": "4h 00m",
+        "stops": 0,
+        "stops_label": "Direct (seasonal)"
+      },
+      {
+        "airline": "Aegean Airlines",
+        "airline_code": "A3",
+        "price_gbp": 140,
+        "departure_time": "10:00",
+        "arrival_time": "17:30",
+        "duration": "6h 30m",
+        "stops": 1,
+        "stops_label": "1 stop (Athens)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Ammoudi Fish Tavern",
+        "cuisine": "Greek Seafood",
+        "price_level": "£££",
+        "rating": 4.6,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Ammoudi Bay, Oia",
+        "must_try": "Grilled octopus on the waterfront"
+      },
+      {
+        "name": "Metaxy Mas",
+        "cuisine": "Cretan-Greek",
+        "price_level": "££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Exo Gonia",
+        "must_try": "Lamb kleftiko and local wine"
+      },
+      {
+        "name": "Selene",
+        "cuisine": "Modern Greek",
+        "price_level": "££££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Pyrgos",
+        "must_try": "Tasting menu with Santorini wines"
+      },
+      {
+        "name": "Lucky's Souvlakis",
+        "cuisine": "Greek Fast Food",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "halal-options",
+          "vegetarian-options"
+        ],
+        "address": "Fira",
+        "must_try": "Pork souvlaki wrap with tzatziki"
+      },
+      {
+        "name": "Falafeland",
+        "cuisine": "Vegan/Vegetarian",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "halal",
+          "gluten-free-options"
+        ],
+        "address": "Fira centre",
+        "must_try": "Falafel plate with hummus"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Oia Sunset",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.9,
+        "address": "Oia Castle ruins",
+        "price": "Free",
+        "hours": "Best at sunset (~19:00-20:30)"
+      },
+      {
+        "name": "Caldera Boat Tour",
+        "category": "Outdoors & Adventure",
+        "rating": 4.7,
+        "address": "Old Port, Fira",
+        "price": "£35",
+        "hours": "10:00-17:00"
+      },
+      {
+        "name": "Red Beach",
+        "category": "Outdoors & Nature",
+        "rating": 4.4,
+        "address": "Near Akrotiri",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Ancient Akrotiri Ruins",
+        "category": "Arts & Culture",
+        "rating": 4.6,
+        "address": "Akrotiri",
+        "price": "£10",
+        "hours": "08:00-20:00"
+      },
+      {
+        "name": "Wine Tasting Tour",
+        "category": "Food & Drink",
+        "rating": 4.5,
+        "address": "Various wineries",
+        "price": "£40 (tour)",
+        "hours": "10:00-18:00"
+      }
+    ]
+  },
+  "Sydney": {
+    "country": "Australia",
+    "hotels": [
+      {
+        "name": "Wake Up! Sydney Central",
+        "price_per_night_gbp": 20,
+        "rating": 4.1,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Bar",
+          "Café",
+          "Central Station"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "QT Sydney",
+        "price_per_night_gbp": 150,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Design hotel",
+          "Rooftop bar",
+          "Restaurant",
+          "Free WiFi"
+        ],
+        "room_type": "QT King Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Park Hyatt Sydney",
+        "price_per_night_gbp": 550,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Opera House views",
+          "Harbour views",
+          "Spa",
+          "Rooftop pool"
+        ],
+        "room_type": "Opera King Room",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Qantas",
+        "airline_code": "QF",
+        "price_gbp": 750,
+        "departure_time": "17:00",
+        "arrival_time": "14:00+2",
+        "duration": "22h 00m",
+        "stops": 1,
+        "stops_label": "1 stop (Singapore)"
+      },
+      {
+        "airline": "Emirates",
+        "airline_code": "EK",
+        "price_gbp": 680,
+        "departure_time": "14:15",
+        "arrival_time": "16:30+1",
+        "duration": "22h 15m",
+        "stops": 1,
+        "stops_label": "1 stop (Dubai)"
+      },
+      {
+        "airline": "Singapore Airlines",
+        "airline_code": "SQ",
+        "price_gbp": 720,
+        "departure_time": "09:35",
+        "arrival_time": "12:30+1",
+        "duration": "22h 55m",
+        "stops": 1,
+        "stops_label": "1 stop (Singapore)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Quay",
+        "cuisine": "Modern Australian",
+        "price_level": "££££",
+        "rating": 4.8,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Upper Level, Overseas Passenger Terminal",
+        "must_try": "Tasting menu with harbour views"
+      },
+      {
+        "name": "Harry's Café de Wheels",
+        "cuisine": "Australian",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [],
+        "address": "Cowper Wharf Roadway, Woolloomooloo",
+        "must_try": "Tiger pie with mash and peas"
+      },
+      {
+        "name": "Mr Wong",
+        "cuisine": "Chinese-Australian",
+        "price_level": "£££",
+        "rating": 4.6,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "3 Bridge Ln, Sydney CBD",
+        "must_try": "Peking duck"
+      },
+      {
+        "name": "Bourke Street Bakery",
+        "cuisine": "Bakery/Café",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "633 Bourke St, Surry Hills",
+        "must_try": "Sausage roll and flat white"
+      },
+      {
+        "name": "Yellow",
+        "cuisine": "Vegetarian/Vegan",
+        "price_level": "£££",
+        "rating": 4.6,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "57 Macleay St, Potts Point",
+        "must_try": "Mushroom dumplings"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Sydney Opera House Tour",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.7,
+        "address": "Bennelong Point",
+        "price": "£30",
+        "hours": "09:00-17:00"
+      },
+      {
+        "name": "Bondi to Coogee Coastal Walk",
+        "category": "Outdoors & Nature",
+        "rating": 4.8,
+        "address": "Bondi Beach to Coogee Beach",
+        "price": "Free",
+        "hours": "All day (6km walk)"
+      },
+      {
+        "name": "Sydney Harbour Bridge Climb",
+        "category": "Outdoors & Adventure",
+        "rating": 4.7,
+        "address": "3 Cumberland St, The Rocks",
+        "price": "£140",
+        "hours": "Various times"
+      },
+      {
+        "name": "Taronga Zoo",
+        "category": "Outdoors & Nature",
+        "rating": 4.5,
+        "address": "Bradleys Head Rd, Mosman",
+        "price": "£35",
+        "hours": "09:30-16:30"
+      },
+      {
+        "name": "The Rocks Markets",
+        "category": "Shopping",
+        "rating": 4.4,
+        "address": "George St, The Rocks",
+        "price": "Free",
+        "hours": "Sat-Sun 10:00-17:00"
+      }
+    ]
+  },
+  "Cancún": {
+    "country": "Mexico",
+    "hotels": [
+      {
+        "name": "Hostel Mundo Joven Cancún",
+        "price_per_night_gbp": 15,
+        "rating": 4.0,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Pool",
+          "Bar",
+          "Tour desk"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hyatt Zilara Cancún",
+        "price_per_night_gbp": 200,
+        "rating": 4.6,
+        "stars": 5,
+        "amenities": [
+          "All-inclusive",
+          "Beach",
+          "Pool",
+          "Spa",
+          "Adults-only"
+        ],
+        "room_type": "Ocean View Room",
+        "cancellation": "Free cancellation",
+        "board_type": "All Inclusive"
+      },
+      {
+        "name": "Nizuc Resort & Spa",
+        "price_per_night_gbp": 450,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Private beach",
+          "6 restaurants",
+          "Spa",
+          "Water sports"
+        ],
+        "room_type": "Ocean Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "TUI",
+        "airline_code": "BY",
+        "price_gbp": 380,
+        "departure_time": "10:30",
+        "arrival_time": "16:00",
+        "duration": "10h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 450,
+        "departure_time": "09:15",
+        "arrival_time": "14:45",
+        "duration": "10h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "price_gbp": 380,
+        "departure_time": "08:00",
+        "arrival_time": "18:30",
+        "duration": "15h 30m",
+        "stops": 1,
+        "stops_label": "1 stop (Miami)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Tacos Rigo",
+        "cuisine": "Mexican Street Tacos",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Blvd Kukulcán km 9, Hotel Zone",
+        "must_try": "Al pastor tacos"
+      },
+      {
+        "name": "Puerto Madero",
+        "cuisine": "Seafood",
+        "price_level": "£££",
+        "rating": 4.6,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Blvd Kukulcán km 14.1",
+        "must_try": "Lobster tail with garlic butter"
+      },
+      {
+        "name": "Lorenzillo's",
+        "cuisine": "Seafood Fine Dining",
+        "price_level": "££££",
+        "rating": 4.5,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Blvd Kukulcán km 10.5",
+        "must_try": "Live lobster"
+      },
+      {
+        "name": "Parque de las Palapas Food Stalls",
+        "cuisine": "Mexican Street Food",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "halal-options",
+          "vegetarian-options"
+        ],
+        "address": "Parque de las Palapas, Downtown",
+        "must_try": "Marquesitas and elote"
+      },
+      {
+        "name": "Bio Natural",
+        "cuisine": "Vegan/Vegetarian",
+        "price_level": "£",
+        "rating": 4.2,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "Av. Nader 38, Downtown",
+        "must_try": "Vegan burrito bowl"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Chichén Itzá Day Trip",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.8,
+        "address": "Chichén Itzá (200km west)",
+        "price": "£30 + transport",
+        "hours": "08:00-17:00"
+      },
+      {
+        "name": "Cenote Swimming",
+        "category": "Outdoors & Adventure",
+        "rating": 4.7,
+        "address": "Various cenotes near Tulum",
+        "price": "£10-20",
+        "hours": "08:00-17:00"
+      },
+      {
+        "name": "Isla Mujeres",
+        "category": "Outdoors & Nature",
+        "rating": 4.6,
+        "address": "Ferry from Puerto Juárez",
+        "price": "£12 (return ferry)",
+        "hours": "All day"
+      },
+      {
+        "name": "Xcaret Eco-Park",
+        "category": "Outdoors & Adventure",
+        "rating": 4.7,
+        "address": "Highway 307 km 282",
+        "price": "£80",
+        "hours": "08:30-22:00"
+      },
+      {
+        "name": "Hotel Zone Beach",
+        "category": "Outdoors & Nature",
+        "rating": 4.5,
+        "address": "Blvd Kukulcán",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ]
+  },
+  "Orlando": {
+    "country": "USA",
+    "hotels": [
+      {
+        "name": "Universal's Cabana Bay Beach Resort",
+        "price_per_night_gbp": 85,
+        "rating": 4.3,
+        "stars": 3,
+        "amenities": [
+          "Pool",
+          "Lazy river",
+          "Universal shuttle",
+          "Food court"
+        ],
+        "room_type": "Standard Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Loews Royal Pacific Resort",
+        "price_per_night_gbp": 180,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Express Pass",
+          "Pool",
+          "Restaurants",
+          "Water taxi to parks"
+        ],
+        "room_type": "Standard King",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Four Seasons Resort Orlando",
+        "price_per_night_gbp": 500,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Water park",
+          "Spa",
+          "Golf",
+          "Disney fireworks views",
+          "5 restaurants"
+        ],
+        "room_type": "Park View Room",
+        "cancellation": "Non-refundable",
+        "board_type": "Room Only"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Virgin Atlantic",
+        "airline_code": "VS",
+        "price_gbp": 350,
+        "departure_time": "10:30",
+        "arrival_time": "15:30",
+        "duration": "9h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 420,
+        "departure_time": "09:00",
+        "arrival_time": "14:00",
+        "duration": "9h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "TUI",
+        "airline_code": "BY",
+        "price_gbp": 310,
+        "departure_time": "11:00",
+        "arrival_time": "16:00",
+        "duration": "9h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Columbia Restaurant (Celebration)",
+        "cuisine": "Spanish-Cuban",
+        "price_level": "£££",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "649 Front St, Celebration",
+        "must_try": "1905 salad and Cuban sandwich"
+      },
+      {
+        "name": "Gideon's Bakehouse",
+        "cuisine": "Bakery",
+        "price_level": "£",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian"
+        ],
+        "address": "Disney Springs",
+        "must_try": "Half-pound cookies"
+      },
+      {
+        "name": "Victoria & Albert's",
+        "cuisine": "American Fine Dining",
+        "price_level": "££££",
+        "rating": 4.9,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Disney's Grand Floridian",
+        "must_try": "10-course tasting menu"
+      },
+      {
+        "name": "4 Rivers Smokehouse",
+        "cuisine": "BBQ",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Multiple locations",
+        "must_try": "Angus brisket platter"
+      },
+      {
+        "name": "Ethos Vegan Kitchen",
+        "cuisine": "Vegan",
+        "price_level": "££",
+        "rating": 4.4,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "601-B S New York Ave, Winter Park",
+        "must_try": "BBQ 'chicken' pizza"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Walt Disney World - Magic Kingdom",
+        "category": "Entertainment",
+        "rating": 4.8,
+        "address": "Walt Disney World Resort",
+        "price": "£95",
+        "hours": "09:00-22:00"
+      },
+      {
+        "name": "Universal Studios Florida",
+        "category": "Entertainment",
+        "rating": 4.7,
+        "address": "6000 Universal Blvd",
+        "price": "£90",
+        "hours": "09:00-21:00"
+      },
+      {
+        "name": "Kennedy Space Center",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "Space Commerce Way, Merritt Island (60km east)",
+        "price": "£55",
+        "hours": "09:00-18:00"
+      },
+      {
+        "name": "ICON Park Orlando Eye",
+        "category": "Landmarks & Sightseeing",
+        "rating": 4.3,
+        "address": "8401 International Dr",
+        "price": "£22",
+        "hours": "11:00-00:00"
+      },
+      {
+        "name": "Disney Springs",
+        "category": "Shopping",
+        "rating": 4.4,
+        "address": "1486 Buena Vista Dr",
+        "price": "Free",
+        "hours": "10:00-00:00"
+      }
+    ]
+  },
+  "Queenstown": {
+    "country": "New Zealand",
+    "hotels": [
+      {
+        "name": "Adventure Queenstown Hostel",
+        "price_per_night_gbp": 22,
+        "rating": 4.2,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Mountain views",
+          "BBQ",
+          "Tour desk"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel St Moritz Queenstown",
+        "price_per_night_gbp": 180,
+        "rating": 4.6,
+        "stars": 5,
+        "amenities": [
+          "Lake views",
+          "Spa",
+          "Restaurant",
+          "Free WiFi"
+        ],
+        "room_type": "Lake View Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Eichardt's Private Hotel",
+        "price_per_night_gbp": 550,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Lakefront",
+          "Private bar",
+          "Penthouse suites",
+          "Personal concierge"
+        ],
+        "room_type": "Lake View Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Emirates",
+        "airline_code": "EK",
+        "price_gbp": 850,
+        "departure_time": "14:15",
+        "arrival_time": "20:30+1",
+        "duration": "26h 15m",
+        "stops": 2,
+        "stops_label": "2 stops (Dubai, Auckland)"
+      },
+      {
+        "airline": "Singapore Airlines",
+        "airline_code": "SQ",
+        "price_gbp": 900,
+        "departure_time": "09:35",
+        "arrival_time": "18:00+1",
+        "duration": "28h 25m",
+        "stops": 2,
+        "stops_label": "2 stops (Singapore, Auckland)"
+      },
+      {
+        "airline": "Qantas",
+        "airline_code": "QF",
+        "price_gbp": 820,
+        "departure_time": "17:00",
+        "arrival_time": "22:00+1",
+        "duration": "25h 00m",
+        "stops": 2,
+        "stops_label": "2 stops (Sydney, Auckland)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Fergburger",
+        "cuisine": "Burgers",
+        "price_level": "£",
+        "rating": 4.6,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "42 Shotover St",
+        "must_try": "Big Al burger"
+      },
+      {
+        "name": "Botswana Butchery",
+        "cuisine": "Modern NZ",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "17 Marine Parade",
+        "must_try": "Canterbury lamb rack"
+      },
+      {
+        "name": "Rata",
+        "cuisine": "Modern New Zealand",
+        "price_level": "£££",
+        "rating": 4.6,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "43 Ballarat St",
+        "must_try": "NZ venison"
+      },
+      {
+        "name": "Devil Burger",
+        "cuisine": "American-NZ",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegan-options",
+          "vegetarian-options"
+        ],
+        "address": "8 Church St",
+        "must_try": "Southern fried chicken burger"
+      },
+      {
+        "name": "Bespoke Kitchen",
+        "cuisine": "Café/Brunch",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "9 Isle St",
+        "must_try": "Acai bowl and flat white"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Bungee Jump at Kawarau Bridge",
+        "category": "Outdoors & Adventure",
+        "rating": 4.7,
+        "address": "State Highway 6, Gibbston",
+        "price": "£140",
+        "hours": "09:00-17:00"
+      },
+      {
+        "name": "Milford Sound Cruise",
+        "category": "Outdoors & Nature",
+        "rating": 4.9,
+        "address": "Milford Sound (300km, full day)",
+        "price": "£120 (cruise + bus)",
+        "hours": "07:00-19:00"
+      },
+      {
+        "name": "Skyline Gondola & Luge",
+        "category": "Outdoors & Adventure",
+        "rating": 4.6,
+        "address": "Brecon St",
+        "price": "£35",
+        "hours": "09:00-21:00"
+      },
+      {
+        "name": "Shotover Jet",
+        "category": "Outdoors & Adventure",
+        "rating": 4.7,
+        "address": "Shotover River",
+        "price": "£100",
+        "hours": "09:00-16:00"
+      },
+      {
+        "name": "Lake Wakatipu Walk",
+        "category": "Outdoors & Nature",
+        "rating": 4.5,
+        "address": "Queenstown Lakefront",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ]
+  },
+  "Zanzibar City": {
+    "country": "Tanzania",
+    "hotels": [
+      {
+        "name": "Lost & Found Hostel",
+        "price_per_night_gbp": 12,
+        "rating": 4.1,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Rooftop terrace",
+          "Stone Town location"
+        ],
+        "room_type": "Private Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Park Hyatt Zanzibar",
+        "price_per_night_gbp": 200,
+        "rating": 4.7,
+        "stars": 5,
+        "amenities": [
+          "Beachfront",
+          "Pool",
+          "Spa",
+          "Stone Town location"
+        ],
+        "room_type": "Park Room Sea View",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Baraza Resort & Spa",
+        "price_per_night_gbp": 350,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "All-inclusive",
+          "Private beach",
+          "Spa",
+          "Diving centre"
+        ],
+        "room_type": "One Bedroom Villa",
+        "cancellation": "Non-refundable",
+        "board_type": "All Inclusive"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "Emirates",
+        "airline_code": "EK",
+        "price_gbp": 420,
+        "departure_time": "14:15",
+        "arrival_time": "06:30",
+        "duration": "12h 15m",
+        "stops": 1,
+        "stops_label": "1 stop (Dubai)"
+      },
+      {
+        "airline": "Qatar Airways",
+        "airline_code": "QR",
+        "price_gbp": 400,
+        "departure_time": "19:00",
+        "arrival_time": "12:30",
+        "duration": "13h 30m",
+        "stops": 1,
+        "stops_label": "1 stop (Doha)"
+      },
+      {
+        "airline": "Turkish Airlines",
+        "airline_code": "TK",
+        "price_gbp": 380,
+        "departure_time": "18:30",
+        "arrival_time": "09:00",
+        "duration": "12h 30m",
+        "stops": 1,
+        "stops_label": "1 stop (Istanbul)"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Forodhani Gardens Night Market",
+        "cuisine": "Zanzibari Street Food",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "halal",
+          "gluten-free-options"
+        ],
+        "address": "Forodhani Gardens, Stone Town",
+        "must_try": "Zanzibar pizza and grilled seafood"
+      },
+      {
+        "name": "Lukmaan Restaurant",
+        "cuisine": "Zanzibari",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "halal",
+          "vegetarian-options"
+        ],
+        "address": "Stone Town",
+        "must_try": "Biryani and pilau rice"
+      },
+      {
+        "name": "The Rock Restaurant",
+        "cuisine": "Seafood",
+        "price_level": "£££",
+        "rating": 4.6,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Michanvi Pingwe Beach",
+        "must_try": "Lobster with the ocean view"
+      },
+      {
+        "name": "Emerson on Hurumzi Rooftop",
+        "cuisine": "Swahili Fine Dining",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "halal",
+          "vegetarian-options"
+        ],
+        "address": "236 Hurumzi St, Stone Town",
+        "must_try": "5-course Swahili tasting menu"
+      },
+      {
+        "name": "Zanzibar Coffee House",
+        "cuisine": "Café",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegetarian-options",
+          "vegan-options"
+        ],
+        "address": "Mkunazini Rd, Stone Town",
+        "must_try": "Zanzibar coffee and spice cake"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Stone Town Walking Tour",
+        "category": "Arts & Culture",
+        "rating": 4.6,
+        "address": "Stone Town, Zanzibar City",
+        "price": "£15 (guided)",
+        "hours": "09:00-12:00"
+      },
+      {
+        "name": "Spice Farm Tour",
+        "category": "Food & Drink",
+        "rating": 4.5,
+        "address": "Various farms (30min from Stone Town)",
+        "price": "£20",
+        "hours": "09:00-14:00"
+      },
+      {
+        "name": "Nungwi Beach",
+        "category": "Outdoors & Nature",
+        "rating": 4.7,
+        "address": "Nungwi (60km north)",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Snorkelling at Mnemba Atoll",
+        "category": "Outdoors & Adventure",
+        "rating": 4.8,
+        "address": "Mnemba Island (boat trip)",
+        "price": "£35",
+        "hours": "08:00-14:00"
+      },
+      {
+        "name": "Jozani Forest (Red Colobus Monkeys)",
+        "category": "Outdoors & Nature",
+        "rating": 4.4,
+        "address": "Jozani Chwaka Bay National Park",
+        "price": "£8",
+        "hours": "07:30-17:00"
+      }
+    ]
+  },
+  "Edinburgh": {
+    "country": "United Kingdom",
+    "domestic": true,
+    "transport_from_london": {
+      "type": "train",
+      "duration": "4h 20m",
+      "operator": "LNER",
+      "price_gbp": 40
+    },
+    "hotels": [
+      {
+        "name": "Castle Rock Hostel",
+        "price_per_night_gbp": 18,
+        "rating": 4.4,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Castle views"
+        ],
+        "room_type": "Dormitory",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Motel One Edinburgh-Royal",
+        "price_per_night_gbp": 75,
+        "rating": 4.3,
+        "stars": 3,
+        "amenities": [
+          "Free WiFi",
+          "Bar",
+          "City centre"
+        ],
+        "room_type": "Standard Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "The Balmoral Hotel",
+        "price_per_night_gbp": 280,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Spa",
+          "Michelin restaurant",
+          "Pool"
+        ],
+        "room_type": "Deluxe Double",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "flights_from_london": [
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "price_gbp": 30,
+        "departure_time": "07:15",
+        "arrival_time": "08:45",
+        "duration": "1h 30m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "price_gbp": 65,
+        "departure_time": "09:00",
+        "arrival_time": "10:25",
+        "duration": "1h 25m",
+        "stops": 0,
+        "stops_label": "Direct"
+      },
+      {
+        "airline": "LNER Train",
+        "airline_code": "LN",
+        "price_gbp": 40,
+        "departure_time": "10:00",
+        "arrival_time": "14:20",
+        "duration": "4h 20m",
+        "stops": 0,
+        "stops_label": "Direct train"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "The Witchery by the Castle",
+        "cuisine": "Scottish Fine Dining",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Castlehill, Royal Mile",
+        "must_try": "Angus beef fillet"
+      },
+      {
+        "name": "Dishoom Edinburgh",
+        "cuisine": "Bombay Café",
+        "price_level": "££",
+        "rating": 4.6,
+        "dietary": [
+          "vegan-options",
+          "vegetarian",
+          "halal-options"
+        ],
+        "address": "3A St Andrew Square",
+        "must_try": "Black daal and naan"
+      },
+      {
+        "name": "Oink",
+        "cuisine": "Scottish Street Food",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "34 Victoria Street",
+        "must_try": "Hog roast roll"
+      },
+      {
+        "name": "Ting Thai Caravan",
+        "cuisine": "Thai Street Food",
+        "price_level": "£",
+        "rating": 4.4,
+        "dietary": [
+          "vegan-options",
+          "gluten-free-options"
+        ],
+        "address": "8 Teviot Place",
+        "must_try": "Pad Thai"
+      },
+      {
+        "name": "Ondine",
+        "cuisine": "Seafood",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "2 George IV Bridge",
+        "must_try": "Scottish lobster thermidor"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Edinburgh Castle",
+        "category": "Landmarks",
+        "rating": 4.7,
+        "address": "Castlehill",
+        "price": "£19.50",
+        "hours": "09:30-17:00"
+      },
+      {
+        "name": "Arthur's Seat",
+        "category": "Outdoors",
+        "rating": 4.8,
+        "address": "Holyrood Park",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Royal Mile",
+        "category": "Landmarks",
+        "rating": 4.6,
+        "address": "Royal Mile",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Scotch Whisky Experience",
+        "category": "Food & Drink",
+        "rating": 4.5,
+        "address": "354 Castlehill",
+        "price": "£18",
+        "hours": "10:00-18:00"
+      },
+      {
+        "name": "National Museum of Scotland",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "Chambers Street",
+        "price": "Free",
+        "hours": "10:00-17:00"
+      }
+    ],
+    "local_tips": [
+      "Take the free walking tour from the Royal Mile",
+      "Avoid restaurants directly on the Royal Mile — better value one street over",
+      "Climb Calton Hill for the best sunset views",
+      "Get a Lothian Buses day ticket (£4.80) for unlimited travel"
+    ]
+  },
+  "Bath": {
+    "country": "United Kingdom",
+    "domestic": true,
+    "transport_from_london": {
+      "type": "train",
+      "duration": "1h 25m",
+      "operator": "GWR",
+      "price_gbp": 25
+    },
+    "hotels": [
+      {
+        "name": "YHA Bath",
+        "price_per_night_gbp": 22,
+        "rating": 4.2,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Kitchen",
+          "Historic building"
+        ],
+        "room_type": "Dormitory",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "The Roseate Villa Bath",
+        "price_per_night_gbp": 120,
+        "rating": 4.6,
+        "stars": 4,
+        "amenities": [
+          "Garden",
+          "Free WiFi",
+          "Breakfast"
+        ],
+        "room_type": "Superior Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "The Royal Crescent Hotel & Spa",
+        "price_per_night_gbp": 350,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Spa",
+          "Garden",
+          "Fine dining"
+        ],
+        "room_type": "Master Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Sally Lunn's Historic Eating House",
+        "cuisine": "Traditional English",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "4 North Parade Passage",
+        "must_try": "Sally Lunn bun with cinnamon butter"
+      },
+      {
+        "name": "The Circus Restaurant",
+        "cuisine": "Modern British",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "34 Brock Street",
+        "must_try": "Slow-cooked lamb shoulder"
+      },
+      {
+        "name": "Yak Yeti Yak",
+        "cuisine": "Nepalese",
+        "price_level": "££",
+        "rating": 4.6,
+        "dietary": [
+          "vegan-options",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "12 Pierrepont Street",
+        "must_try": "Momos (Nepalese dumplings)"
+      },
+      {
+        "name": "Sotto Sotto",
+        "cuisine": "Italian",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "10 North Parade",
+        "must_try": "Fresh pasta in underground cellar setting"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Roman Baths",
+        "category": "Landmarks",
+        "rating": 4.7,
+        "address": "Abbey Churchyard",
+        "price": "£18",
+        "hours": "09:00-18:00"
+      },
+      {
+        "name": "Thermae Bath Spa",
+        "category": "Wellness",
+        "rating": 4.6,
+        "address": "The Hetling Pump Room",
+        "price": "£40",
+        "hours": "09:00-21:30"
+      },
+      {
+        "name": "Royal Crescent",
+        "category": "Landmarks",
+        "rating": 4.8,
+        "address": "Royal Crescent",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Pulteney Bridge",
+        "category": "Landmarks",
+        "rating": 4.5,
+        "address": "Bridge Street",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Bath Abbey",
+        "category": "Arts & Culture",
+        "rating": 4.6,
+        "address": "Abbey Churchyard",
+        "price": "£8",
+        "hours": "10:00-17:00"
+      }
+    ],
+    "local_tips": [
+      "Book Thermae Bath Spa for the twilight session — rooftop pool with city views at sunset",
+      "Eat at Sally Lunn's before 11am to avoid the queue",
+      "Take the train not the bus from London — much faster and scenic"
+    ]
+  },
+  "Lake District": {
+    "country": "United Kingdom",
+    "domestic": true,
+    "transport_from_london": {
+      "type": "train",
+      "duration": "3h 30m",
+      "operator": "Avanti West Coast",
+      "price_gbp": 35
+    },
+    "hotels": [
+      {
+        "name": "YHA Ambleside",
+        "price_per_night_gbp": 20,
+        "rating": 4.3,
+        "stars": 2,
+        "amenities": [
+          "Lake views",
+          "Kitchen",
+          "Drying room"
+        ],
+        "room_type": "Dormitory",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Waterhead Hotel",
+        "price_per_night_gbp": 110,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Lake views",
+          "Restaurant",
+          "Garden"
+        ],
+        "room_type": "Lake View Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Linthwaite House",
+        "price_per_night_gbp": 250,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Lake views",
+          "Fine dining",
+          "Fell walks from door"
+        ],
+        "room_type": "Windermere Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Homeground Coffee + Kitchen",
+        "cuisine": "Café",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "vegan-options",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "Windermere",
+        "must_try": "Fell-walker's breakfast"
+      },
+      {
+        "name": "The Drunken Duck Inn",
+        "cuisine": "Gastropub",
+        "price_level": "££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Barngates, Ambleside",
+        "must_try": "Beer-battered fish with own-brew ale"
+      },
+      {
+        "name": "L'Enclume",
+        "cuisine": "Fine Dining (2 Michelin stars)",
+        "price_level": "££££",
+        "rating": 4.9,
+        "dietary": [
+          "vegetarian-options",
+          "vegan-options"
+        ],
+        "address": "Cavendish Street, Cartmel",
+        "must_try": "Tasting menu (foraged local ingredients)"
+      },
+      {
+        "name": "Chesters by the River",
+        "cuisine": "Café & Cakes",
+        "price_level": "£",
+        "rating": 4.6,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Skelwith Bridge",
+        "must_try": "Homemade cakes by the river"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Windermere Lake Cruises",
+        "category": "Outdoors",
+        "rating": 4.7,
+        "address": "Bowness-on-Windermere",
+        "price": "£12",
+        "hours": "09:00-17:00"
+      },
+      {
+        "name": "Helvellyn Summit",
+        "category": "Outdoors",
+        "rating": 4.9,
+        "address": "Between Thirlmere and Ullswater",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Beatrix Potter's Hill Top",
+        "category": "Arts & Culture",
+        "rating": 4.5,
+        "address": "Near Sawrey",
+        "price": "£13",
+        "hours": "10:00-16:30"
+      },
+      {
+        "name": "Castlerigg Stone Circle",
+        "category": "Landmarks",
+        "rating": 4.7,
+        "address": "Near Keswick",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ],
+    "local_tips": [
+      "Check weather before hiking — conditions change fast. Use MWIS forecasts",
+      "Grasmere Gingerbread Shop is tiny but worth the queue",
+      "Book L'Enclume months in advance",
+      "Rent a rowing boat on Windermere instead of the cruise"
+    ]
+  },
+  "Cornwall": {
+    "country": "United Kingdom",
+    "domestic": true,
+    "transport_from_london": {
+      "type": "train",
+      "duration": "5h",
+      "operator": "GWR",
+      "price_gbp": 30
+    },
+    "hotels": [
+      {
+        "name": "YHA Treyarnon Bay",
+        "price_per_night_gbp": 18,
+        "rating": 4.3,
+        "stars": 2,
+        "amenities": [
+          "Beach access",
+          "Surf hire nearby"
+        ],
+        "room_type": "Dormitory",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "The Headland Hotel",
+        "price_per_night_gbp": 130,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Ocean views",
+          "Pool",
+          "Spa"
+        ],
+        "room_type": "Sea View Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "The Scarlet Hotel",
+        "price_per_night_gbp": 280,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Eco-spa",
+          "Cliff-top pool",
+          "Adults only"
+        ],
+        "room_type": "Spectacular Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "The Hidden Hut",
+        "cuisine": "Beach Café & Feast Nights",
+        "price_level": "£-££",
+        "rating": 4.8,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Porthcurnick Beach",
+        "must_try": "Feast night BBQ (book months ahead)"
+      },
+      {
+        "name": "Prawn on the Lawn",
+        "cuisine": "Seafood",
+        "price_level": "££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "11 Duke Street, Padstow",
+        "must_try": "Ceviche of the day"
+      },
+      {
+        "name": "Porthminster Beach Café",
+        "cuisine": "Seafood & Mediterranean",
+        "price_level": "££",
+        "rating": 4.6,
+        "dietary": [
+          "vegetarian-options",
+          "vegan-options",
+          "gluten-free-options"
+        ],
+        "address": "Porthminster Beach, St Ives",
+        "must_try": "Seafood curry with ocean view"
+      },
+      {
+        "name": "Ann's Pasties",
+        "cuisine": "Cornish Pasties",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "The Lizard",
+        "must_try": "Traditional Cornish pasty (the real thing)"
+      },
+      {
+        "name": "Rick Stein's Café",
+        "cuisine": "Seafood",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "10 Middle Street, Padstow",
+        "must_try": "Fish and chips with mushy peas"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Eden Project",
+        "category": "Outdoors",
+        "rating": 4.6,
+        "address": "Bodelva",
+        "price": "£32.50",
+        "hours": "10:00-16:00"
+      },
+      {
+        "name": "Minack Theatre",
+        "category": "Arts & Culture",
+        "rating": 4.8,
+        "address": "Porthcurno",
+        "price": "£8",
+        "hours": "10:00-17:00"
+      },
+      {
+        "name": "St Michael's Mount",
+        "category": "Landmarks",
+        "rating": 4.7,
+        "address": "Marazion",
+        "price": "£15",
+        "hours": "Tide dependent"
+      },
+      {
+        "name": "Fistral Beach",
+        "category": "Outdoors",
+        "rating": 4.7,
+        "address": "Newquay",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Tate St Ives",
+        "category": "Arts & Culture",
+        "rating": 4.5,
+        "address": "St Ives",
+        "price": "£10",
+        "hours": "10:00-17:00"
+      }
+    ],
+    "local_tips": [
+      "The Hidden Hut feast nights sell out in seconds — set an alarm",
+      "Rent a wetsuit and surfboard at Fistral for about £20/2hrs",
+      "Visit St Michael's Mount at low tide to walk the causeway",
+      "Avoid Padstow in peak August — September has same weather, half the crowds"
+    ]
+  },
+  "York": {
+    "country": "United Kingdom",
+    "domestic": true,
+    "transport_from_london": {
+      "type": "train",
+      "duration": "1h 50m",
+      "operator": "LNER",
+      "price_gbp": 25
+    },
+    "hotels": [
+      {
+        "name": "Safestay York",
+        "price_per_night_gbp": 16,
+        "rating": 4.1,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Bar",
+          "Historic building"
+        ],
+        "room_type": "Dormitory",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel Indigo York",
+        "price_per_night_gbp": 110,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Restaurant",
+          "Bar",
+          "City centre"
+        ],
+        "room_type": "Standard King",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "The Grand, York",
+        "price_per_night_gbp": 200,
+        "rating": 4.7,
+        "stars": 5,
+        "amenities": [
+          "Spa",
+          "Pool",
+          "Fine dining"
+        ],
+        "room_type": "Deluxe Room",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Betty's Café Tea Rooms",
+        "cuisine": "Traditional English Tea Room",
+        "price_level": "££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "6-8 St Helen's Square",
+        "must_try": "Fat Rascal scone and Yorkshire Tea"
+      },
+      {
+        "name": "Shambles Kitchen",
+        "cuisine": "Street Food",
+        "price_level": "£",
+        "rating": 4.5,
+        "dietary": [
+          "vegan-options",
+          "gluten-free-options"
+        ],
+        "address": "28 The Shambles",
+        "must_try": "Pulled pork sandwich"
+      },
+      {
+        "name": "Skosh",
+        "cuisine": "Modern Small Plates",
+        "price_level": "££",
+        "rating": 4.8,
+        "dietary": [
+          "vegetarian-options",
+          "vegan-options"
+        ],
+        "address": "98 Micklegate",
+        "must_try": "Yorkshire-sourced small plates"
+      },
+      {
+        "name": "The Star Inn the City",
+        "cuisine": "Modern British",
+        "price_level": "£££",
+        "rating": 4.5,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Lendal Engine House",
+        "must_try": "Yorkshire pudding wrap"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "York Minster",
+        "category": "Landmarks",
+        "rating": 4.8,
+        "address": "Deangate",
+        "price": "£16",
+        "hours": "09:30-16:30"
+      },
+      {
+        "name": "The Shambles",
+        "category": "Landmarks",
+        "rating": 4.6,
+        "address": "The Shambles",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "JORVIK Viking Centre",
+        "category": "Arts & Culture",
+        "rating": 4.4,
+        "address": "19 Coppergate",
+        "price": "£14",
+        "hours": "10:00-17:00"
+      },
+      {
+        "name": "York City Walls",
+        "category": "Landmarks",
+        "rating": 4.7,
+        "address": "Various access points",
+        "price": "Free",
+        "hours": "08:00-dusk"
+      },
+      {
+        "name": "National Railway Museum",
+        "category": "Arts & Culture",
+        "rating": 4.7,
+        "address": "Leeman Road",
+        "price": "Free",
+        "hours": "10:00-17:00"
+      }
+    ],
+    "local_tips": [
+      "Walk the full city walls circuit (3.4km) — about 2 hours with photos",
+      "Queue at Betty's before 9am or go to Little Betty's instead",
+      "The Shambles inspired Diagon Alley — visit early morning for photos",
+      "Ghost walks depart from The Minster every evening"
+    ]
+  },
+  "Brighton": {
+    "country": "United Kingdom",
+    "domestic": true,
+    "transport_from_london": {
+      "type": "train",
+      "duration": "1h",
+      "operator": "Southern",
+      "price_gbp": 15
+    },
+    "hotels": [
+      {
+        "name": "Kipps Brighton",
+        "price_per_night_gbp": 18,
+        "rating": 4.2,
+        "stars": 2,
+        "amenities": [
+          "Free WiFi",
+          "Kitchen",
+          "Garden"
+        ],
+        "room_type": "Dormitory",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Hotel Pelirocco",
+        "price_per_night_gbp": 95,
+        "rating": 4.4,
+        "stars": 3,
+        "amenities": [
+          "Themed rooms",
+          "Bar",
+          "Seafront"
+        ],
+        "room_type": "Rock n Roll Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "The Grand Brighton",
+        "price_per_night_gbp": 200,
+        "rating": 4.6,
+        "stars": 5,
+        "amenities": [
+          "Spa",
+          "Pool",
+          "Seafront",
+          "Fine dining"
+        ],
+        "room_type": "Sea View Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "Silo",
+        "cuisine": "Zero-Waste Fine Dining",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "vegan-options",
+          "gluten-free-options"
+        ],
+        "address": "39 Upper Gardner Street",
+        "must_try": "Zero-waste tasting menu"
+      },
+      {
+        "name": "Fatto a Mano",
+        "cuisine": "Neapolitan Pizza",
+        "price_level": "£",
+        "rating": 4.6,
+        "dietary": [
+          "vegetarian-options",
+          "vegan-options"
+        ],
+        "address": "77 London Road",
+        "must_try": "Nduja pizza"
+      },
+      {
+        "name": "Curry Leaf Café",
+        "cuisine": "South Indian",
+        "price_level": "££",
+        "rating": 4.6,
+        "dietary": [
+          "vegan",
+          "vegetarian",
+          "gluten-free-options"
+        ],
+        "address": "60 Ship Street",
+        "must_try": "Keralan fish curry"
+      },
+      {
+        "name": "Lucky Beach",
+        "cuisine": "Beach Bar & Burgers",
+        "price_level": "£",
+        "rating": 4.3,
+        "dietary": [
+          "vegan-options",
+          "gluten-free-options"
+        ],
+        "address": "183 Kings Road Arches",
+        "must_try": "Wagyu burger on the beach"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Brighton Palace Pier",
+        "category": "Landmarks",
+        "rating": 4.4,
+        "address": "Madeira Drive",
+        "price": "Free (rides extra)",
+        "hours": "10:00-22:00"
+      },
+      {
+        "name": "Royal Pavilion",
+        "category": "Landmarks",
+        "rating": 4.6,
+        "address": "Pavilion Buildings",
+        "price": "£18",
+        "hours": "10:00-17:00"
+      },
+      {
+        "name": "The Lanes",
+        "category": "Shopping",
+        "rating": 4.5,
+        "address": "The Lanes",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "North Laine",
+        "category": "Shopping & Food",
+        "rating": 4.6,
+        "address": "North Laine",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ],
+    "local_tips": [
+      "Skip pier restaurants — head to the Arches for beach bars",
+      "North Laine on Saturday morning is peak brunch",
+      "Take Volk's Electric Railway along the seafront — oldest electric railway in the world"
+    ]
+  },
+  "Scottish Highlands": {
+    "country": "United Kingdom",
+    "domestic": true,
+    "transport_from_london": {
+      "type": "sleeper train",
+      "duration": "8h",
+      "operator": "Caledonian Sleeper",
+      "price_gbp": 50
+    },
+    "hotels": [
+      {
+        "name": "Black Isle Hostel",
+        "price_per_night_gbp": 20,
+        "rating": 4.4,
+        "stars": 2,
+        "amenities": [
+          "Log fire",
+          "Kitchen",
+          "Mountain views"
+        ],
+        "room_type": "Dormitory",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "Coul House Hotel",
+        "price_per_night_gbp": 95,
+        "rating": 4.5,
+        "stars": 4,
+        "amenities": [
+          "Garden",
+          "Restaurant",
+          "Whisky bar"
+        ],
+        "room_type": "Country View Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Inverlochy Castle Hotel",
+        "price_per_night_gbp": 380,
+        "rating": 4.9,
+        "stars": 5,
+        "amenities": [
+          "Loch views",
+          "Michelin dining",
+          "Hunting grounds"
+        ],
+        "room_type": "Castle Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "The Crannog Seafood Restaurant",
+        "cuisine": "Scottish Seafood",
+        "price_level": "££",
+        "rating": 4.7,
+        "dietary": [
+          "gluten-free-options"
+        ],
+        "address": "Town Pier, Fort William",
+        "must_try": "Loch Linnhe langoustines"
+      },
+      {
+        "name": "Café 1",
+        "cuisine": "Modern Scottish",
+        "price_level": "££",
+        "rating": 4.6,
+        "dietary": [
+          "vegetarian-options",
+          "vegan-options",
+          "gluten-free-options"
+        ],
+        "address": "75 Castle Street, Inverness",
+        "must_try": "Highland venison"
+      },
+      {
+        "name": "The Three Chimneys",
+        "cuisine": "Scottish Fine Dining",
+        "price_level": "££££",
+        "rating": 4.9,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Colbost, Isle of Skye",
+        "must_try": "Skye seafood tasting menu"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Glen Coe",
+        "category": "Outdoors",
+        "rating": 4.9,
+        "address": "Glen Coe",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Loch Ness",
+        "category": "Outdoors",
+        "rating": 4.5,
+        "address": "Inverness-shire",
+        "price": "Free (boat tours £15)",
+        "hours": "All day"
+      },
+      {
+        "name": "Ben Nevis",
+        "category": "Outdoors",
+        "rating": 4.8,
+        "address": "Fort William",
+        "price": "Free",
+        "hours": "Allow 7-9 hours return"
+      },
+      {
+        "name": "Isle of Skye",
+        "category": "Outdoors",
+        "rating": 4.9,
+        "address": "Isle of Skye",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Glenfinnan Viaduct",
+        "category": "Landmarks",
+        "rating": 4.7,
+        "address": "Glenfinnan",
+        "price": "Free",
+        "hours": "Harry Potter train ~10:45 and 15:00"
+      }
+    ],
+    "local_tips": [
+      "Midges are brutal June-September — bring Smidge repellent",
+      "NC500 needs at least 5 days to do properly",
+      "Book the Jacobite Steam Train months in advance",
+      "Wild camping is legal in Scotland — follow the Outdoor Access Code"
+    ]
+  },
+  "Cotswolds": {
+    "country": "United Kingdom",
+    "domestic": true,
+    "transport_from_london": {
+      "type": "train+bus",
+      "duration": "1h 30m",
+      "operator": "GWR",
+      "price_gbp": 20
+    },
+    "hotels": [
+      {
+        "name": "YHA Stow-on-the-Wold",
+        "price_per_night_gbp": 20,
+        "rating": 4.2,
+        "stars": 2,
+        "amenities": [
+          "Kitchen",
+          "Garden"
+        ],
+        "room_type": "Private Room",
+        "cancellation": "Free cancellation",
+        "board_type": "Room Only"
+      },
+      {
+        "name": "The Lygon Arms",
+        "price_per_night_gbp": 150,
+        "rating": 4.6,
+        "stars": 4,
+        "amenities": [
+          "Spa",
+          "Pool",
+          "Historic inn"
+        ],
+        "room_type": "Classic Double",
+        "cancellation": "Free cancellation",
+        "board_type": "Breakfast Included"
+      },
+      {
+        "name": "Barnsley House",
+        "price_per_night_gbp": 320,
+        "rating": 4.8,
+        "stars": 5,
+        "amenities": [
+          "Cinema",
+          "Spa",
+          "Kitchen garden"
+        ],
+        "room_type": "Garden Suite",
+        "cancellation": "Non-refundable",
+        "board_type": "Breakfast Included"
+      }
+    ],
+    "restaurants": [
+      {
+        "name": "The Wild Rabbit",
+        "cuisine": "Modern British",
+        "price_level": "£££",
+        "rating": 4.7,
+        "dietary": [
+          "vegetarian-options",
+          "gluten-free-options"
+        ],
+        "address": "Church Street, Kingham",
+        "must_try": "Sunday roast"
+      },
+      {
+        "name": "Daylesford Farm Café",
+        "cuisine": "Organic British",
+        "price_level": "££",
+        "rating": 4.5,
+        "dietary": [
+          "vegan-options",
+          "vegetarian",
+          "gluten-free"
+        ],
+        "address": "Daylesford",
+        "must_try": "Organic farmhouse breakfast"
+      },
+      {
+        "name": "Chef's Dozen",
+        "cuisine": "Bakery",
+        "price_level": "£",
+        "rating": 4.6,
+        "dietary": [
+          "vegetarian-options"
+        ],
+        "address": "Chipping Norton",
+        "must_try": "Sourdough cinnamon bun"
+      }
+    ],
+    "attractions": [
+      {
+        "name": "Bibury (Arlington Row)",
+        "category": "Landmarks",
+        "rating": 4.7,
+        "address": "Bibury",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Bourton-on-the-Water",
+        "category": "Landmarks",
+        "rating": 4.5,
+        "address": "Bourton-on-the-Water",
+        "price": "Free",
+        "hours": "All day"
+      },
+      {
+        "name": "Blenheim Palace",
+        "category": "Landmarks",
+        "rating": 4.7,
+        "address": "Woodstock",
+        "price": "£30",
+        "hours": "10:00-17:30"
+      },
+      {
+        "name": "Castle Combe",
+        "category": "Landmarks",
+        "rating": 4.8,
+        "address": "Castle Combe",
+        "price": "Free",
+        "hours": "All day"
+      }
+    ],
+    "local_tips": [
+      "You really need a car — public transport between villages is sparse",
+      "Bourton-on-the-Water gets rammed in summer — visit early morning",
+      "Castle Combe was used in War Horse and Stardust"
+    ]
+  }
+}

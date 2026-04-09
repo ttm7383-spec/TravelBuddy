@@ -1,0 +1,41 @@
+[
+  {
+    "name": "Budget Comfort Inn",
+    "price_per_night_gbp": 42,
+    "rating": 3.8,
+    "stars": 3,
+    "amenities": ["Free WiFi", "Air conditioning", "24h reception"],
+    "distance_to_centre": "1.2 km",
+    "room_type": "Standard Double Room",
+    "cancellation": "Free cancellation",
+    "board_type": "Room Only",
+    "is_available": true,
+    "image_url": null
+  },
+  {
+    "name": "The Grand Central Hotel",
+    "price_per_night_gbp": 95,
+    "rating": 4.3,
+    "stars": 4,
+    "amenities": ["Free WiFi", "Breakfast included", "Swimming pool", "Gym", "Airport shuttle"],
+    "distance_to_centre": "0.5 km",
+    "room_type": "Superior Double Room",
+    "cancellation": "Free cancellation",
+    "board_type": "Breakfast Included",
+    "is_available": true,
+    "image_url": null
+  },
+  {
+    "name": "Luxury Palace Resort & Spa",
+    "price_per_night_gbp": 210,
+    "rating": 4.8,
+    "stars": 5,
+    "amenities": ["Free WiFi", "Spa", "Rooftop bar", "Room service", "Concierge", "Swimming pool", "Restaurant"],
+    "distance_to_centre": "0.2 km",
+    "room_type": "Deluxe Suite with City View",
+    "cancellation": "Non-refundable",
+    "board_type": "Breakfast Included",
+    "is_available": true,
+    "image_url": null
+  }
+]

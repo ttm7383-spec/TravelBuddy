@@ -1,0 +1,75 @@
+{
+  "summary": "Mostly sunny with mild temperatures, perfect for sightseeing",
+  "daily_forecast": [
+    {
+      "day": "Monday",
+      "date": "2026-04-15",
+      "temp_high_c": 26,
+      "temp_low_c": 18,
+      "condition": "Sunny",
+      "icon": "01d",
+      "humidity_percent": 45,
+      "wind_kph": 12
+    },
+    {
+      "day": "Tuesday",
+      "date": "2026-04-16",
+      "temp_high_c": 27,
+      "temp_low_c": 19,
+      "condition": "Partly Cloudy",
+      "icon": "02d",
+      "humidity_percent": 50,
+      "wind_kph": 10
+    },
+    {
+      "day": "Wednesday",
+      "date": "2026-04-17",
+      "temp_high_c": 24,
+      "temp_low_c": 17,
+      "condition": "Light Rain",
+      "icon": "10d",
+      "humidity_percent": 70,
+      "wind_kph": 15
+    },
+    {
+      "day": "Thursday",
+      "date": "2026-04-18",
+      "temp_high_c": 25,
+      "temp_low_c": 18,
+      "condition": "Sunny",
+      "icon": "01d",
+      "humidity_percent": 40,
+      "wind_kph": 8
+    },
+    {
+      "day": "Friday",
+      "date": "2026-04-19",
+      "temp_high_c": 28,
+      "temp_low_c": 20,
+      "condition": "Sunny",
+      "icon": "01d",
+      "humidity_percent": 35,
+      "wind_kph": 6
+    },
+    {
+      "day": "Saturday",
+      "date": "2026-04-20",
+      "temp_high_c": 26,
+      "temp_low_c": 19,
+      "condition": "Partly Cloudy",
+      "icon": "02d",
+      "humidity_percent": 55,
+      "wind_kph": 11
+    },
+    {
+      "day": "Sunday",
+      "date": "2026-04-21",
+      "temp_high_c": 27,
+      "temp_low_c": 19,
+      "condition": "Sunny",
+      "icon": "01d",
+      "humidity_percent": 42,
+      "wind_kph": 9
+    }
+  ]
+}

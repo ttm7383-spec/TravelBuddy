@@ -1,0 +1,77 @@
+[
+  {
+    "airline": "easyJet",
+    "airline_code": "U2",
+    "flight_number": "U28421",
+    "price_gbp": 128,
+    "price_per_person_gbp": 128,
+    "departure": {
+      "airport": "LGW",
+      "city": "London",
+      "time": "06:15",
+      "date": "2026-04-15"
+    },
+    "arrival": {
+      "airport": "BCN",
+      "city": "Barcelona",
+      "time": "09:30",
+      "date": "2026-04-15"
+    },
+    "duration": "2h 15m",
+    "stops": 0,
+    "stops_label": "Direct",
+    "cabin_class": "Economy",
+    "baggage_included": false,
+    "badge": "cheapest"
+  },
+  {
+    "airline": "British Airways",
+    "airline_code": "BA",
+    "flight_number": "BA478",
+    "price_gbp": 245,
+    "price_per_person_gbp": 245,
+    "departure": {
+      "airport": "LHR",
+      "city": "London",
+      "time": "08:30",
+      "date": "2026-04-15"
+    },
+    "arrival": {
+      "airport": "BCN",
+      "city": "Barcelona",
+      "time": "11:40",
+      "date": "2026-04-15"
+    },
+    "duration": "2h 10m",
+    "stops": 0,
+    "stops_label": "Direct",
+    "cabin_class": "Economy",
+    "baggage_included": true,
+    "badge": "fastest"
+  },
+  {
+    "airline": "Lufthansa",
+    "airline_code": "LH",
+    "flight_number": "LH903",
+    "price_gbp": 389,
+    "price_per_person_gbp": 389,
+    "departure": {
+      "airport": "LHR",
+      "city": "London",
+      "time": "11:00",
+      "date": "2026-04-15"
+    },
+    "arrival": {
+      "airport": "BCN",
+      "city": "Barcelona",
+      "time": "16:30",
+      "date": "2026-04-15"
+    },
+    "duration": "5h 30m",
+    "stops": 1,
+    "stops_label": "1 stop",
+    "cabin_class": "Economy",
+    "baggage_included": true,
+    "badge": null
+  }
+]

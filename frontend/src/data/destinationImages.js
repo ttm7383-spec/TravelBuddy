@@ -1,0 +1,48 @@
+const DESTINATION_IMAGES = {
+  bangkok: "/images/destinations/bangkok.jpg",
+  hanoi: "/images/destinations/hanoi.jpg",
+  marrakech: "/images/destinations/marrakech.jpg",
+  budapest: "/images/destinations/budapest.jpg",
+  lisbon: "/images/destinations/lisbon.jpg",
+  bali: "/images/destinations/bali.jpg",
+  "mexico-city": "/images/destinations/mexico-city.jpg",
+  krakow: "/images/destinations/krakow.jpg",
+  "sri-lanka": "/images/destinations/colombo.jpg",
+  athens: "/images/destinations/athens.jpg",
+  barcelona: "/images/destinations/barcelona.jpg",
+  rome: "/images/destinations/rome.jpg",
+  prague: "/images/destinations/prague.jpg",
+  istanbul: "/images/destinations/istanbul.jpg",
+  "costa-rica": "/images/destinations/costa-rica.jpg",
+  tokyo: "/images/destinations/tokyo.jpg",
+  "new-york": "/images/destinations/new-york.jpg",
+  amsterdam: "/images/destinations/amsterdam.jpg",
+  reykjavik: "/images/destinations/reykjavik.jpg",
+  "cape-town": "/images/destinations/cape-town.jpg",
+  dubai: "/images/destinations/dubai.jpg",
+  maldives: "/images/destinations/maldives.jpg",
+  paris: "/images/destinations/paris.jpg",
+  "swiss-alps": "/images/destinations/interlaken.jpg",
+  santorini: "/images/destinations/santorini.jpg",
+  sydney: "/images/destinations/sydney.jpg",
+  cancun: "/images/destinations/cancun.jpg",
+  orlando: "/images/destinations/orlando.jpg",
+  queenstown: "/images/destinations/queenstown.jpg",
+  zanzibar: "/images/destinations/zanzibar.jpg",
+};
+
+const CATEGORY_IMAGES = {
+  beach: "/images/categories/beach.jpg",
+  adventure: "/images/categories/adventure.jpg",
+  culture: "/images/categories/culture.jpg",
+  city: "/images/categories/city.jpg",
+  nature: "/images/categories/nature.jpg",
+  nightlife: "/images/categories/nightlife.jpg",
+  food: "/images/categories/food.jpg",
+  wellness: "/images/categories/wellness.jpg",
+  luxury: "/images/categories/luxury.jpg",
+  family: "/images/categories/family.jpg",
+};
+
+export { DESTINATION_IMAGES, CATEGORY_IMAGES };
+export default DESTINATION_IMAGES;

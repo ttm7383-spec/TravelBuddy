@@ -1,0 +1,950 @@
+{
+  "Barcelona": {
+    "destination_iata": "BCN",
+    "country": "Spain",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "BCN"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LGW",
+        "to_airport": "BCN"
+      },
+      {
+        "airline": "Norwegian Air Shuttle",
+        "airline_code": "DY",
+        "from_airport": "LGW",
+        "to_airport": "BCN"
+      },
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "from_airport": "STN",
+        "to_airport": "BCN"
+      },
+      {
+        "airline": "Iberia Airlines",
+        "airline_code": "IB",
+        "from_airport": "LGW",
+        "to_airport": "BCN"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "BCN"
+      },
+      {
+        "airline": "Vueling Airlines",
+        "airline_code": "VY",
+        "from_airport": "LGW",
+        "to_airport": "BCN"
+      },
+      {
+        "airline": "Monarch Airlines",
+        "airline_code": "ZB",
+        "from_airport": "LGW",
+        "to_airport": "BCN"
+      }
+    ],
+    "total_airlines_serving": 8
+  },
+  "Paris": {
+    "destination_iata": "CDG",
+    "country": "France",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "CDG"
+      },
+      {
+        "airline": "Air France",
+        "airline_code": "AF",
+        "from_airport": "LHR",
+        "to_airport": "CDG"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "CDG"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "CDG"
+      },
+      {
+        "airline": "Air Berlin",
+        "airline_code": "AB",
+        "from_airport": "LHR",
+        "to_airport": "ORY"
+      },
+      {
+        "airline": "Iberia Airlines",
+        "airline_code": "IB",
+        "from_airport": "LHR",
+        "to_airport": "ORY"
+      },
+      {
+        "airline": "CityJet",
+        "airline_code": "WX",
+        "from_airport": "LCY",
+        "to_airport": "ORY"
+      }
+    ],
+    "total_airlines_serving": 7
+  },
+  "Rome": {
+    "destination_iata": "FCO",
+    "country": "Italy",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "FCO"
+      },
+      {
+        "airline": "Air France",
+        "airline_code": "AF",
+        "from_airport": "LCY",
+        "to_airport": "FCO"
+      },
+      {
+        "airline": "Alitalia",
+        "airline_code": "AZ",
+        "from_airport": "LCY",
+        "to_airport": "FCO"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LGW",
+        "to_airport": "FCO"
+      },
+      {
+        "airline": "Norwegian Air Shuttle",
+        "airline_code": "DY",
+        "from_airport": "LGW",
+        "to_airport": "FCO"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "FCO"
+      },
+      {
+        "airline": "Monarch Airlines",
+        "airline_code": "ZB",
+        "from_airport": "LTN",
+        "to_airport": "FCO"
+      },
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "from_airport": "STN",
+        "to_airport": "CIA"
+      }
+    ],
+    "total_airlines_serving": 8
+  },
+  "Amsterdam": {
+    "destination_iata": "AMS",
+    "country": "Netherlands",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "AMS"
+      },
+      {
+        "airline": "Air France",
+        "airline_code": "AF",
+        "from_airport": "LCY",
+        "to_airport": "AMS"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LCY",
+        "to_airport": "AMS"
+      },
+      {
+        "airline": "China Airlines",
+        "airline_code": "CI",
+        "from_airport": "LHR",
+        "to_airport": "AMS"
+      },
+      {
+        "airline": "KLM Royal Dutch Airlines",
+        "airline_code": "KL",
+        "from_airport": "LCY",
+        "to_airport": "AMS"
+      },
+      {
+        "airline": "China Eastern Airlines",
+        "airline_code": "MU",
+        "from_airport": "LHR",
+        "to_airport": "AMS"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "AMS"
+      },
+      {
+        "airline": "CityJet",
+        "airline_code": "WX",
+        "from_airport": "LCY",
+        "to_airport": "AMS"
+      }
+    ],
+    "total_airlines_serving": 8
+  },
+  "Lisbon": {
+    "destination_iata": "LIS",
+    "country": "Portugal",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "LIS"
+      },
+      {
+        "airline": "Finnair",
+        "airline_code": "AY",
+        "from_airport": "LHR",
+        "to_airport": "LIS"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "LIS"
+      },
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "from_airport": "STN",
+        "to_airport": "LIS"
+      },
+      {
+        "airline": "All Nippon Airways",
+        "airline_code": "NH",
+        "from_airport": "LHR",
+        "to_airport": "LIS"
+      },
+      {
+        "airline": "SATA International",
+        "airline_code": "S4",
+        "from_airport": "LGW",
+        "to_airport": "LIS"
+      },
+      {
+        "airline": "TAP Portugal",
+        "airline_code": "TP",
+        "from_airport": "LGW",
+        "to_airport": "LIS"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "LIS"
+      }
+    ],
+    "total_airlines_serving": 9
+  },
+  "Bangkok": {
+    "destination_iata": "BKK",
+    "country": "Thailand",
+    "airlines": [
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "BKK"
+      },
+      {
+        "airline": "EVA Air",
+        "airline_code": "BR",
+        "from_airport": "LHR",
+        "to_airport": "BKK"
+      },
+      {
+        "airline": "Iberia Airlines",
+        "airline_code": "IB",
+        "from_airport": "LHR",
+        "to_airport": "BKK"
+      },
+      {
+        "airline": "Thai Airways International",
+        "airline_code": "TG",
+        "from_airport": "LHR",
+        "to_airport": "BKK"
+      }
+    ],
+    "total_airlines_serving": 4
+  },
+  "Tokyo": {
+    "destination_iata": "NRT",
+    "country": "Japan",
+    "airlines": [
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "NRT"
+      },
+      {
+        "airline": "Japan Airlines Domestic",
+        "airline_code": "JL",
+        "from_airport": "LHR",
+        "to_airport": "NRT"
+      },
+      {
+        "airline": "All Nippon Airways",
+        "airline_code": "NH",
+        "from_airport": "LHR",
+        "to_airport": "NRT"
+      },
+      {
+        "airline": "Virgin Atlantic Airways",
+        "airline_code": "VS",
+        "from_airport": "LHR",
+        "to_airport": "NRT"
+      }
+    ],
+    "total_airlines_serving": 4
+  },
+  "Istanbul": {
+    "destination_iata": "IST",
+    "country": "Turkey",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "IST"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "IST"
+      },
+      {
+        "airline": "Atlasjet",
+        "airline_code": "KK",
+        "from_airport": "LTN",
+        "to_airport": "IST"
+      },
+      {
+        "airline": "Turkish Airlines",
+        "airline_code": "TK",
+        "from_airport": "LGW",
+        "to_airport": "IST"
+      }
+    ],
+    "total_airlines_serving": 4
+  },
+  "Dubai": {
+    "destination_iata": "DXB",
+    "country": "UAE",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "DXB"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "DXB"
+      },
+      {
+        "airline": "Royal Brunei Airlines",
+        "airline_code": "BI",
+        "from_airport": "LHR",
+        "to_airport": "DXB"
+      },
+      {
+        "airline": "Emirates",
+        "airline_code": "EK",
+        "from_airport": "LGW",
+        "to_airport": "DXB"
+      },
+      {
+        "airline": "Qantas",
+        "airline_code": "QF",
+        "from_airport": "LGW",
+        "to_airport": "DXB"
+      },
+      {
+        "airline": "Virgin Atlantic Airways",
+        "airline_code": "VS",
+        "from_airport": "LHR",
+        "to_airport": "DXB"
+      }
+    ],
+    "total_airlines_serving": 6
+  },
+  "Bali": {
+    "destination_iata": "DPS",
+    "country": "Indonesia",
+    "airlines": [],
+    "total_airlines_serving": 0
+  },
+  "Cape Town": {
+    "destination_iata": "CPT",
+    "country": "South Africa",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "CPT"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "CPT"
+      }
+    ],
+    "total_airlines_serving": 2
+  },
+  "Prague": {
+    "destination_iata": "PRG",
+    "country": "Czech Republic",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "PRG"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "PRG"
+      },
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "from_airport": "STN",
+        "to_airport": "PRG"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "PRG"
+      },
+      {
+        "airline": "Wizz Air",
+        "airline_code": "W6",
+        "from_airport": "LTN",
+        "to_airport": "PRG"
+      }
+    ],
+    "total_airlines_serving": 5
+  },
+  "Budapest": {
+    "destination_iata": "BUD",
+    "country": "Hungary",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "BUD"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "BUD"
+      },
+      {
+        "airline": "Norwegian Air Shuttle",
+        "airline_code": "DY",
+        "from_airport": "LGW",
+        "to_airport": "BUD"
+      },
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "from_airport": "STN",
+        "to_airport": "BUD"
+      },
+      {
+        "airline": "Iberia Airlines",
+        "airline_code": "IB",
+        "from_airport": "LHR",
+        "to_airport": "BUD"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "BUD"
+      },
+      {
+        "airline": "Wizz Air",
+        "airline_code": "W6",
+        "from_airport": "LTN",
+        "to_airport": "BUD"
+      }
+    ],
+    "total_airlines_serving": 7
+  },
+  "Marrakech": {
+    "destination_iata": "RAK",
+    "country": "Morocco",
+    "airlines": [
+      {
+        "airline": "Royal Air Maroc",
+        "airline_code": "AT",
+        "from_airport": "LGW",
+        "to_airport": "RAK"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LGW",
+        "to_airport": "RAK"
+      },
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "from_airport": "LTN",
+        "to_airport": "RAK"
+      },
+      {
+        "airline": "Transavia France",
+        "airline_code": "TO",
+        "from_airport": "LGW",
+        "to_airport": "RAK"
+      },
+      {
+        "airline": "TOM",
+        "airline_code": "TOM",
+        "from_airport": "LGW",
+        "to_airport": "RAK"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "RAK"
+      }
+    ],
+    "total_airlines_serving": 6
+  },
+  "Athens": {
+    "destination_iata": "ATH",
+    "country": "Greece",
+    "airlines": [
+      {
+        "airline": "Aegean Airlines",
+        "airline_code": "A3",
+        "from_airport": "LHR",
+        "to_airport": "ATH"
+      },
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "ATH"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "ATH"
+      },
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "from_airport": "STN",
+        "to_airport": "ATH"
+      },
+      {
+        "airline": "Olympic Airlines",
+        "airline_code": "OA",
+        "from_airport": "LHR",
+        "to_airport": "ATH"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "ATH"
+      },
+      {
+        "airline": "US Airways",
+        "airline_code": "US",
+        "from_airport": "LHR",
+        "to_airport": "ATH"
+      }
+    ],
+    "total_airlines_serving": 7
+  },
+  "Hanoi": {
+    "destination_iata": "HAN",
+    "country": "Vietnam",
+    "airlines": [],
+    "total_airlines_serving": 0
+  },
+  "Colombo": {
+    "destination_iata": "CMB",
+    "country": "Sri Lanka",
+    "airlines": [
+      {
+        "airline": "SriLankan Airlines",
+        "airline_code": "UL",
+        "from_airport": "LHR",
+        "to_airport": "CMB"
+      }
+    ],
+    "total_airlines_serving": 1
+  },
+  "New York City": {
+    "destination_iata": "JFK",
+    "country": "USA",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "JFK"
+      },
+      {
+        "airline": "Air France",
+        "airline_code": "AF",
+        "from_airport": "LHR",
+        "to_airport": "JFK"
+      },
+      {
+        "airline": "Air India Limited",
+        "airline_code": "AI",
+        "from_airport": "LHR",
+        "to_airport": "JFK"
+      },
+      {
+        "airline": "Finnair",
+        "airline_code": "AY",
+        "from_airport": "LHR",
+        "to_airport": "JFK"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "JFK"
+      },
+      {
+        "airline": "Delta Air Lines",
+        "airline_code": "DL",
+        "from_airport": "LHR",
+        "to_airport": "JFK"
+      },
+      {
+        "airline": "Iberia Airlines",
+        "airline_code": "IB",
+        "from_airport": "LHR",
+        "to_airport": "JFK"
+      },
+      {
+        "airline": "KLM Royal Dutch Airlines",
+        "airline_code": "KL",
+        "from_airport": "LHR",
+        "to_airport": "JFK"
+      }
+    ],
+    "total_airlines_serving": 14
+  },
+  "Sydney": {
+    "destination_iata": "SYD",
+    "country": "Australia",
+    "airlines": [],
+    "total_airlines_serving": 0
+  },
+  "Cancún": {
+    "destination_iata": "CUN",
+    "country": "Mexico",
+    "airlines": [
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LGW",
+        "to_airport": "CUN"
+      },
+      {
+        "airline": "Condor Flugdienst",
+        "airline_code": "DE",
+        "from_airport": "LGW",
+        "to_airport": "CUN"
+      },
+      {
+        "airline": "Transavia France",
+        "airline_code": "TO",
+        "from_airport": "LGW",
+        "to_airport": "CUN"
+      },
+      {
+        "airline": "TOM",
+        "airline_code": "TOM",
+        "from_airport": "LGW",
+        "to_airport": "CUN"
+      },
+      {
+        "airline": "Virgin Atlantic Airways",
+        "airline_code": "VS",
+        "from_airport": "LGW",
+        "to_airport": "CUN"
+      }
+    ],
+    "total_airlines_serving": 5
+  },
+  "Orlando": {
+    "destination_iata": "MCO",
+    "country": "USA",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LGW",
+        "to_airport": "MCO"
+      },
+      {
+        "airline": "Finnair",
+        "airline_code": "AY",
+        "from_airport": "LGW",
+        "to_airport": "MCO"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LGW",
+        "to_airport": "MCO"
+      },
+      {
+        "airline": "Delta Air Lines",
+        "airline_code": "DL",
+        "from_airport": "LGW",
+        "to_airport": "MCO"
+      },
+      {
+        "airline": "Iberia Airlines",
+        "airline_code": "IB",
+        "from_airport": "LGW",
+        "to_airport": "MCO"
+      },
+      {
+        "airline": "Transaero Airlines",
+        "airline_code": "UN",
+        "from_airport": "LGW",
+        "to_airport": "MCO"
+      },
+      {
+        "airline": "Virgin Atlantic Airways",
+        "airline_code": "VS",
+        "from_airport": "LGW",
+        "to_airport": "MCO"
+      }
+    ],
+    "total_airlines_serving": 7
+  },
+  "Queenstown": {
+    "destination_iata": "ZQN",
+    "country": "New Zealand",
+    "airlines": [],
+    "total_airlines_serving": 0
+  },
+  "Zanzibar City": {
+    "destination_iata": "ZNZ",
+    "country": "Tanzania",
+    "airlines": [],
+    "total_airlines_serving": 0
+  },
+  "Kraków": {
+    "destination_iata": "KRK",
+    "country": "Poland",
+    "airlines": [
+      {
+        "airline": "Ryanair",
+        "airline_code": "FR",
+        "from_airport": "STN",
+        "to_airport": "KRK"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "KRK"
+      }
+    ],
+    "total_airlines_serving": 2
+  },
+  "Mexico City": {
+    "destination_iata": "MEX",
+    "country": "Mexico",
+    "airlines": [
+      {
+        "airline": "AeroMéxico",
+        "airline_code": "AM",
+        "from_airport": "LHR",
+        "to_airport": "MEX"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "MEX"
+      },
+      {
+        "airline": "Iberia Airlines",
+        "airline_code": "IB",
+        "from_airport": "LHR",
+        "to_airport": "MEX"
+      }
+    ],
+    "total_airlines_serving": 3
+  },
+  "Reykjavík": {
+    "destination_iata": "KEF",
+    "country": "Iceland",
+    "airlines": [
+      {
+        "airline": "Icelandair",
+        "airline_code": "FI",
+        "from_airport": "LGW",
+        "to_airport": "KEF"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LTN",
+        "to_airport": "KEF"
+      },
+      {
+        "airline": "Maastricht Airlines",
+        "airline_code": "W2",
+        "from_airport": "LGW",
+        "to_airport": "KEF"
+      },
+      {
+        "airline": "bmibaby",
+        "airline_code": "WW",
+        "from_airport": "LGW",
+        "to_airport": "KEF"
+      }
+    ],
+    "total_airlines_serving": 4
+  },
+  "Santorini": {
+    "destination_iata": "JTR",
+    "country": "Greece",
+    "airlines": [
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LHR",
+        "to_airport": "JTR"
+      },
+      {
+        "airline": "Norwegian Air Shuttle",
+        "airline_code": "DY",
+        "from_airport": "LGW",
+        "to_airport": "JTR"
+      },
+      {
+        "airline": "Transavia France",
+        "airline_code": "TO",
+        "from_airport": "LGW",
+        "to_airport": "JTR"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "JTR"
+      }
+    ],
+    "total_airlines_serving": 4
+  },
+  "Interlaken": {
+    "destination_iata": "ZRH",
+    "country": "Switzerland",
+    "airlines": [
+      {
+        "airline": "American Airlines",
+        "airline_code": "AA",
+        "from_airport": "LHR",
+        "to_airport": "ZRH"
+      },
+      {
+        "airline": "Air Berlin",
+        "airline_code": "AB",
+        "from_airport": "LCY",
+        "to_airport": "ZRH"
+      },
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LCY",
+        "to_airport": "ZRH"
+      },
+      {
+        "airline": "Swiss International Air Lines",
+        "airline_code": "LX",
+        "from_airport": "LCY",
+        "to_airport": "ZRH"
+      },
+      {
+        "airline": "easyJet",
+        "airline_code": "U2",
+        "from_airport": "LGW",
+        "to_airport": "ZRH"
+      }
+    ],
+    "total_airlines_serving": 5
+  },
+  "Malé": {
+    "destination_iata": "MLE",
+    "country": "Maldives",
+    "airlines": [
+      {
+        "airline": "British Airways",
+        "airline_code": "BA",
+        "from_airport": "LGW",
+        "to_airport": "MLE"
+      }
+    ],
+    "total_airlines_serving": 1
+  },
+  "San José": {
+    "destination_iata": "SJO",
+    "country": "Costa Rica",
+    "airlines": [],
+    "total_airlines_serving": 0
+  }
+}

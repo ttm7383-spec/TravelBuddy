@@ -1,0 +1,47 @@
+[
+  {
+    "name": "National History Museum",
+    "category": "Arts & Culture",
+    "address": "Museum Quarter, City Centre",
+    "rating": 4.7,
+    "description": "World-renowned museum with extensive historical collections and interactive exhibits.",
+    "price_level": "Free",
+    "opening_hours": "09:00 - 18:00"
+  },
+  {
+    "name": "Botanical Gardens",
+    "category": "Outdoors & Nature",
+    "address": "Garden District, South Side",
+    "rating": 4.5,
+    "description": "Beautiful gardens featuring exotic plants, walking trails, and a butterfly house.",
+    "price_level": "£5",
+    "opening_hours": "08:00 - 20:00"
+  },
+  {
+    "name": "Old Town Food Market",
+    "category": "Food & Drink",
+    "address": "Old Town Square, Historic Centre",
+    "rating": 4.6,
+    "description": "Bustling food market with local delicacies, street food stalls, and artisan produce.",
+    "price_level": "£-££",
+    "opening_hours": "07:00 - 22:00"
+  },
+  {
+    "name": "Skyline Observation Tower",
+    "category": "Landmarks & Sightseeing",
+    "address": "Financial District, Downtown",
+    "rating": 4.4,
+    "description": "360-degree panoramic views of the city from the 50th floor observation deck.",
+    "price_level": "£12",
+    "opening_hours": "10:00 - 21:00"
+  },
+  {
+    "name": "Riverside Adventure Park",
+    "category": "Outdoors & Adventure",
+    "address": "Riverside Drive, East Bank",
+    "rating": 4.3,
+    "description": "Outdoor adventure park with kayaking, rock climbing, and zip-line courses.",
+    "price_level": "£15-£30",
+    "opening_hours": "09:00 - 17:00"
+  }
+]
