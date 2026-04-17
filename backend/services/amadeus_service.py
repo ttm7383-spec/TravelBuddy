@@ -150,8 +150,7 @@ AIRLINE_NAMES = {
 # Mock data paths
 # ---------------------------------------------------------------------------
 _MOCK_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "mock_data")
-_DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
-_CITY_DATA_PATH = os.path.join(_DATA_DIR, "city_data.json")
+_CITY_DATA_PATH = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "city_data.json")
 
 # Load city-specific data (real hotel names, restaurants, attractions per city)
 try:
@@ -160,24 +159,48 @@ try:
 except FileNotFoundError:
     CITY_DATA = {}
 
-# Load real datasets built from OpenFlights + Inside Airbnb
-try:
-    with open(os.path.join(_DATA_DIR, "real_flights.json"), "r", encoding="utf-8") as f:
-        REAL_FLIGHTS = json.load(f)
-except FileNotFoundError:
-    REAL_FLIGHTS = {}
-
-try:
-    with open(os.path.join(_DATA_DIR, "real_accommodations.json"), "r", encoding="utf-8") as f:
-        REAL_ACCOMMODATIONS = json.load(f)
-except FileNotFoundError:
-    REAL_ACCOMMODATIONS = {}
-
 
 def _load_mock(filename):
     path = os.path.join(_MOCK_DIR, filename)
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+# ---------------------------------------------------------------------------
+# Booking URL generators — real deep links, no API key needed
+# ---------------------------------------------------------------------------
+
+def make_google_flights_url(origin_iata, dest_iata, depart_date, return_date=None):
+    """Generate a Google Flights deep link."""
+    url = f"https://www.google.com/travel/flights?q=Flights+from+{origin_iata}+to+{dest_iata}"
+    if depart_date:
+        url += f"+on+{depart_date}"
+    if return_date:
+        url += f"+returning+{return_date}"
+    return url
+
+
+def make_skyscanner_url(origin_iata, dest_iata, depart_date, return_date=None, adults=1):
+    """Generate a Skyscanner deep link."""
+    d = depart_date.replace("-", "") if depart_date else ""
+    r = return_date.replace("-", "") if return_date else ""
+    path = f"{origin_iata.lower()}/{dest_iata.lower()}/{d}"
+    if r:
+        path += f"/{r}"
+    return f"https://www.skyscanner.net/transport/flights/{path}/?adults={adults}"
+
+
+def make_booking_url(hotel_name, city_name):
+    """Generate a Booking.com search URL for a hotel."""
+    from urllib.parse import quote_plus
+    q = quote_plus(f"{hotel_name} {city_name}")
+    return f"https://www.booking.com/searchresults.html?ss={q}"
+
+
+def make_booking_city_url(city_name, checkin, checkout):
+    """Generate a Booking.com city search URL."""
+    from urllib.parse import quote_plus
+    return f"https://www.booking.com/searchresults.html?ss={quote_plus(city_name)}&checkin={checkin}&checkout={checkout}"
 
 
 def get_city_data(city_name):
@@ -327,6 +350,13 @@ def search_flights(origin_city, destination_city, departure_date, return_date=No
 
                 flights.sort(key=lambda f: f["price_gbp"])
 
+                # Add booking URLs to every flight
+                for fl in flights:
+                    fl["google_flights_url"] = make_google_flights_url(
+                        origin_iata, dest_iata, departure_date, return_date)
+                    fl["skyscanner_url"] = make_skyscanner_url(
+                        origin_iata, dest_iata, departure_date, return_date, adults)
+
                 # Mark cheapest and fastest
                 if flights:
                     flights[0]["badge"] = "cheapest"
@@ -347,7 +377,7 @@ def search_flights(origin_city, destination_city, departure_date, return_date=No
 
 
 def _mock_flights(origin_city, destination_city, departure_date):
-    """Return city-specific mock flights using real airline data from OpenFlights."""
+    """Return city-specific mock flights, or generate realistic ones dynamically."""
     city = get_city_data(destination_city)
     origin_iata = IATA_CACHE.get(origin_city.lower(), "LHR")
     dest_iata = IATA_CACHE.get(destination_city.lower(), "")
@@ -373,12 +403,6 @@ def _mock_flights(origin_city, destination_city, departure_date):
                 "baggage_included": f["price_gbp"] > 100,
                 "badge": None,
             })
-    elif destination_city in REAL_FLIGHTS and REAL_FLIGHTS[destination_city]["airlines"]:
-        # Use real airline/route data from OpenFlights dataset
-        flights = _generate_flights_from_real_data(
-            origin_city, destination_city, departure_date,
-            REAL_FLIGHTS[destination_city]
-        )
     else:
         # Dynamically generate realistic flights for ANY destination
         flights = _generate_dynamic_flights(origin_city, destination_city, departure_date)
@@ -391,69 +415,14 @@ def _mock_flights(origin_city, destination_city, departure_date):
             if fastest is not flights[0]:
                 fastest["badge"] = "fastest"
 
+    # Add booking URLs to every flight
+    oi = IATA_CACHE.get(origin_city.lower(), "LHR")
+    di = IATA_CACHE.get(destination_city.lower(), "")
+    for fl in flights:
+        fl["google_flights_url"] = make_google_flights_url(oi, di, departure_date)
+        fl["skyscanner_url"] = make_skyscanner_url(oi, di, departure_date)
+
     return {"flights": flights, "is_mock": True, "updated_at": datetime.utcnow().isoformat()}
-
-
-def _generate_flights_from_real_data(origin_city, destination_city, departure_date, real_data):
-    """Generate flights using real airline/route data from OpenFlights dataset."""
-    dest_iata = real_data["destination_iata"]
-    real_airlines = real_data["airlines"]
-
-    # Pick up to 3 airlines, preferring budget + flag carrier mix
-    selected = real_airlines[:3] if len(real_airlines) >= 3 else real_airlines
-
-    hours = FLIGHT_HOURS.get(dest_iata, 5)
-    lon_key = f"LON-{dest_iata}"
-    if lon_key in PRICE_ESTIMATES:
-        price_min, price_max = PRICE_ESTIMATES[lon_key]
-    else:
-        price_min = int(50 + hours * 25)
-        price_max = int(150 + hours * 60)
-
-    dep_hours = [6, 10, 15, 20]
-    flights = []
-    for i, airline in enumerate(selected):
-        price_frac = (i + 0.5) / len(selected)
-        price = int(price_min + (price_max - price_min) * price_frac)
-        price += random.randint(-15, 15)
-
-        is_direct = hours < 6 or (i == 0 and hours < 10)
-        actual_hours = hours if is_direct else hours + 2.5
-        dur_h = int(actual_hours)
-        dur_m = int((actual_hours - dur_h) * 60)
-
-        dep_h = dep_hours[i % len(dep_hours)]
-        arr_h = (dep_h + dur_h) % 24
-        arr_m = dur_m % 60
-
-        flights.append({
-            "airline": airline["airline"],
-            "airline_code": airline["airline_code"],
-            "flight_number": f"{airline['airline_code']}{random.randint(100,999)}",
-            "price_gbp": max(price, 20),
-            "price_per_person_gbp": max(price, 20),
-            "departure": {
-                "airport": airline["from_airport"],
-                "city": origin_city,
-                "time": f"{dep_h:02d}:{random.choice(['00','15','30','45'])}",
-                "date": departure_date,
-            },
-            "arrival": {
-                "airport": airline["to_airport"],
-                "city": destination_city,
-                "time": f"{arr_h:02d}:{arr_m:02d}",
-                "date": departure_date,
-            },
-            "duration": f"{dur_h}h {dur_m:02d}m",
-            "stops": 0 if is_direct else 1,
-            "stops_label": "Direct" if is_direct else "1 stop",
-            "cabin_class": "Economy",
-            "baggage_included": price > 80,
-            "badge": None,
-            "data_source": "openflights",
-        })
-
-    return flights
 
 
 def _generate_dynamic_flights(origin_city, destination_city, departure_date):
@@ -623,9 +592,10 @@ def search_hotels(city_name, check_in, check_out, adults=1, budget_level="medium
                         "ALL_INCLUSIVE": "All Inclusive",
                     }
 
+                    hotel_name = h.get("name", "Hotel")
                     hotels.append({
                         "hotel_id": h.get("hotelId", ""),
-                        "name": h.get("name", "Hotel"),
+                        "name": hotel_name,
                         "price_per_night_gbp": per_night,
                         "total_price_gbp": total,
                         "rating": rating,
@@ -640,6 +610,8 @@ def search_hotels(city_name, check_in, check_out, adults=1, budget_level="medium
                         "board_type": board_labels.get(board, "Room Only"),
                         "is_available": True,
                         "distance_to_centre": "N/A",
+                        "booking_url": make_booking_url(hotel_name, city_name),
+                        "search_url": make_booking_city_url(city_name, check_in, check_out),
                     })
 
                 hotels.sort(key=lambda h: h["price_per_night_gbp"])
@@ -657,15 +629,16 @@ def search_hotels(city_name, check_in, check_out, adults=1, budget_level="medium
 
 
 def _mock_hotels(city_name, nights, budget_level):
-    """Return hotel data from real datasets, city_data.json, or generate dynamically."""
+    """Return city-specific mock hotel data, or generate dynamically."""
     city = get_city_data(city_name)
     rating_labels = {1: "Budget", 2: "Economy", 3: "Standard", 4: "Superior", 5: "Luxury"}
 
     if city and "hotels" in city:
         hotels = []
         for h in city["hotels"]:
+            hname = h["name"]
             hotels.append({
-                "name": h["name"],
+                "name": hname,
                 "price_per_night_gbp": h["price_per_night_gbp"],
                 "total_price_gbp": round(h["price_per_night_gbp"] * nights, 2),
                 "rating": h["rating"],
@@ -678,11 +651,9 @@ def _mock_hotels(city_name, nights, budget_level):
                 "is_available": True,
                 "nights": nights,
                 "distance_to_centre": "City centre",
-                "data_source": "city_data",
+                "booking_url": make_booking_url(hname, city_name),
+                "search_url": make_booking_city_url(city_name, "", ""),
             })
-    elif city_name in REAL_ACCOMMODATIONS:
-        # Use real dataset (Inside Airbnb + curated real hotels)
-        hotels = _build_hotels_from_real_data(city_name, nights)
     else:
         # Generate destination-specific hotel names dynamically
         hotels = _generate_dynamic_hotels(city_name, nights)
@@ -690,129 +661,143 @@ def _mock_hotels(city_name, nights, budget_level):
     return {"hotels": hotels, "is_mock": True, "updated_at": datetime.utcnow().isoformat()}
 
 
-def _build_hotels_from_real_data(city_name, nights):
-    """Build hotel list from real accommodation datasets."""
-    data = REAL_ACCOMMODATIONS[city_name]
-    hotels = []
-
-    # Combine Airbnb listings and curated hotels
-    all_listings = []
-
-    for h in data.get("hotels", []):
-        all_listings.append({
-            "name": h["name"],
-            "price": h["price"],
-            "neighbourhood": h.get("neighbourhood", ""),
-            "room_type": h.get("room_type", "Entire home/apt"),
-            "reviews": h.get("reviews", 0),
-            "rating": h.get("rating", 4.0),
-            "source": "hotel",
-        })
-
-    for a in data.get("airbnb_listings", []):
-        all_listings.append({
-            "name": a["name"],
-            "price": a["price"],
-            "neighbourhood": a.get("neighbourhood", ""),
-            "room_type": a.get("room_type", "Entire home/apt"),
-            "reviews": a.get("reviews", 0),
-            "rating": a.get("rating", 4.0),
-            "source": "airbnb",
-        })
-
-    # Sort by price and pick across budget tiers
-    all_listings.sort(key=lambda x: x["price"])
-
-    for item in all_listings:
-        price = item["price"]
-        if price < 30:
-            stars = 2
-        elif price < 100:
-            stars = 3
-        elif price < 250:
-            stars = 4
-        else:
-            stars = 5
-
-        rating_labels = {2: "Economy", 3: "Standard", 4: "Superior", 5: "Luxury"}
-        type_label = "Airbnb" if item["source"] == "airbnb" else "Hotel"
-
-        hotels.append({
-            "name": item["name"],
-            "price_per_night_gbp": round(item["price"], 2),
-            "total_price_gbp": round(item["price"] * nights, 2),
-            "rating": item["rating"],
-            "stars": stars,
-            "rating_label": rating_labels.get(stars, "Standard"),
-            "amenities": ["Free WiFi"],
-            "room_type": item["room_type"],
-            "neighbourhood": item["neighbourhood"],
-            "cancellation": "Free cancellation" if price < 200 else "Non-refundable",
-            "board_type": "Room Only" if stars < 4 else "Breakfast Included",
-            "is_available": True,
-            "nights": nights,
-            "distance_to_centre": "City centre",
-            "accommodation_type": type_label,
-            "review_count": item["reviews"],
-            "data_source": "inside_airbnb" if item["source"] == "airbnb" else "curated_real",
-        })
-
-    return hotels
+_BUDGET_CHAINS = [
+    "Generator", "Selina", "Moxy by Marriott", "MEININGER", "a]o Hostel",
+    "Wombats", "The People Hostel", "Ibis Budget", "easyHotel", "Safestay",
+]
+_MID_CHAINS = [
+    "Ibis Styles", "Holiday Inn Express", "Novotel", "NH Hotel",
+    "Mercure", "Best Western", "Radisson RED", "Hampton by Hilton",
+    "Courtyard by Marriott", "AC Hotel by Marriott",
+]
+_LUX_CHAINS = [
+    "InterContinental", "Hilton", "Sofitel", "W Hotel",
+    "Marriott", "Hyatt Regency", "The Ritz-Carlton", "Mandarin Oriental",
+    "Four Seasons", "Fairmont",
+]
 
 
 def _generate_dynamic_hotels(city_name, nights):
-    """Generate 3 realistic mock hotels for any destination city."""
+    """Generate 6 realistic hotels with real chain names for any destination."""
     name = city_name.split(",")[0].strip()
-    budget_price = random.randint(18, 40)
-    mid_price = random.randint(80, 140)
-    lux_price = random.randint(220, 380)
+
+    budget_names = random.sample(_BUDGET_CHAINS, 2)
+    mid_names = random.sample(_MID_CHAINS, 2)
+    lux_names = random.sample(_LUX_CHAINS, 2)
+
     hotels = [
         {
-            "name": f"{name} Central Hostel",
-            "price_per_night_gbp": budget_price,
-            "total_price_gbp": round(budget_price * nights, 2),
-            "rating": round(random.uniform(3.6, 4.2), 1),
-            "stars": 2,
-            "rating_label": "Economy",
-            "amenities": ["Free WiFi", "24h Reception", "Shared Kitchen"],
-            "room_type": "Private Double Room",
-            "cancellation": "Free cancellation",
-            "board_type": "Room Only",
-            "is_available": True,
-            "nights": nights,
-            "distance_to_centre": "0.8 km",
+            "name": f"{budget_names[0]} {name}",
+            "price_per_night_gbp": random.randint(22, 45),
+            "rating": round(random.uniform(3.8, 4.2), 1),
+            "stars": 2, "rating_label": "Economy",
+            "amenities": ["Free WiFi", "24h Reception", "Shared Kitchen", "Lounge"],
+            "room_type": "Private Double Room", "cancellation": "Free cancellation",
+            "board_type": "Room Only", "is_available": True, "nights": nights,
+            "neighbourhood": "City Centre", "distance_to_centre": "0.8 km",
+            "review_count": random.randint(800, 3500),
         },
         {
-            "name": f"Hotel {name} Plaza",
-            "price_per_night_gbp": mid_price,
-            "total_price_gbp": round(mid_price * nights, 2),
-            "rating": round(random.uniform(4.2, 4.6), 1),
-            "stars": 4,
-            "rating_label": "Superior",
-            "amenities": ["Free WiFi", "Breakfast Included", "Pool", "Gym", "Restaurant"],
-            "room_type": "Superior Double Room",
-            "cancellation": "Free cancellation",
-            "board_type": "Breakfast Included",
-            "is_available": True,
-            "nights": nights,
-            "distance_to_centre": "0.3 km",
+            "name": f"{budget_names[1]} {name}",
+            "price_per_night_gbp": random.randint(30, 55),
+            "rating": round(random.uniform(3.6, 4.1), 1),
+            "stars": 2, "rating_label": "Economy",
+            "amenities": ["Free WiFi", "Bar", "Laundry"],
+            "room_type": "Standard Double", "cancellation": "Free cancellation",
+            "board_type": "Room Only", "is_available": True, "nights": nights,
+            "neighbourhood": "Old Town", "distance_to_centre": "1.2 km",
+            "review_count": random.randint(500, 2000),
         },
         {
-            "name": f"Grand {name} Resort & Spa",
-            "price_per_night_gbp": lux_price,
-            "total_price_gbp": round(lux_price * nights, 2),
+            "name": f"{mid_names[0]} {name}",
+            "price_per_night_gbp": random.randint(75, 130),
+            "rating": round(random.uniform(4.2, 4.5), 1),
+            "stars": 3, "rating_label": "Standard",
+            "amenities": ["Free WiFi", "Breakfast Included", "Gym", "Air Conditioning"],
+            "room_type": "Superior Double Room", "cancellation": "Free cancellation",
+            "board_type": "Breakfast Included", "is_available": True, "nights": nights,
+            "neighbourhood": "City Centre", "distance_to_centre": "0.3 km",
+            "review_count": random.randint(1500, 6000),
+        },
+        {
+            "name": f"{mid_names[1]} {name}",
+            "price_per_night_gbp": random.randint(90, 160),
+            "rating": round(random.uniform(4.3, 4.6), 1),
+            "stars": 4, "rating_label": "Superior",
+            "amenities": ["Free WiFi", "Breakfast Included", "Pool", "Gym", "Restaurant", "Bar"],
+            "room_type": "Deluxe Double Room", "cancellation": "Free cancellation",
+            "board_type": "Breakfast Included", "is_available": True, "nights": nights,
+            "neighbourhood": "Business District", "distance_to_centre": "0.5 km",
+            "review_count": random.randint(2000, 8000),
+        },
+        {
+            "name": f"{lux_names[0]} {name}",
+            "price_per_night_gbp": random.randint(200, 350),
             "rating": round(random.uniform(4.6, 4.9), 1),
-            "stars": 5,
-            "rating_label": "Luxury",
-            "amenities": ["Spa", "Pool", "Fine Dining", "Room Service", "Concierge", "City Views"],
-            "room_type": "Deluxe Suite",
-            "cancellation": "Non-refundable",
-            "board_type": "Breakfast Included",
-            "is_available": True,
-            "nights": nights,
-            "distance_to_centre": "City centre",
+            "stars": 5, "rating_label": "Luxury",
+            "amenities": ["Spa", "Pool", "Fine Dining", "Room Service", "Concierge", "Gym", "Rooftop Bar"],
+            "room_type": "Deluxe Suite", "cancellation": "Non-refundable",
+            "board_type": "Breakfast Included", "is_available": True, "nights": nights,
+            "neighbourhood": "Premium District", "distance_to_centre": "0.2 km",
+            "review_count": random.randint(3000, 12000),
+        },
+        {
+            "name": f"{lux_names[1]} {name}",
+            "price_per_night_gbp": random.randint(280, 500),
+            "rating": round(random.uniform(4.7, 4.9), 1),
+            "stars": 5, "rating_label": "Luxury",
+            "amenities": ["Spa", "Infinity Pool", "Michelin Restaurant", "Butler Service", "City Views"],
+            "room_type": "Grand Suite", "cancellation": "Non-refundable",
+            "board_type": "Half Board", "is_available": True, "nights": nights,
+            "neighbourhood": "Waterfront", "distance_to_centre": "City centre",
+            "review_count": random.randint(5000, 15000),
         },
     ]
     for h in hotels:
         h["total_price_gbp"] = round(h["price_per_night_gbp"] * nights, 2)
+        h["booking_url"] = make_booking_url(h["name"], city_name)
+        h["search_url"] = make_booking_city_url(city_name, "", "")
     return hotels
+
+
+# ---------------------------------------------------------------------------
+# Cheapest Month Search
+# ---------------------------------------------------------------------------
+
+def get_cheapest_month(origin_city, destination_city):
+    """
+    Find the cheapest month to fly using Amadeus Flight Inspiration Search.
+    Falls back to a static estimate if API is unavailable.
+    """
+    client = _get_amadeus_client()
+    origin_iata = IATA_CACHE.get(origin_city.lower(), "LON")
+    dest_iata = IATA_CACHE.get(destination_city.lower())
+
+    if client and dest_iata:
+        try:
+            resp = client.shopping.flight_destinations.get(
+                origin=origin_iata,
+                destination=dest_iata,
+                oneWay=False,
+                nonStop=False,
+            )
+            if resp.data:
+                cheapest = min(resp.data, key=lambda x: float(x.get("price", {}).get("total", 9999)))
+                dep = cheapest.get("departureDate", "")
+                return {
+                    "cheapest_departure": dep,
+                    "cheapest_price_gbp": float(cheapest["price"]["total"]),
+                    "currency": "GBP",
+                    "is_live": True,
+                }
+        except Exception as e:
+            print(f"[Amadeus] Cheapest month search error: {e}")
+
+    # Static fallback — return general cheapest months by region
+    hours = FLIGHT_HOURS.get(dest_iata, 5)
+    if hours <= 4:
+        return {"cheapest_month": "January-February", "note": "Low season for European short-haul", "is_live": False}
+    elif dest_iata in ("BKK", "HAN", "SGN", "CNX", "DPS", "KUL", "SIN"):
+        return {"cheapest_month": "May-June", "note": "Shoulder season before summer holidays", "is_live": False}
+    else:
+        return {"cheapest_month": "January-March", "note": "Post-holiday low season", "is_live": False}

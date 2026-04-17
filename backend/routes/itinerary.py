@@ -15,7 +15,8 @@ import requests
 
 from firebase_config import verify_token, save_itinerary, get_user_itineraries
 from recommender.engine import DESTINATIONS
-from services.amadeus_service import search_flights, search_hotels, get_city_data
+from services.amadeus_service import search_flights, search_hotels, get_city_data, make_booking_city_url, make_skyscanner_url, IATA_CACHE
+from services.booking_service import search_hotels as booking_search_hotels, is_available as booking_is_available
 from routes.visa import get_visa_info
 
 itinerary_bp = Blueprint("itinerary", __name__)
@@ -301,7 +302,7 @@ def build_itinerary():
         flights = flight_result["flights"]
         flights_is_mock = flight_result["is_mock"]
 
-        # --- Hotels (via Amadeus service with mock fallback) ---
+        # --- Hotels (Amadeus → Booking.com RapidAPI → mock fallback) ---
         hotel_result = search_hotels(
             city_name=destination["name"],
             check_in=start_date,
@@ -310,6 +311,17 @@ def build_itinerary():
         )
         hotels = hotel_result["hotels"]
         hotels_is_mock = hotel_result["is_mock"]
+
+        # If Amadeus returned mock data, try Booking.com as second source
+        if hotels_is_mock and booking_is_available():
+            try:
+                booking_hotels = booking_search_hotels(
+                    destination["name"], start_date, end_date, budget_tier=budget_level)
+                if booking_hotels:
+                    hotels = booking_hotels
+                    hotels_is_mock = False
+            except Exception as e:
+                print(f"[Booking.com fallback] Error: {e}")
 
         # --- Dietary preferences ---
         dietary_prefs = data.get("dietary_preferences", [])
@@ -386,10 +398,13 @@ def build_itinerary():
             "total": estimated_total,
         }
 
-        # Local tips and transport info (from city_data.json)
-        local_tips = city.get("local_tips", []) if city else []
-        transport_from_london = city.get("transport_from_london") if city else None
-        is_domestic = destination.get("domestic", False) or (city.get("domestic", False) if city else False)
+        # Generate fallback search URLs for flights and hotels
+        origin_iata = IATA_CACHE.get(departure_city.lower(), "LON")
+        dest_iata = IATA_CACHE.get(destination["name"].lower(), destination.get("iata_code", ""))
+        flight_search_urls = {
+            "skyscanner": make_skyscanner_url(origin_iata, dest_iata, start_date, end_date) if dest_iata else "",
+            "booking_hotels": make_booking_city_url(destination["name"], start_date, end_date),
+        }
 
         # Build the response
         itinerary = {
@@ -400,7 +415,6 @@ def build_itinerary():
                 "avg_daily_cost_gbp": destination["avg_daily_cost_gbp"],
                 "climate": destination["climate"],
                 "tags": destination["tags"],
-                "is_domestic": is_domestic,
             },
             "dates": {
                 "start": start_date,
@@ -412,13 +426,12 @@ def build_itinerary():
             "hotels": hotels,
             "activities": places,
             "restaurants": restaurants,
-            "local_tips": local_tips,
-            "transport_from_london": transport_from_london,
             "visa_info": visa_info,
             "cost_breakdown": cost_breakdown,
             "estimated_total_cost_gbp": estimated_total,
             "is_live_prices": not flights_is_mock or not hotels_is_mock,
             "prices_updated_at": flight_result.get("updated_at"),
+            "search_urls": flight_search_urls,
         }
 
         return jsonify(itinerary), 200

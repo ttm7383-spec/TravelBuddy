@@ -1,6 +1,4 @@
-const API_BASE = import.meta.env.VITE_API_URL
-  ? `${import.meta.env.VITE_API_URL}/api`
-  : "/api";
+const API_BASE = "/api";
 
 async function getToken(user) {
   if (!user) return null;
@@ -130,5 +128,70 @@ export async function checkVisaBatch(passportCountry, destinations) {
     }),
   });
   if (!res.ok) throw new Error((await res.json()).error || "Batch visa check failed");
+  return res.json();
+}
+
+export async function getSimilarDestinations(destinationId, topN = 5) {
+  const res = await fetch(`${API_BASE}/destinations/${destinationId}/similar?top_n=${topN}`);
+  if (!res.ok) throw new Error((await res.json()).error || "Failed to fetch similar destinations");
+  return res.json();
+}
+
+export async function getTrendingDestinations(month = null, topN = 10) {
+  const params = new URLSearchParams({ top_n: topN });
+  if (month) params.set("month", month);
+  const res = await fetch(`${API_BASE}/destinations/trending?${params}`);
+  if (!res.ok) throw new Error((await res.json()).error || "Failed to fetch trending");
+  return res.json();
+}
+
+export async function sendFeedback(userId, destinationId, action) {
+  try {
+    await fetch(`${API_BASE}/feedback`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: userId || "anonymous",
+        destination_id: destinationId,
+        action,
+      }),
+    });
+  } catch (e) {
+    console.warn("Feedback send failed:", e);
+  }
+}
+
+export async function getFeedbackStats() {
+  const res = await fetch(`${API_BASE}/feedback/stats`);
+  return res.json();
+}
+
+// ── Google Calendar ────────────────────────────────────────────────────────
+
+export async function getCalendarAuthUrl(user) {
+  const token = await getToken(user);
+  const res = await fetch(`${API_BASE}/calendar/auth-url`, {
+    headers: headers(token),
+  });
+  if (!res.ok) throw new Error((await res.json()).error || "Failed to get auth URL");
+  return res.json();
+}
+
+export async function getCalendarWindows(user) {
+  const token = await getToken(user);
+  const res = await fetch(`${API_BASE}/calendar/free-windows`, {
+    headers: headers(token),
+  });
+  if (!res.ok) throw new Error((await res.json()).error || "Failed to fetch windows");
+  return res.json();
+}
+
+export async function disconnectCalendar(user) {
+  const token = await getToken(user);
+  const res = await fetch(`${API_BASE}/calendar/disconnect`, {
+    method: "POST",
+    headers: headers(token),
+  });
+  if (!res.ok) throw new Error((await res.json()).error || "Disconnect failed");
   return res.json();
 }

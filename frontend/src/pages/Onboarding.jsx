@@ -57,10 +57,6 @@ const STYLE_OPTIONS = [
   { value: "city", label: "City", icon: "\u{1F3D9}" },
   { value: "nature", label: "Nature", icon: "\u{1F33F}" },
   { value: "nightlife", label: "Nightlife", icon: "\u{1F389}" },
-  { value: "food", label: "Food & Drink", icon: "\u{1F37D}" },
-  { value: "wellness", label: "Wellness", icon: "\u{1F9D8}" },
-  { value: "history", label: "History", icon: "\u{1F3F0}" },
-  { value: "family", label: "Family Fun", icon: "\u{1F3A0}" },
 ];
 
 const GROUP_OPTIONS = [

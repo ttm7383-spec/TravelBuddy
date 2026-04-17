@@ -22,49 +22,156 @@ except Exception:
 DEST_MAP = {d["name"].lower(): d for d in DESTINATIONS}
 DEST_MAP.update({d["id"].lower(): d for d in DESTINATIONS})
 
+# Country → top cities (for "trip to USA", "trip to Japan" etc.)
+COUNTRY_CITIES = {}
+for _d in DESTINATIONS:
+    _c = _d.get("country", "").lower()
+    if _c:
+        COUNTRY_CITIES.setdefault(_c, []).append(_d)
+# Sort each country's cities by popularity_score descending
+for _c in COUNTRY_CITIES:
+    COUNTRY_CITIES[_c].sort(key=lambda x: x.get("popularity_score", 0), reverse=True)
+
+# Country name aliases → canonical lowercase country name
+COUNTRY_ALIASES = {
+    "usa": "usa", "us": "usa", "united states": "usa", "america": "usa",
+    "uk": "united kingdom", "britain": "united kingdom", "england": "united kingdom",
+    "uae": "uae", "emirates": "uae",
+    "japan": "japan", "spain": "spain", "france": "france", "italy": "italy",
+    "thailand": "thailand", "indonesia": "indonesia", "mexico": "mexico",
+    "greece": "greece", "turkey": "turkey", "germany": "germany",
+    "portugal": "portugal", "australia": "australia", "india": "india",
+    "brazil": "brazil", "colombia": "colombia", "peru": "peru",
+    "south korea": "south korea", "korea": "south korea",
+    "new zealand": "new zealand", "south africa": "south africa",
+    "morocco": "morocco", "egypt": "egypt", "croatia": "croatia",
+    "vietnam": "vietnam", "cambodia": "cambodia", "nepal": "nepal",
+    "argentina": "argentina", "cuba": "cuba", "canada": "canada",
+}
+
+
+def _parse_origin_destination(msg):
+    """
+    Parse origin and destination(s) from user message.
+    'from London' = origin only (strip it).
+    'to [city/country]' = destination.
+    Returns (origin, destinations_list).
+    """
+    origin = "London"  # default
+
+    # Extract origin: "from London", "from Manchester", etc.
+    origin_match = re.search(r'\bfrom\s+([a-z][a-z\s]{1,25}?)(?:\s+to\b|\s*$|\s*,|\s+on\b|\s+for\b|\s+in\b)', msg)
+    if origin_match:
+        origin = origin_match.group(1).strip().title()
+
+    # Remove "from [origin]" from message so it doesn't match as destination
+    cleaned = re.sub(r'\bfrom\s+[a-z][a-z\s]{1,25}?(?=\s+to\b|\s*$|\s*,|\s+on\b|\s+for\b|\s+in\b)', '', msg).strip()
+
+    # Check for country names first (they resolve to multiple cities)
+    destinations = []
+    for alias, canonical in COUNTRY_ALIASES.items():
+        if alias in cleaned:
+            country_dests = COUNTRY_CITIES.get(canonical, [])
+            if country_dests:
+                destinations = country_dests[:3]  # Top 3 cities in that country
+                return origin, destinations, canonical
+
+    # Check for specific city names
+    for name, dest in DEST_MAP.items():
+        if name in cleaned:
+            destinations.append(dest)
+            if len(destinations) >= 3:
+                break
+
+    return origin, destinations, None
+
+
+def _detect_budget_tier(msg):
+    """
+    Detect budget tier from message.
+    Returns (multiplier, tier_name, accommodation_note, food_note).
+    """
+    if any(kw in msg for kw in ["budget", "cheap", "backpack", "hostel", "low cost", "on a budget"]):
+        return 0.65, "budget", "Hostels & budget guesthouses", "Street food & markets"
+    if any(kw in msg for kw in ["luxury", "luxurious", "premium", "high end", "5 star", "five star", "splurge"]):
+        return 1.8, "luxury", "4-5 star hotels", "Fine dining & upscale restaurants"
+    return 1.0, "medium", "Mid-range hotel", "Mix of local & restaurants"
+
+
 # ── Claude system prompt ──────────────────────────────────────────
-SYSTEM_PROMPT = """You are TravelBuddy AI, a travel assistant that ONLY responds with structured JSON.
-You can answer about ANY city on Earth using your knowledge.
+SYSTEM_PROMPT = """GEOGRAPHIC SCOPE: UK and Europe ONLY.
+You are TravelBuddy — the most knowledgeable UK and European travel companion. You are an expert on every city, neighbourhood, restaurant, transport system, and hidden gem across the UK and Europe — from Reykjavik to Nicosia, London to Krakow.
 
-RULES:
-1. NEVER respond with plain text or paragraphs. ALWAYS return valid JSON.
-2. Your response must be a JSON object with two keys: "cards" (array) and "suggestions" (array of 3-4 follow-up questions).
-3. Each card in "cards" has "type" and "data" keys.
+If asked about non-European destinations (Asia, Americas, Africa, Oceania, Middle East), respond with:
+"TravelBuddy currently specialises in UK and Europe. I know every corner of it — from Reykjavik to Nicosia, London to Krakow. Want me to suggest somewhere you might not have considered?"
+Then suggest 3 relevant European alternatives that match the user's intent (e.g. if they asked about Thailand beaches, suggest Greek islands, Croatian coast, Portuguese Algarve).
 
-CARD TYPES AND THEIR DATA SCHEMAS:
+You have deep, intimate knowledge of every city, town, village, neighbourhood, street market, hidden bar, local transport hack, and cultural nuance across the UK and Europe. You respond like a well-travelled friend who has actually LIVED in every city, not a tourist who visited once.
 
-"overview" → { "city", "country", "description" (2-3 sentences), "vibes": [{"name","score"}] (score 1-10), "highlights": [...], "best_time", "language", "currency" }
+You ALWAYS respond in structured JSON only. Never plain text.
+Response format: { "cards": [...], "suggestions": [...] }
 
-"itinerary" → { "city", "total_cost" (number, GBP), "days": [{ "day", "title", "cost" (number), "activities": [{"time","activity"}] }] }
+CRITICAL PARSING RULES — read before anything else:
+- "from [city]" = DEPARTURE ORIGIN, not destination
+- "to [city/country]" = DESTINATION
+- "multi city", "multi-city", "few cities", "several cities" = return one itinerary card PER city
+- "on a budget" / "cheap" = daily cost under £80, hostels, street food
+- "mid range" = £80-200/day
+- "luxury" = £200+/day, 5-star hotels, fine dining
+- Country names (USA, Japan, Spain) = pick 3 best cities in that country
 
-"hotel" → { "name", "area", "price_per_night" (number, GBP), "rating" (1-5), "vibe" (string), "amenities": [...], "booking_url": null }
+YOUR KNOWLEDGE — use all of it. For EVERY city you know:
+NEIGHBOURHOODS: exact names, what each is known for, where locals live vs tourist zones, gentrifying areas
+FOOD: specific restaurant names, exact dish to order, street food stall locations, what time locals eat, dishes tourists order vs what locals order, price in local currency
+TRANSPORT: exact metro/bus line names and numbers, which travel card to buy with cost, local taxi apps (Grab, Bolt, etc), airport transfer options with real prices
+TIMING: exact opening hours, best time of DAY to visit, which day of week is quietest, local holidays
+SCAMS & SAFETY: specific scams by name, areas to avoid at night, common tourist mistakes, dress codes
+HIDDEN GEMS: places not in guidebooks, viewpoints locals use, cafes with no English menu, local festivals
 
-"food" → { "name", "cuisine", "must_try", "price_range" ("$"-"$$$$"), "area", "description", "vibe" }
+CARD SCHEMAS:
 
-"flight" → { "flights": [{ "airline", "from", "to", "departure_time", "arrival_time", "duration", "stops" (number), "price" (number, GBP), "class" }] }
+"overview" → { "city", "country", "description" (2-3 sentences like a local — mention specific neighbourhoods, not 'great city' but 'Shimokitazawa for vintage shops, Yanaka for old Edo atmosphere, Koenji for counterculture'), "vibes": [{"name","score"}] (vary scores realistically), "highlights": ["specific named things"], "best_time": "months with reason", "language": "language + useful phrases", "currency": "currency + rough GBP rate", "local_tip": "one specific insider tip", "neighbourhoods": [{"name","vibe","best_for"}], "avoid": "what tourists do that annoys locals" }
 
-"visa" → { "country", "visa_type" ("Visa-free"/"Visa on arrival"/"E-visa"/"Visa required"), "duration", "cost", "documents": [...], "apply_url": null, "notes" }
+"itinerary" → { "city", "country", "total_cost" (GBP), "days": [{ "day", "title" (creative like 'Temples, street food & Chao Phraya at sunset'), "cost", "activities": [{ "time": "07:30", "activity": "SPECIFIC — name exact place, transport tip, cost in local currency, insider tip. E.g. 'Wat Pho — arrive before 8am, queue-free. Entry 200 baht. Take ferry 9 from Saphan Taksin BTS (15 baht) not taxi'", "type": "morning|afternoon|evening|food|transport" }], "local_food_tip": "specific dish + specific place", "transport_tip": "how to get around today", "avoid_today": "one thing to skip" }] }
 
-"budget" → { "city", "days" (number), "currency": "GBP", "total" (number), "breakdown": [{ "category", "amount" (number), "note" }] }
+"hotel" → { "name": "REAL hotel name", "neighbourhood": "exact neighbourhood", "neighbourhood_vibe": "what area feels like", "price_per_night" (GBP), "rating": 1-5, "stars": 1-5, "vibe": "boutique|budget|luxury|party|family|design", "why_locals_recommend_area": "mention nearby streets, metro, spots", "walk_to": "what's walkable", "amenities": [...], "insider_tip": "something guides miss", "booking_url": "https://www.booking.com/search.html?ss=HOTEL+NAME+CITY", "price_tier": "budget|mid|luxury" }
 
-"tips" → { "city", "categories": [{ "name", "tips": [...] }] }
+"food" → { "name": "REAL restaurant/stall name", "type": "restaurant|street_food|market|cafe|bar", "cuisine", "must_order": "exact dish in local language + English", "price_range": "$|$$|$$$|$$$$", "price_specific": "cost per person GBP", "neighbourhood", "address_hint": "near landmark/street", "best_time": "when to go + why", "order_like_local": "what locals order vs tourists", "avoid": "what NOT to order", "local_tip": "insider advice", "dietary": [] }
 
-"weather" → { "city", "month", "avg_temp_c" (number), "conditions", "humidity", "rainfall", "what_to_pack": [...] }
+"flight" → { "route": "ORIGIN → DEST", "flights": [{ "airline", "flight_number", "departure_time", "arrival_time", "duration", "stops", "stop_city" (if stops>0), "price_gbp", "cabin", "baggage": "what's included", "book_url": "https://www.skyscanner.net/transport/flights/LON/IATA/", "google_flights_url": "https://www.google.com/travel/flights?q=flights+from+London+to+CITY" }], "cheapest_month", "airport_transfer": "how to get to city + cost", "baggage_tip" }
+
+"budget" → { "city", "days", "currency": "GBP", "total", "daily_average", "breakdown": [{ "category", "amount", "note": "specific tip with amounts" }], "money_saving_tips": ["3 SPECIFIC hacks with amounts — e.g. 'Buy Oyster card, saves 40%'"], "splurge_on": "one thing worth extra", "save_on": "one thing tourists overpay for" }
+
+"tips" → { "city", "categories": [ { "name": "scams to avoid", "tips": ["SPECIFIC named scam — how it works, how to avoid"] }, { "name": "transport hacks", "tips": ["specific hack with cost savings"] }, { "name": "free things to do", "tips": ["specific free activity + location"] }, { "name": "best photo spots", "tips": ["exact location, best time, why special"] }, { "name": "local etiquette", "tips": ["specific rule + consequence"] }, { "name": "what locals actually do", "tips": ["specific local behaviour tourists miss"] } ] }
+
+"weather" → { "city", "month", "avg_temp_c", "feels_like", "rainfall_days", "humidity_percent", "conditions", "what_to_pack": [...], "local_tip", "best_activity_for_weather" }
+
+"visa" → { "country", "visa_type", "duration", "cost", "documents": [...], "apply_url": null, "notes" }
 
 INTENT MAPPING:
-- "plan X days in [city]" → itinerary + budget + visa cards
-- "hotels in [city]" → 3 hotel cards
-- "food in [city]" / "eat in [city]" / "restaurants in [city]" → 5 food cards
-- "flights to [city]" → 1 flight card (with 3 flight options inside)
-- "budget for [city]" → 1 budget card
-- "tell me about [city]" / "what's [city] like" → overview + weather + 2 food cards
-- "where should I go" / "recommend" → 3 overview cards of different destinations
-- "visa for [city]" / "visa info [country]" → 1 visa card
-- "tips for [city]" → 1 tips card
-- "weather in [city]" → 1 weather card
+- "plan X days in [city]" → itinerary + budget + tips (scams+transport) + 3 food cards
+- "hotels in [city]" → 3 hotels: budget (<£60), mid (£60-150), special/design. REAL names, different neighbourhoods
+- "where to eat" / "food in [city]" → 5 food cards: street food + local gem + splurge + breakfast + late night
+- "flights to [city]" → 1 flight card with 3 options + real Skyscanner/Google Flights URLs
+- "budget for [city]" → detailed budget with local hacks
+- "tell me about [city]" → overview (with neighbourhoods) + 2 food cards + tips
+- "hidden gems" / "like a local" → overview of non-tourist areas + 3 local food cards + tips
+- "multi city trip to [country]" → 3 best cities, one itinerary per city, combined budget
+- "day trip from [city]" → 3 nearby destinations with transport method + duration + cost
+- "recommend" / "where should I go" → 3 overviews including 1 unexpected underrated destination
+- "tips for [city]" → detailed tips with all 6 categories
+- "weather in [city]" → weather + packing + best activities
+- "neighbourhood guide" → overview focused on neighbourhood breakdown
 
-Always use GBP (£) for all prices. Generate realistic, accurate data from your knowledge.
-For suggestions, offer natural follow-ups like "Hotels in [city]", "Food in [city]", "Plan 3 days in [city]"."""
+SUGGESTIONS — always 4 natural follow-ups that feel like conversation:
+Good: "What's the street food scene like in [city]?", "Which neighbourhood should I stay in?", "Hidden gems most tourists miss?"
+Bad: "Tell me about [city]" (too generic)
+
+QUALITY BAR — never go below this:
+NEVER: "Visit a local temple" → ALWAYS name it. "Try local food" → ALWAYS name the dish. "Take public transport" → ALWAYS name the line. "Explore the old town" → ALWAYS name the neighbourhood. Generic hotel names. All vibes at 8/10.
+ALWAYS: Write like someone who has been there. Mention what it feels like at 6am vs 6pm. Mention what locals think of tourists. Mention the one thing that surprises everyone.
+
+All prices in GBP (£). Use your full training knowledge. You know every city. Act like it."""
 
 
 def _call_claude(user_message):
@@ -78,33 +185,121 @@ def _call_claude(user_message):
     client = anthropic.Anthropic(api_key=api_key)
     response = client.messages.create(
         model="claude-haiku-4-5-20251001",
-        max_tokens=4096,
+        max_tokens=8192,
         system=SYSTEM_PROMPT,
         messages=[{"role": "user", "content": user_message}],
     )
 
     text = response.content[0].text.strip()
 
-    # Extract JSON from response (handle markdown code blocks)
     json_match = re.search(r"```(?:json)?\s*([\s\S]*?)```", text)
     if json_match:
         text = json_match.group(1).strip()
 
-    return json.loads(text)
+    # Try direct parse
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+
+    # Try extracting outermost {}
+    try:
+        start = text.find('{')
+        end = text.rfind('}')
+        if start != -1 and end > start:
+            return json.loads(text[start:end+1])
+    except json.JSONDecodeError:
+        pass
+
+    # Fallback card
+    return {
+        "cards": [{"type": "overview", "data": {
+            "city": "Try a simpler query",
+            "country": "",
+            "description": "Ask about one specific city at a time for best results.",
+            "vibes": [], "highlights": [], "best_time": "",
+            "language": "", "currency": "", "local_tip": ""
+        }}],
+        "suggestions": ["Hotels in Paris", "3 days in Bordeaux",
+                        "Food in Lyon", "Things to do in Nice"]
+    }
+
+
+def _build_itinerary_card(d, num_days, cost_per_day, _accom_note, food_note):
+    """Build an itinerary + its activities for one city."""
+    city = d["name"]
+    activities = d.get("sample_activities", [])
+    days_list = []
+    for i in range(num_days):
+        act_slice = activities[i % len(activities):] + activities[:i % len(activities)]
+        days_list.append({
+            "day": i + 1,
+            "title": f"Day {i + 1} — Explore {city}",
+            "cost": cost_per_day,
+            "activities": [
+                {"time": "09:00", "activity": act_slice[0] if act_slice else "Morning exploration"},
+                {"time": "12:00", "activity": f"Lunch — {food_note}"},
+                {"time": "14:00", "activity": act_slice[1] if len(act_slice) > 1 else "Afternoon sightseeing"},
+                {"time": "19:00", "activity": "Dinner and evening leisure"},
+            ],
+        })
+    return {"type": "itinerary", "data": {"city": city, "total_cost": round(cost_per_day * num_days), "days": days_list}}
+
+
+def _build_budget_card(cities_data, _num_days_each, budget_mult, accom_note, food_note, origin="London"):
+    """
+    Build a combined budget card for one or more cities.
+    cities_data: list of (dest_dict, num_days) tuples.
+    """
+    total_days = sum(nd for _, nd in cities_data)
+    grand_total = 0
+    breakdown = []
+
+    # Accommodation
+    accom = sum(round(d["avg_daily_cost_gbp"] * budget_mult * nd * 0.35) for d, nd in cities_data)
+    breakdown.append({"category": "accommodation", "amount": accom, "note": accom_note})
+
+    # Food
+    food = sum(round(d["avg_daily_cost_gbp"] * budget_mult * nd * 0.25) for d, nd in cities_data)
+    breakdown.append({"category": "food", "amount": food, "note": food_note})
+
+    # Local transport
+    transport = sum(round(d["avg_daily_cost_gbp"] * budget_mult * nd * 0.15) for d, nd in cities_data)
+    breakdown.append({"category": "local transport", "amount": transport, "note": "Public transport & taxis"})
+
+    # Activities
+    acts = sum(round(d["avg_daily_cost_gbp"] * budget_mult * nd * 0.20) for d, nd in cities_data)
+    breakdown.append({"category": "activities", "amount": acts, "note": "Entrance fees & tours"})
+
+    # Flights estimate (origin→first city + inter-city + last city→origin)
+    num_flights = len(cities_data) + 1  # outbound + inter-city legs + return
+    avg_flight = round(150 * budget_mult)  # rough per-leg estimate
+    flight_cost = avg_flight * num_flights
+    breakdown.append({"category": "flights", "amount": flight_cost, "note": f"{num_flights} flight legs (est. £{avg_flight}/leg from {origin})"})
+
+    grand_total = accom + food + transport + acts + flight_cost
+    city_label = " + ".join(d["name"] for d, _ in cities_data)
+
+    return {"type": "budget", "data": {
+        "city": city_label, "days": total_days, "currency": "GBP", "total": grand_total,
+        "breakdown": breakdown,
+        "money_saving_tips": [
+            "Book flights 6-8 weeks in advance for the best deals",
+            "Eat where the locals eat — avoid restaurants right next to tourist attractions",
+            "Use public transport day passes instead of single tickets",
+        ],
+    }}
 
 
 def _fallback_response(user_message):
     """Generate a response from destinations.json when no API key is set."""
     msg = user_message.lower().strip()
 
-    # Find matching destination
-    matched = None
-    for name, dest in DEST_MAP.items():
-        if name in msg:
-            matched = dest
-            break
+    # ── Parse origin, destinations, and budget tier ──
+    origin, parsed_dests, country_name = _parse_origin_destination(msg)
+    budget_mult, tier_name, accom_note, food_note = _detect_budget_tier(msg)
 
-    # "where should I go" / recommend
+    # ── "where should I go" / recommend (handle before destination matching) ──
     if any(kw in msg for kw in ["where should", "recommend", "suggest"]):
         import random
         picks = random.sample(DESTINATIONS, min(3, len(DESTINATIONS)))
@@ -126,8 +321,52 @@ def _fallback_response(user_message):
             "suggestions": [f"Tell me about {picks[0]['name']}", f"Hotels in {picks[1]['name']}", f"Plan 3 days in {picks[0]['name']}"],
         }
 
+    # ── Multi-city: country name resolved to 2-3 cities ──
+    is_multi = len(parsed_dests) >= 2
+    is_plan_intent = any(kw in msg for kw in ["plan", "itinerary", "days in", "trip", "tour", "visit", "travel", "multi"])
+
+    if is_multi and is_plan_intent:
+        # Extract total day count, split across cities
+        day_match = re.search(r"(\d+)\s*days?", msg)
+        total_days = int(day_match.group(1)) if day_match else len(parsed_dests) * 3
+        days_per_city = max(2, total_days // len(parsed_dests))
+        remainder = total_days - days_per_city * len(parsed_dests)
+
+        cards = []
+        cities_for_budget = []
+        for i, d in enumerate(parsed_dests):
+            nd = days_per_city + (remainder if i == 0 else 0)
+            cost_per_day = round(d["avg_daily_cost_gbp"] * budget_mult)
+            cards.append(_build_itinerary_card(d, nd, cost_per_day, accom_note, food_note))
+            cities_for_budget.append((d, nd))
+
+        # Combined budget card
+        cards.append(_build_budget_card(cities_for_budget, days_per_city, budget_mult, accom_note, food_note, origin))
+
+        country_label = country_name.title() if country_name else parsed_dests[0]["country"]
+        first_city = parsed_dests[0]["name"]
+        return {
+            "cards": cards,
+            "suggestions": [
+                f"Hotels in {first_city}",
+                f"Visa info for {country_label}",
+                f"Food in {first_city}",
+                f"Tips for {first_city}",
+            ],
+        }
+
+    # ── Single destination fallback ──
+    # Use the first parsed destination, or try legacy matching
+    if parsed_dests:
+        matched = parsed_dests[0]
+    else:
+        matched = None
+        for name, dest in DEST_MAP.items():
+            if name in msg:
+                matched = dest
+                break
+
     if not matched:
-        # If no match, pick a random destination and suggest it
         import random
         picks = random.sample(DESTINATIONS, min(3, len(DESTINATIONS)))
         return {
@@ -149,52 +388,34 @@ def _fallback_response(user_message):
     city = d["name"]
     tags = d.get("tags", [])
     activities = d.get("sample_activities", [])
-    cost = d.get("avg_daily_cost_gbp", 50)
+    base_cost = d.get("avg_daily_cost_gbp", 50)
+    cost = round(base_cost * budget_mult)
 
-    # Intent detection
-    if any(kw in msg for kw in ["plan", "itinerary", "days in"]):
-        # Extract day count
+    # ── Intent detection (single city) ──
+
+    if any(kw in msg for kw in ["plan", "itinerary", "days in", "trip to", "visit"]):
         day_match = re.search(r"(\d+)\s*days?", msg)
         num_days = int(day_match.group(1)) if day_match else 3
-        days_list = []
-        for i in range(num_days):
-            act_slice = activities[i % len(activities):] + activities[:i % len(activities)]
-            days_list.append({
-                "day": i + 1,
-                "title": f"Day {i + 1} — Explore {city}",
-                "cost": cost,
-                "activities": [
-                    {"time": "09:00", "activity": act_slice[0] if act_slice else "Morning exploration"},
-                    {"time": "12:00", "activity": "Lunch at local restaurant"},
-                    {"time": "14:00", "activity": act_slice[1] if len(act_slice) > 1 else "Afternoon sightseeing"},
-                    {"time": "19:00", "activity": "Dinner and evening leisure"},
-                ],
-            })
         cards = [
-            {"type": "itinerary", "data": {"city": city, "total_cost": cost * num_days, "days": days_list}},
-            {"type": "budget", "data": {
-                "city": city, "days": num_days, "currency": "GBP", "total": cost * num_days,
-                "breakdown": [
-                    {"category": "accommodation", "amount": round(cost * num_days * 0.35), "note": "Mid-range hotel"},
-                    {"category": "food", "amount": round(cost * num_days * 0.25), "note": "Mix of local & restaurants"},
-                    {"category": "transport", "amount": round(cost * num_days * 0.15), "note": "Public transport"},
-                    {"category": "activities", "amount": round(cost * num_days * 0.20), "note": "Entrance fees & tours"},
-                    {"category": "other", "amount": round(cost * num_days * 0.05), "note": "Tips, souvenirs"},
-                ],
-            }},
+            _build_itinerary_card(d, num_days, cost, accom_note, food_note),
+            _build_budget_card([(d, num_days)], num_days, budget_mult, accom_note, food_note, origin),
         ]
         return {"cards": cards, "suggestions": [f"Hotels in {city}", f"Food in {city}", f"Visa info for {d['country']}"]}
 
     if any(kw in msg for kw in ["hotel", "stay", "accommodation"]):
         cards = []
-        vibes = ["Boutique & Charming", "Modern & Central", "Budget-Friendly"]
-        for i, vibe in enumerate(vibes):
-            price = round(cost * (0.6 + i * 0.3))
+        tiers = [
+            ("Budget-Friendly", 0.5, 3.8),
+            ("Modern & Central", 0.9, 4.3),
+            ("Boutique & Luxury", 1.6, 4.7),
+        ]
+        for vibe, mult, rating in tiers:
+            price = round(cost * mult)
             cards.append({"type": "hotel", "data": {
                 "name": f"{vibe.split(' &')[0]} Hotel {city}",
                 "area": "City Centre",
                 "price_per_night": price,
-                "rating": round(4.0 + i * 0.3, 1),
+                "rating": rating,
                 "vibe": vibe,
                 "amenities": ["Free WiFi", "Breakfast included", "Air conditioning"],
                 "booking_url": None,
@@ -230,17 +451,7 @@ def _fallback_response(user_message):
         day_match = re.search(r"(\d+)\s*days?", msg)
         if day_match:
             num_days = int(day_match.group(1))
-        total = cost * num_days
-        cards = [{"type": "budget", "data": {
-            "city": city, "days": num_days, "currency": "GBP", "total": total,
-            "breakdown": [
-                {"category": "accommodation", "amount": round(total * 0.35), "note": "Mid-range hotel"},
-                {"category": "food", "amount": round(total * 0.25), "note": "Mix of local & restaurants"},
-                {"category": "transport", "amount": round(total * 0.15), "note": "Local transport"},
-                {"category": "activities", "amount": round(total * 0.20), "note": "Tours & attractions"},
-                {"category": "other", "amount": round(total * 0.05), "note": "Miscellaneous"},
-            ],
-        }}]
+        cards = [_build_budget_card([(d, num_days)], num_days, budget_mult, accom_note, food_note, origin)]
         return {"cards": cards, "suggestions": [f"Plan {num_days} days in {city}", f"Hotels in {city}", f"Food in {city}"]}
 
     if any(kw in msg for kw in ["visa", "passport", "entry"]):
@@ -291,45 +502,23 @@ def _fallback_response(user_message):
 @chat_bp.route("/api/chat", methods=["POST"])
 def chat():
     """Handle chat messages. Uses Claude API if available, otherwise falls back to local data."""
-    try:
-        data = request.get_json(silent=True)
-        if not data:
-            return jsonify({"error": True, "message": "Invalid or missing JSON body"}), 400
+    data = request.get_json()
+    message = data.get("message", "").strip()
 
-        message = data.get("message", "").strip()
-        if not message:
-            return jsonify({"error": True, "message": "Message is required"}), 400
+    if not message:
+        return jsonify({"error": "Message is required"}), 400
 
-        # Try Claude API first
-        api_key = os.getenv("ANTHROPIC_API_KEY")
-        if api_key and api_key != "your_anthropic_api_key":
-            try:
-                result = _call_claude(message)
-                if result:
-                    return jsonify(result)
-            except Exception as e:
-                print(f"[Chat] Claude API error: {e}")
-                # Fall through to fallback
+    # Try Claude API first
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if api_key and api_key != "your_anthropic_api_key":
+        try:
+            result = _call_claude(message)
+            if result:
+                return jsonify(result)
+        except Exception as e:
+            print(f"[Chat] Claude API error: {e}")
+            # Fall through to fallback
 
-        # Fallback to local data
-        result = _fallback_response(message)
-        return jsonify(result)
-
-    except Exception as e:
-        print(f"[Chat] Unexpected error: {e}")
-        return jsonify({"error": True, "message": str(e)}), 500
-
-
-@chat_bp.errorhandler(404)
-def chat_not_found(e):
-    return jsonify({"error": True, "message": "Chat endpoint not found"}), 404
-
-
-@chat_bp.errorhandler(405)
-def chat_method_not_allowed(e):
-    return jsonify({"error": True, "message": "Method not allowed — use POST"}), 405
-
-
-@chat_bp.errorhandler(500)
-def chat_internal_error(e):
-    return jsonify({"error": True, "message": "Internal server error"}), 500
+    # Fallback to local data
+    result = _fallback_response(message)
+    return jsonify(result)

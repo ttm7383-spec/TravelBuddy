@@ -1,0 +1,26 @@
+[
+  {
+    "user_id": "test-user",
+    "destination_id": "bali",
+    "action": "booked",
+    "weight": 5,
+    "session_id": "",
+    "timestamp": "2026-04-14T23:00:21.474846"
+  },
+  {
+    "user_id": "test-user",
+    "destination_id": "tokyo",
+    "action": "saved",
+    "weight": 3,
+    "session_id": "",
+    "timestamp": "2026-04-14T23:00:21.489214"
+  },
+  {
+    "user_id": "test-user",
+    "destination_id": "paris",
+    "action": "dismissed",
+    "weight": -2,
+    "session_id": "",
+    "timestamp": "2026-04-14T23:00:21.493503"
+  }
+]
