@@ -67,12 +67,22 @@ function UserBubble({ content, time }) {
   );
 }
 
-function AssistantMessage({ cards, suggestions, onSend, time }) {
+function AssistantMessage({ reply, cards, suggestions, onSend, time }) {
   const renderCards = (cards) => cards.map((card, i) => { const C = CARD_MAP[card.type]; return C ? <C key={i} data={card.data} /> : null; });
   return (
     <div style={{ display: "flex", alignItems: "start", gap: 8 }}>
       <div style={{ marginTop: 4 }}><CompassIcon size={16} /></div>
       <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: 12, maxWidth: 640 }}>
+        {reply && (
+          <div style={{
+            padding: "12px 16px", borderRadius: "16px 16px 16px 4px",
+            background: "var(--surface)", boxShadow: "var(--shadow-card)",
+            fontSize: 14, lineHeight: 1.6, color: "var(--dark)",
+            fontFamily: "'DM Sans', sans-serif", whiteSpace: "pre-wrap",
+          }}>
+            {reply}
+          </div>
+        )}
         {cards && renderCards(cards)}
         {suggestions && suggestions.length > 0 && (
           <div style={{ display: "flex", flexWrap: "wrap", gap: 6, paddingLeft: 4, paddingTop: 4 }}>
@@ -151,6 +161,7 @@ export default function Chat() {
   const [loading, setLoading] = useState(false);
   const [placeholderIdx, setPlaceholderIdx] = useState(0);
   const [hasSentQueryParam, setHasSentQueryParam] = useState(false);
+  const [sessionId, setSessionId] = useState(null);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -171,17 +182,19 @@ export default function Chat() {
     setMessages(prev => [...prev, { role: "user", content: msg, time }]);
     setLoading(true);
     try {
-      const res = await sendChatMessage(user, msg);
-      setMessages(prev => [...prev, { role: "assistant", cards: res.cards || [], suggestions: res.suggestions || [], time: getTime() }]);
+      const res = await sendChatMessage(user, msg, sessionId);
+      if (res.session_id) setSessionId(res.session_id);
+      setMessages(prev => [...prev, { role: "assistant", reply: res.reply || "", cards: res.cards || [], suggestions: res.suggestions || [], time: getTime() }]);
     } catch (err) {
       setMessages(prev => [...prev, {
         role: "assistant",
-        cards: [{ type: "overview", data: { city: "Hmm, something went wrong", country: "", description: err.message || "I had trouble with that one. Try rephrasing!", vibes: [], highlights: [] } }],
+        reply: err.message || "I had trouble with that one. Could you rephrase?",
+        cards: [],
         suggestions: ["Try again", "Plan a trip to Tokyo", "Weekend in Edinburgh"],
         time: getTime(),
       }]);
     } finally { setLoading(false); inputRef.current?.focus(); }
-  }, [input, loading, user]);
+  }, [input, loading, user, sessionId]);
 
   const handleKeyDown = (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); } };
   const showWelcome = messages.length === 0 && !loading;
@@ -200,7 +213,7 @@ export default function Chat() {
               <div key={i}>
                 {msg.role === "user"
                   ? <UserBubble content={msg.content} time={msg.time} />
-                  : <AssistantMessage cards={msg.cards} suggestions={msg.suggestions} onSend={handleSend} time={msg.time} />}
+                  : <AssistantMessage reply={msg.reply} cards={msg.cards} suggestions={msg.suggestions} onSend={handleSend} time={msg.time} />}
               </div>
             ))}
             {loading && (

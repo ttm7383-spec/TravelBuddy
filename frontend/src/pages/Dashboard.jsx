@@ -1,9 +1,19 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { getRecommendations, getAllDestinations, saveProfile, getTrendingDestinations, sendFeedback } from "../services/api";
+import { getRecommendations, getAllDestinations, saveProfile, getTrendingDestinations, sendFeedback, sendChatMessage } from "../services/api";
 import DESTINATION_IMAGES, { CATEGORY_IMAGES } from "../data/destinationImages";
 import CalendarConnect from "../components/CalendarConnect";
+import {
+  OverviewCard, ItineraryCard, HotelCard, FoodCard,
+  FlightCard, VisaCard, BudgetCard, TipsCard, WeatherCard,
+} from "../components/chat-cards";
+import PlaceAutocomplete from "../components/PlaceAutocomplete";
+
+const CHAT_CARD_MAP = {
+  overview: OverviewCard, itinerary: ItineraryCard, hotel: HotelCard, food: FoodCard,
+  flight: FlightCard, visa: VisaCard, budget: BudgetCard, tips: TipsCard, weather: WeatherCard,
+};
 
 /* ═══════════════════════════════════════════════════════════
    Constants
@@ -161,6 +171,8 @@ export default function Dashboard() {
   const [tripMode, setTripMode] = useState("international");
   const [searchMode, setSearchMode] = useState("recommend");
   const [departure, setDeparture] = useState("London");
+  const [destination, setDestination] = useState("");
+  const [destinationResult, setDestinationResult] = useState(null);
   const [startDate, setStartDate] = useState("2026-04-15");
   const [endDate, setEndDate] = useState("2026-04-22");
   const [budget, setBudget] = useState(profile?.budget_level || "medium");
@@ -210,8 +222,15 @@ export default function Dashboard() {
         !selected.find(s => s.id === d.id)
       ) : [];
 
+  const computeTripDays = () => {
+    if (!startDate || !endDate) return 7;
+    const ms = new Date(endDate) - new Date(startDate);
+    const days = Math.round(ms / 86400000);
+    return Math.max(1, days || 7);
+  };
+
   const handleSearch = async () => {
-    setLoading(true); setError(""); setResults(null);
+    setLoading(true); setError(""); setResults(null); setDestinationResult(null);
     const pd = {
       name: profile?.name || "", email: profile?.email || user?.email || "",
       budget_level: budget, travel_style: styles, group_type: group,
@@ -219,6 +238,88 @@ export default function Dashboard() {
       passport_country: profile?.passport_country || "GB",
     };
     saveProfile(user, pd).then(() => setProfile({ ...pd, onboarding_complete: true })).catch(() => {});
+
+    // If user specified a destination, fetch itinerary, hotels, restaurants,
+    // and flight details in parallel so the dashboard renders a full booking-
+    // ready view. Each request hits a different intent on the concierge so
+    // the backend returns the right card types for each section.
+    const destRaw = destination.trim();
+    if (destRaw) {
+      const dest = destRaw.replace(/\b\w/g, c => c.toUpperCase());
+      const origin = (departure.trim() || "London").replace(/\b\w/g, c => c.toUpperCase());
+      const days = computeTripDays();
+      const budgetLabel = budget === "low" ? "budget" : budget === "high" ? "luxury" : "mid-range";
+      const stylesLabel = styles && styles.length ? ` focused on ${styles.join(", ")}` : "";
+
+      const prompts = [
+        `Plan ${days} days in ${dest} from ${origin}, ${budgetLabel} budget, travelling ${group}${stylesLabel}.`,
+        `Hotels in ${dest} for ${days} nights, ${budgetLabel} budget.`,
+        `Restaurants and food in ${dest}.`,
+        `Flights from ${origin} to ${dest} on ${startDate}.`,
+      ];
+
+      try {
+        const settled = await Promise.allSettled(
+          prompts.map(p => sendChatMessage(user, p))
+        );
+
+        const allCards = [];
+        const suggestionSet = new Set();
+        const errors = [];
+        for (const r of settled) {
+          if (r.status === "fulfilled" && r.value) {
+            (r.value.cards || []).forEach(c => allCards.push(c));
+            (r.value.suggestions || []).forEach(s => suggestionSet.add(s));
+          } else if (r.status === "rejected") {
+            errors.push(r.reason?.message || "Request failed");
+          }
+        }
+
+        // Dedupe tips cards that repeat across calls (e.g. the offline-estimate
+        // notice would otherwise appear up to 4 times). Also dedupe overview
+        // cards by city so any force-corrected blanks don't stack.
+        const seenTipKeys = new Set();
+        const seenOverviewCities = new Set();
+        const deduped = allCards.filter(c => {
+          if (c.type === "tips") {
+            const cats = ((c.data || {}).categories) || [];
+            const key = cats.map(x => (x.name || "") + "|" + ((x.tips || [])[0] || "")).join("~");
+            if (seenTipKeys.has(key)) return false;
+            seenTipKeys.add(key);
+            return true;
+          }
+          if (c.type === "overview") {
+            const cityKey = ((c.data || {}).city || "").toLowerCase();
+            if (cityKey && seenOverviewCities.has(cityKey)) return false;
+            seenOverviewCities.add(cityKey);
+            return true;
+          }
+          return true;
+        });
+
+        // Section order on screen: flight → itinerary → hotel → food → budget
+        // → weather/visa → tips → overview. Keeps the booking-flow intuitive.
+        const typeOrder = {
+          flight: 0, itinerary: 1, hotel: 2, food: 3, budget: 4,
+          weather: 5, visa: 6, tips: 7, overview: 8,
+        };
+        deduped.sort((a, b) => (typeOrder[a.type] ?? 99) - (typeOrder[b.type] ?? 99));
+
+        if (deduped.length === 0) {
+          setError(errors[0] || "Could not fetch AI suggestions");
+        } else {
+          setDestinationResult({
+            destination: dest, origin,
+            cards: deduped,
+            suggestions: Array.from(suggestionSet).slice(0, 6),
+          });
+        }
+      } catch (err) {
+        setError(err.message || "Could not fetch AI suggestions");
+      } finally { setLoading(false); }
+      return;
+    }
+
     try {
       const travelMonth = startDate ? new Date(startDate).getMonth() + 1 : null;
       const data = await getRecommendations(user, {
@@ -329,7 +430,7 @@ export default function Dashboard() {
             { id: "uk", label: "UK & Local" },
             { id: "daytrip", label: "Day Trips" },
           ].map(tab => (
-            <button key={tab.id} onClick={() => { setTripMode(tab.id); setResults(null); }}
+            <button key={tab.id} onClick={() => { setTripMode(tab.id); setResults(null); setDestinationResult(null); }}
               style={{
                 padding: "10px 24px", borderRadius: 8, border: 0, cursor: "pointer",
                 fontSize: 14, fontWeight: 600, fontFamily: "'DM Sans', sans-serif",
@@ -367,19 +468,27 @@ export default function Dashboard() {
               {/* Input row + search button */}
               <div style={{ display: "flex", gap: 0, marginBottom: 20, border: "1px solid var(--border)", borderRadius: 12, overflow: "hidden" }}>
                 {/* Fields */}
-                <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr" }}>
-                  {[
-                    { label: "FLYING FROM", val: departure, setter: setDeparture, type: "text" },
-                    { label: "DEPARTURE", val: startDate, setter: setStartDate, type: "date" },
-                    { label: "RETURN", val: endDate, setter: setEndDate, type: "date" },
-                  ].map((f, i) => (
-                    <div key={i} style={{ padding: "14px 16px", borderRight: "1px solid var(--border)" }}>
-                      <div className="label-uppercase" style={{ marginBottom: 4 }}>{f.label}</div>
-                      <input type={f.type} value={f.val} onChange={e => f.setter(e.target.value)}
-                        style={{ width: "100%", border: 0, padding: 0, fontSize: 15, fontWeight: 600, color: "var(--dark)", fontFamily: "'DM Sans', sans-serif", background: "transparent" }}
-                        placeholder={f.type === "text" ? "London" : ""} />
-                    </div>
-                  ))}
+                <div style={{ flex: 1, display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr 1fr" }}>
+                  <div style={{ padding: "14px 16px", borderRight: "1px solid var(--border)" }}>
+                    <div className="label-uppercase" style={{ marginBottom: 4 }}>FLYING FROM</div>
+                    <PlaceAutocomplete value={departure} onChange={setDeparture}
+                      placeholder="City or country" extraCities={allDestinations} />
+                  </div>
+                  <div style={{ padding: "14px 16px", borderRight: "1px solid var(--border)" }}>
+                    <div className="label-uppercase" style={{ marginBottom: 4 }}>FLYING TO</div>
+                    <PlaceAutocomplete value={destination} onChange={setDestination}
+                      placeholder="City or country" extraCities={allDestinations} />
+                  </div>
+                  <div style={{ padding: "14px 16px", borderRight: "1px solid var(--border)" }}>
+                    <div className="label-uppercase" style={{ marginBottom: 4 }}>DEPARTURE</div>
+                    <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)}
+                      style={{ width: "100%", border: 0, padding: 0, fontSize: 15, fontWeight: 600, color: "var(--dark)", fontFamily: "'DM Sans', sans-serif", background: "transparent" }} />
+                  </div>
+                  <div style={{ padding: "14px 16px", borderRight: "1px solid var(--border)" }}>
+                    <div className="label-uppercase" style={{ marginBottom: 4 }}>RETURN</div>
+                    <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)}
+                      style={{ width: "100%", border: 0, padding: 0, fontSize: 15, fontWeight: 600, color: "var(--dark)", fontFamily: "'DM Sans', sans-serif", background: "transparent" }} />
+                  </div>
                   <div style={{ padding: "14px 16px" }}>
                     <div className="label-uppercase" style={{ marginBottom: 4 }}>TRAVELLING AS</div>
                     <select value={group} onChange={e => setGroup(e.target.value)}
@@ -390,11 +499,11 @@ export default function Dashboard() {
                 </div>
                 {/* Search button */}
                 {searchMode === "recommend" && (
-                  <button onClick={handleSearch} disabled={loading || styles.length === 0} style={{
+                  <button onClick={handleSearch} disabled={loading || (styles.length === 0 && !destination.trim())} style={{
                     width: 120, background: "var(--accent)", color: "white", border: 0, cursor: "pointer",
                     fontSize: 15, fontWeight: 600, fontFamily: "'DM Sans', sans-serif",
                     display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
-                    opacity: (loading || styles.length === 0) ? 0.5 : 1,
+                    opacity: (loading || (styles.length === 0 && !destination.trim())) ? 0.5 : 1,
                   }}>
                     {loading ? <span className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : (
                       <>
@@ -576,7 +685,7 @@ export default function Dashboard() {
       </div>
 
       {/* ═══ LIVE DEALS ═══ */}
-      {tripMode === "international" && !results && !loading && (
+      {tripMode === "international" && !results && !destinationResult && !loading && (
         <div style={{ maxWidth: 1120, margin: "24px auto 0", padding: "0 24px" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 14 }}>
             <h2 style={{ fontSize: 22, margin: 0, fontFamily: "'Playfair Display', serif" }}>Flight deals from London</h2>
@@ -636,6 +745,39 @@ export default function Dashboard() {
                 <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24 }}>
                   {[0, 1, 2, 3, 4, 5].map(i => <SkeletonCard key={i} />)}
                 </div>
+              </div>
+            )}
+
+            {destinationResult && !loading && (
+              <div style={{ marginBottom: 40 }}>
+                <div style={{ display: "flex", alignItems: "baseline", gap: 12, marginBottom: 8, flexWrap: "wrap" }}>
+                  <h2 style={{ fontSize: 32, margin: 0 }}>
+                    {destinationResult.origin || departure} &rarr; {destinationResult.destination}
+                  </h2>
+                  <span style={{ fontSize: 14, color: "var(--muted)" }}>
+                    AI-curated itinerary, hotels, food &amp; local tips
+                  </span>
+                </div>
+                <p style={{ fontSize: 14, color: "var(--muted)", margin: "0 0 20px 0" }}>
+                  {computeTripDays()} days &middot; {budget === "low" ? "Budget" : budget === "high" ? "Luxury" : "Mid-range"} &middot; Travelling {group}
+                </p>
+                <div style={{ display: "flex", flexDirection: "column", gap: 16, maxWidth: 760 }}>
+                  {destinationResult.cards.map((card, i) => {
+                    const C = CHAT_CARD_MAP[card.type];
+                    return C ? <C key={i} data={card.data} /> : null;
+                  })}
+                </div>
+                {destinationResult.suggestions && destinationResult.suggestions.length > 0 && (
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 20 }}>
+                    {destinationResult.suggestions.map((s, j) => (
+                      <button key={j} onClick={() => navigate(`/chat?q=${encodeURIComponent(s)}`)} style={{
+                        padding: "8px 16px", borderRadius: 8, fontSize: 13, fontWeight: 500,
+                        fontFamily: "'DM Sans', sans-serif", border: "1.5px solid var(--border)",
+                        background: "var(--surface)", color: "var(--body)", cursor: "pointer",
+                      }}>{s}</button>
+                    ))}
+                  </div>
+                )}
               </div>
             )}
 
@@ -711,7 +853,7 @@ export default function Dashboard() {
               </div>
             )}
 
-            {!results && !loading && !error && (
+            {!results && !destinationResult && !loading && !error && (
               <>
                 {/* Quick AI prompts */}
                 <div style={{ marginBottom: 48 }}>

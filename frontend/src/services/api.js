@@ -107,12 +107,13 @@ export async function checkVisa(passportCountry, destinationCountry) {
   return res.json();
 }
 
-export async function sendChatMessage(user, message) {
+export async function sendChatMessage(user, message, sessionId) {
   const token = await getToken(user);
+  const body = sessionId ? { message, session_id: sessionId } : { message };
   const res = await fetch(`${API_BASE}/chat`, {
     method: "POST",
     headers: headers(token),
-    body: JSON.stringify({ message }),
+    body: JSON.stringify(body),
   });
   if (!res.ok) throw new Error((await res.json()).error || "Chat request failed");
   return res.json();
