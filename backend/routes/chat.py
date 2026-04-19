@@ -549,19 +549,24 @@ def _save_session(session_id, user_message, response, locked_destination,
                               [{"message": user_message, "at": now}])[-10:]
 
     # Append the turn to `conversation` — used as Claude's messages history.
-    # The assistant content is a compact JSON string (same shape we returned
-    # to the frontend) so Claude sees its own prior structured reply.
+    # We store the assistant's NATURAL-LANGUAGE reply only (not the cards JSON)
+    # so Claude has context for follow-ups without being primed to re-emit the
+    # same card types for a different intent. Card summaries are included as
+    # short text so Claude knows what was shown.
     conv = entry.get("conversation", [])
     conv.append({"role": "user", "content": user_message})
-    try:
-        assistant_content = json.dumps({
-            "reply": (response or {}).get("reply", ""),
-            "cards": (response or {}).get("cards", []),
-            "suggestions": (response or {}).get("suggestions", []),
-        }, ensure_ascii=False)
-    except Exception:
-        assistant_content = json.dumps({"reply": "", "cards": [], "suggestions": []})
-    conv.append({"role": "assistant", "content": assistant_content})
+    cards_list = (response or {}).get("cards", []) or []
+    card_summary = ""
+    if cards_list:
+        counts = {}
+        for c in cards_list:
+            t = c.get("type", "other")
+            counts[t] = counts.get(t, 0) + 1
+        card_summary = " (" + ", ".join(f"{n} {t}" for t, n in counts.items()) + ")"
+    assistant_text = ((response or {}).get("reply", "") or "") + card_summary
+    if not assistant_text.strip():
+        assistant_text = "(previous turn returned structured cards)"
+    conv.append({"role": "assistant", "content": assistant_text})
     entry["conversation"] = conv[-20:]  # keep last 10 exchanges
     _SESSION_STORE[session_id] = entry
 
@@ -616,8 +621,11 @@ _FOLLOWUP_KEYWORDS = (
 def _apply_followup_context(message, session):
     """
     If the current message is a follow-up on a prior query, inherit the
-    previous destination/days/budget by rewriting the message so downstream
-    parsing still works without new code paths. Returns the effective message.
+    previous destination by rewriting the message. Day-count inheritance is
+    ONLY applied to explicit refinement follow-ups ("make it cheaper",
+    "shorter", etc.) so a new intent like "cafes in Paris" doesn't get a
+    spurious "for 7 days" appended that would re-route it to the itinerary
+    branch.
     """
     if not session or not session.get("last_destination"):
         return message
@@ -636,13 +644,16 @@ def _apply_followup_context(message, session):
 
     is_followup = any(kw in lower for kw in _FOLLOWUP_KEYWORDS)
 
-    # Inherit destination when this looks like a follow-up
     augmented = message
-    if not has_destination and (is_followup or session.get("last_destination")):
+    # Inherit destination when the new message omits it (helps "hotels"
+    # without restating the city, and short follow-ups like "make it cheaper").
+    if not has_destination and dest_name:
         augmented = f"{message} in {dest_name}"
 
-    # Inherit day count if the follow-up didn't name one
-    if re.search(r"\d+\s*days?", lower) is None and session.get("last_num_days"):
+    # Inherit day count ONLY for explicit refinement follow-ups so new
+    # intents ("cafes in X", "hotels in X") don't inherit a stale day count.
+    if (is_followup and re.search(r"\d+\s*days?", lower) is None
+            and session.get("last_num_days")):
         augmented = f"{augmented} for {session['last_num_days']} days"
 
     return augmented
@@ -1570,15 +1581,10 @@ def _fallback_response(user_message):
     cost = round(base_cost * budget_mult)
 
     # ── Intent detection (single city) ──
-
-    if (any(kw in msg for kw in ["plan", "itinerary", "days in", "trip to", "visit"])
-            or re.search(r"\b\d+\s*days?\b", msg)):
-        num_days = num_days_in_msg if num_days_in_msg else 3
-        cards = [
-            _build_itinerary_card(d, num_days, cost, accom_note, food_note),
-            _build_budget_card([(d, num_days)], num_days, budget_mult, accom_note, food_note, origin),
-        ]
-        return _finalize({"cards": cards, "suggestions": [f"Hotels in {city}", f"Food in {city}", f"Visa info for {d['country']}"]})
+    # Order matters: specific-type intents (hotels, food, flights, weather,
+    # visa, tips, budget) are checked BEFORE the generic plan/days trigger
+    # so a follow-up like "cafes in Paris" isn't rerouted to an itinerary
+    # just because a stale "for 7 days" slipped into the message.
 
     if any(kw in msg for kw in ["hotel", "stay", "accommodation", "hostel"]):
         cards = _build_hotel_cards(city, cost, base_cost, country=d.get("country"))
@@ -1649,6 +1655,17 @@ def _fallback_response(user_message):
             ],
         }}]
         return _finalize({"cards": cards, "suggestions": [f"Food in {city}", f"Weather in {city}", f"Plan 3 days in {city}"]})
+
+    # Plan / itinerary — checked AFTER specific intents so "cafes in X for
+    # 7 days" keeps routing to cafes rather than to an itinerary.
+    if (any(kw in msg for kw in ["plan", "itinerary", "days in", "trip to", "visit"])
+            or re.search(r"\b\d+\s*days?\b", msg)):
+        num_days = num_days_in_msg if num_days_in_msg else 3
+        cards = [
+            _build_itinerary_card(d, num_days, cost, accom_note, food_note),
+            _build_budget_card([(d, num_days)], num_days, budget_mult, accom_note, food_note, origin),
+        ]
+        return _finalize({"cards": cards, "suggestions": [f"Hotels in {city}", f"Food in {city}", f"Visa info for {d['country']}"]})
 
     # Default: overview
     cards = [{"type": "overview", "data": {
