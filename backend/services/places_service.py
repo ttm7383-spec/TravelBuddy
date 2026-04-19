@@ -14,6 +14,8 @@ import requests
 
 OVERPASS_URLS = [
     "https://overpass-api.de/api/interpreter",
+    "https://lz4.overpass-api.de/api/interpreter",
+    "https://z.overpass-api.de/api/interpreter",
     "https://overpass.kumi.systems/api/interpreter",
 ]
 
@@ -57,7 +59,82 @@ _BBOX_CACHE = {}
 _BBOX_CACHE_TTL = 7 * 24 * 3600  # 1 week — city boundaries barely change
 
 
-def _resolve_city_center(city, country=None, timeout=10):
+_NOMINATIM_CATEGORY_WORDS = {
+    "hotel":       "hotel",
+    "hostel":      "hostel",
+    "guesthouse":  "guesthouse",
+    "restaurant":  "restaurant",
+    "cafe":        "cafe",
+    "bar":         "bar",
+    "pub":         "pub",
+    "street_food": "street food",
+    "bakery":      "bakery",
+    "attraction":  "tourist attraction",
+    "museum":      "museum",
+}
+
+
+def _nominatim_search_category(city, category, country=None, limit=6, timeout=15):
+    """
+    Fallback when Overpass is overloaded. Nominatim's free-text search
+    returns named POIs by text query. Slower and less precise than Overpass
+    but reliable enough to surface real hotel / cafe / restaurant names.
+    """
+    keyword = _NOMINATIM_CATEGORY_WORDS.get(category, category)
+    q = f"{keyword} in {city}, {country}" if country else f"{keyword} in {city}"
+    try:
+        resp = requests.get(
+            _NOMINATIM_URL,
+            params={
+                "q": q, "format": "json", "limit": max(limit * 2, 10),
+                "addressdetails": 1, "extratags": 1,
+            },
+            headers={"User-Agent": "TravelBuddy/1.0 (university project)"},
+            timeout=timeout,
+        )
+        if resp.status_code != 200:
+            print(f"[Places] Nominatim category search HTTP {resp.status_code}")
+            return []
+        data = resp.json() or []
+    except Exception as e:
+        print(f"[Places] Nominatim category search failed: {e}")
+        return []
+
+    results = []
+    seen = set()
+    for item in data:
+        name = (item.get("namedetails") or {}).get("name") or item.get("name") or item.get("display_name", "").split(",")[0]
+        if not name:
+            continue
+        key = name.strip().lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        addr = item.get("address") or {}
+        street = " ".join(
+            p for p in [addr.get("house_number"), addr.get("road")] if p
+        ).strip()
+        neighbourhood = addr.get("suburb") or addr.get("neighbourhood") or addr.get("district") or ""
+        extratags = item.get("extratags") or {}
+        results.append({
+            "name": name,
+            "category": category,
+            "cuisine": extratags.get("cuisine", ""),
+            "stars": extratags.get("stars", ""),
+            "address": street or item.get("display_name", ""),
+            "neighbourhood": neighbourhood,
+            "website": extratags.get("website") or extratags.get("contact:website") or "",
+            "phone": extratags.get("phone") or "",
+            "opening_hours": extratags.get("opening_hours", ""),
+            "lat": float(item["lat"]) if item.get("lat") else None,
+            "lon": float(item["lon"]) if item.get("lon") else None,
+        })
+        if len(results) >= limit:
+            break
+    return results
+
+
+def _resolve_city_center(city, country=None, timeout=15):
     """
     Use Nominatim to look up the city (optionally scoped to a country) and
     return (lat, lon) of its centroid, or None on failure. Nominatim's result
@@ -92,7 +169,7 @@ def _resolve_city_center(city, country=None, timeout=10):
         return None
 
 
-def get_places(city, category, limit=6, timeout=12, country=None):
+def get_places(city, category, limit=6, timeout=25, country=None):
     """
     Fetch up to `limit` real places of the given category for a city.
 
@@ -136,37 +213,63 @@ def get_places(city, category, limit=6, timeout=12, country=None):
         return []
 
     lat, lon = center
-    # Step 2: Overpass "around" radius query. 10 km covers central London,
-    # Paris, Tokyo, Bangkok etc. in seconds — bbox queries time out on very
-    # large metropolitan areas because they hit millions of nodes.
-    radius_m = 10000
+    # Step 2: Overpass "around" radius query. A tight 5 km radius centred on
+    # the city keeps the query small enough to complete in a few seconds on
+    # the public Overpass servers — 10 km hit 504s for Paris/Barcelona/etc.
+    # 5 km still covers the centre of any major city.
+    radius_m = 5000
     tag_blocks = []
     for t in tags:
         tag_blocks.append(f"  node(around:{radius_m},{lat},{lon}){t};")
         tag_blocks.append(f"  way(around:{radius_m},{lat},{lon}){t};")
     tag_body = "\n".join(tag_blocks)
+    # Short server-side timeout makes Overpass abort fast when the mirror is
+    # overloaded so we can move on to another mirror or the Nominatim fallback.
     query = (
-        f"[out:json][timeout:{timeout}];\n"
+        f"[out:json][timeout:12];\n"
         f"(\n{tag_body}\n);\n"
         f"out center tags {limit * 3};\n"
     )
 
+    # Short per-mirror timeout — Overpass public servers frequently 504 when
+    # overloaded, and cycling through a long retry list would stall the chat
+    # for 30-90 s before we fall through to Nominatim. Cap to 10 s per mirror
+    # and bail the whole Overpass attempt as soon as we see a 504 cluster.
     elements = []
+    per_mirror_timeout = min(timeout, 10)
+    overloaded_count = 0
     for url in OVERPASS_URLS:
         try:
             resp = requests.post(
-                url, data=query, timeout=timeout,
+                url, data=query, timeout=per_mirror_timeout,
                 headers={"User-Agent": "TravelBuddy/1.0 (university project)"},
             )
             if resp.status_code == 200:
-                elements = resp.json().get("elements", [])
+                payload = resp.json()
+                elements = payload.get("elements", [])
+                print(f"[Places] Overpass {url} returned {len(elements)} elements for {city}/{category}")
                 if elements:
                     break
+            else:
+                print(f"[Places] Overpass {url} HTTP {resp.status_code}")
+                if resp.status_code in (429, 502, 503, 504):
+                    overloaded_count += 1
         except Exception as e:
             print(f"[Places] Overpass {url} failed: {e}")
-            continue
+            overloaded_count += 1
+        # After 2 mirror failures, assume the Overpass network is overloaded
+        # and skip straight to the Nominatim fallback.
+        if overloaded_count >= 2 and not elements:
+            print("[Places] Overpass appears overloaded — skipping to Nominatim")
+            break
 
     if not elements:
+        # Fallback: Nominatim free-text search. Slower per query and capped
+        # at 10 results but usually works when Overpass is overloaded.
+        nominatim_results = _nominatim_search_category(city, category, country, limit, timeout)
+        if nominatim_results:
+            _cache_set(cache_key, nominatim_results)
+            return nominatim_results
         _cache_set(cache_key, [])
         return []
 
