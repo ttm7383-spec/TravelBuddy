@@ -1,4 +1,4 @@
-const API_BASE = "";
+const API_BASE = "https://travel-buddy-api-3g12.onrender.com";
 
 async function getToken(user) {
   if (!user) return null;
