@@ -3,6 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { getRecommendations, getAllDestinations, saveProfile, getTrendingDestinations, sendFeedback, sendChatMessage } from "../services/api";
 import DESTINATION_IMAGES, { CATEGORY_IMAGES } from "../data/destinationImages";
+import { toTitleCase, unsplashImage, onImgError, FALLBACK_IMG } from "../utils/helpers";
 import CalendarConnect from "../components/CalendarConnect";
 import {
   OverviewCard, ItineraryCard, HotelCard, FoodCard,
@@ -111,16 +112,15 @@ function SkeletonCard() {
 }
 
 function UKCard({ dest, onSelect }) {
+  const imgSrc = DESTINATION_IMAGES[dest.id] || unsplashImage(dest.id, 400);
   return (
     <div onClick={() => onSelect(dest)} className="card-hover" style={{
       borderRadius: 16, overflow: "hidden", cursor: "pointer",
       background: "var(--surface)", boxShadow: "var(--shadow-card)",
     }}>
-      <div style={{
-        height: 150, position: "relative", overflow: "hidden",
-        backgroundImage: `url(https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=400&q=80)`,
-        backgroundSize: "cover", backgroundPosition: "center",
-      }}>
+      <div style={{ height: 150, position: "relative", overflow: "hidden" }}>
+        <img src={imgSrc} onError={onImgError} alt={dest.name}
+          style={{ width: "100%", height: "100%", objectFit: "cover", display: "block" }} />
         <div style={{ position: "absolute", inset: 0, background: "linear-gradient(transparent 30%, rgba(26,26,46,0.7))" }} />
         <div style={{ position: "absolute", top: 12, left: 12 }}>
           <span style={{
@@ -346,7 +346,7 @@ export default function Dashboard() {
 
   const getImageUrl = dest => {
     if (DESTINATION_IMAGES[dest.id]) return DESTINATION_IMAGES[dest.id];
-    return `https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&q=80`;
+    return unsplashImage(dest.id, 800) || FALLBACK_IMG;
   };
 
   const filteredUK = ukFilter === "all" ? UK_DESTINATIONS : UK_DESTINATIONS.filter(d => d.type === ukFilter);
@@ -807,7 +807,7 @@ export default function Dashboard() {
                       <div style={{ padding: 20 }}>
                         <div style={{ display: "flex", alignItems: "start", justifyContent: "space-between", gap: 12, marginBottom: 8 }}>
                           <div>
-                            <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700, color: "var(--dark)", margin: "0 0 2px 0" }}>{dest.name.charAt(0).toUpperCase() + dest.name.slice(1)}</h3>
+                            <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 18, fontWeight: 700, color: "var(--dark)", margin: "0 0 2px 0" }}>{toTitleCase(dest.name)}</h3>
                             <p style={{ fontSize: 12, color: "var(--muted)", margin: 0 }}>{dest.country}</p>
                           </div>
                           {/* Booking.com-style score badge */}
@@ -889,7 +889,7 @@ export default function Dashboard() {
                           <div style={{ position: "absolute", inset: 0, backgroundImage: `url(${getImageUrl(dest)})`, backgroundSize: "cover", backgroundPosition: "center" }} />
                           <div style={{ position: "absolute", inset: 0, background: "linear-gradient(transparent 35%, rgba(26,26,46,0.8))" }} />
                           <div style={{ position: "absolute", bottom: 14, left: 14, right: 14 }}>
-                            <p style={{ color: "white", fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 600, fontSize: 16, margin: 0 }}>{dest.name.charAt(0).toUpperCase() + dest.name.slice(1)}</p>
+                            <p style={{ color: "white", fontFamily: "'Playfair Display', serif", fontStyle: "italic", fontWeight: 600, fontSize: 16, margin: 0 }}>{toTitleCase(dest.name)}</p>
                             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 12, margin: "2px 0 0 0", fontFamily: "'DM Mono', monospace" }}>{"£"}{dest.avg_daily_cost_gbp}/day</p>
                           </div>
                         </div>

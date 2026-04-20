@@ -100,6 +100,46 @@ COUNTRY_ALIASES = {
 }
 
 
+# Explicit ordering requested for the flagship country queries. When a DB
+# entry isn't present, we still emit a synthetic destination with the right
+# name so the frontend never shows something like "Spain In Under".
+_PREFERRED_CITIES_BY_COUNTRY = {
+    "spain":         ["barcelona", "madrid", "seville"],
+    "italy":         ["rome", "florence", "venice"],
+    "france":        ["paris", "lyon", "nice"],
+    "greece":        ["athens", "santorini", "mykonos"],
+    "united kingdom": ["london", "edinburgh", "manchester"],
+}
+
+
+def _resolve_country_cities(canonical_country):
+    """Return the preferred 3 destination dicts for a country, falling back
+    to popularity-ordered DB entries when preferred city isn't present."""
+    preferred = _PREFERRED_CITIES_BY_COUNTRY.get(canonical_country, [])
+    out = []
+    used = set()
+    for city in preferred:
+        d = DEST_MAP.get(city)
+        if d and d["id"] not in used:
+            out.append(d)
+            used.add(d["id"])
+        elif city not in used:
+            synthetic = dict(_SYNTHETIC_DEFAULT)
+            synthetic["id"] = city.replace(" ", "-")
+            synthetic["name"] = city.title()
+            synthetic["country"] = canonical_country.title()
+            out.append(synthetic)
+            used.add(city)
+    # Top up from DB popularity if we still have fewer than 3.
+    for d in COUNTRY_CITIES.get(canonical_country, []):
+        if len(out) >= 3:
+            break
+        if d["id"] not in used:
+            out.append(d)
+            used.add(d["id"])
+    return out[:3]
+
+
 def _parse_origin_destination(msg):
     """
     Parse origin and destination(s) from user message.
@@ -117,14 +157,16 @@ def _parse_origin_destination(msg):
     # Remove "from [origin]" from message so it doesn't match as destination
     cleaned = re.sub(r'\bfrom\s+[a-z][a-z\s]{1,25}?(?=\s+to\b|\s*$|\s*,|\s+on\b|\s+for\b|\s+in\b)', '', msg).strip()
 
-    # Check for country names first (they resolve to multiple cities)
+    # Check for country names first (they resolve to multiple cities).
+    # Uses word-boundary matching so aliases like "uk" don't match inside
+    # arbitrary words ("luck", "buck", "stuck"). For flagship countries we
+    # hand back the explicit preferred 3-city shortlist.
     destinations = []
     for alias, canonical in COUNTRY_ALIASES.items():
-        if alias in cleaned:
-            country_dests = COUNTRY_CITIES.get(canonical, [])
+        if re.search(rf"\b{re.escape(alias)}\b", cleaned):
+            country_dests = _resolve_country_cities(canonical)
             if country_dests:
-                destinations = country_dests[:3]  # Top 3 cities in that country
-                return origin, destinations, canonical
+                return origin, country_dests[:3], canonical
 
     # Check for specific city names — use word boundaries so "York" doesn't
     # match inside "New York", and "Bath" doesn't match inside "Bathroom".
@@ -1027,6 +1069,16 @@ ALSO for country queries — when the user asks about a country not a specific c
 
 "visa" → { "country", "visa_type", "duration", "cost", "documents": [...], "apply_url": null, "notes" }
 
+"text" → { "message": "natural-language answer", "followup_question": "one short question to keep the conversation going" } — use for pure conversational turns (greetings, clarifications, short advice). Prefer this over cards when no list/itinerary is needed.
+
+"list" → { "title": "...", "items": [{ "name": "bold head", "description": "short line", "best_for": "who/what", "tip": "one-line insider tip" }] } — use when the user asks for a short named list that isn't hotels/food/flights/tips (e.g., "3 best viewpoints", "top 5 neighbourhoods").
+
+"comparison" → { "title": "...", "columns": ["Option", "Cost", "Vibe", "Best for"], "rows": [{ "Option": "...", "Cost": "\u00a3X", "Vibe": "...", "Best for": "..." }, ...], "verdict": "one-sentence recommendation" } — use for explicit comparison queries ("Prague vs Budapest", "flights vs train").
+
+"itinerary_update" → { "summary": "what changed and why", "activities": [{ "time": "09:00", "activity": "...", "transport": "line + cost", "cost": "\u00a3X", "tip": "..." }] } — use when the user tweaks an existing itinerary ("add a museum after lunch", "make day 2 cheaper").
+
+"place_info" → { "name", "category", "about", "image_keyword" (lowercase city or landmark slug), "quick_facts": [{ "label": "Opening", "value": "09:00-18:00" }, ...], "best_time", "local_tip", "nearby": ["..."], "cost": "\u00a3X", "map_url", "book_url" } — use for place-info queries ("tell me about the Alhambra", "tips for visiting the Colosseum"). Pair with a tips card when the user asks for tips about a place.
+
 INTENT MAPPING:
 - "plan X days in [city]" → itinerary + budget + tips (scams+transport) + 3 food cards
 - "hotels in [city]" → 3 hotels: budget (<£60), mid (£60-150), special/design. REAL names, different neighbourhoods
@@ -1041,6 +1093,31 @@ INTENT MAPPING:
 - "tips for [city]" → detailed tips with all 6 categories
 - "weather in [city]" → weather + packing + best activities
 - "neighbourhood guide" → overview focused on neighbourhood breakdown
+- Pure conversational question ("what's the vibe", "is it safe") → 1 text card
+- "top/best N X in Y" that isn't hotel/food/flight → 1 list card
+- "X vs Y", "compare A and B" → 1 comparison card (+ verdict)
+- "add/remove/swap/change" an activity in the current plan → 1 itinerary_update card
+- "tell me about X" / "tips for X" / "visiting X" for a specific attraction → 1 place_info card (+ 1 tips card if they asked for tips)
+
+GROUP DETECTION — always infer and reuse across turns:
+- "solo", "by myself", "alone" → solo
+- "with partner", "with my boyfriend/girlfriend/husband/wife", "with my date" → couple
+- "with family", "with kids", "with my children" → family
+- "with friends", "mates", "lads", "girls trip" → friends
+Never ask the user twice; if they already said it, act on it.
+
+BUDGET EXTRACTION — accept every phrasing the user throws at you:
+- "under \u00a3500", "\u00a3500 budget", "500 pounds", "budget of 500", "max 500", "within 500" → 500 GBP
+- "$500" → convert to GBP (\u00f70.79).
+Do not confuse currency words with place names.
+
+COUNTRY \u2192 CITY FALLBACK:
+- spain: barcelona, madrid, seville
+- italy: rome, florence, venice
+- france: paris, lyon, nice
+- greece: athens, santorini, mykonos
+- uk: london, edinburgh, manchester
+When a country is named (not a city), return an overview card with `suggested_cities` using at least these picks.
 
 SUGGESTIONS — always 4 natural follow-ups that feel like conversation:
 Good: "What's the street food scene like in [city]?", "Which neighbourhood should I stay in?", "Hidden gems most tourists miss?"
@@ -1736,6 +1813,8 @@ def chat():
     data = request.get_json() or {}
     message = (data.get("message") or "").strip()
     session_id = data.get("session_id") or str(uuid.uuid4())
+    client_history = data.get("conversation_history") or []
+    client_trip_context = data.get("trip_context") or None
 
     if not message:
         return jsonify({"error": "Message is required"}), 400
@@ -1762,7 +1841,16 @@ def chat():
     #    history for memory), else fallback.
     source = "fallback"
     result = None
+    # Prefer the server-side conversation (canonical record) but fall back to
+    # whatever the client sent if we have no stored session (e.g., server restart).
     history = (session or {}).get("conversation", []) if session else []
+    if not history and isinstance(client_history, list):
+        history = [
+            h for h in client_history
+            if isinstance(h, dict)
+            and h.get("role") in ("user", "assistant")
+            and h.get("content")
+        ][-20:]
     api_key = os.getenv("ANTHROPIC_API_KEY")
     if api_key and api_key != "your_anthropic_api_key":
         try:
@@ -1799,9 +1887,19 @@ def chat():
     # 5. Validate destination lock. If the output drifted to another city
     #    (common with Claude's non-EU redirect), force-correct to a
     #    zero-hallucination response centred on the locked destination.
+    # Skip validation for country queries — they intentionally return cards
+    # about several cities in the country, so the single "locked" city is
+    # just the top pick, not the sole valid result.
     validation_passed = True
     validation_issues = []
+    is_country_query = False
     if locked_destination:
+        msg_for_country = effective_message.lower()
+        for alias in COUNTRY_ALIASES:
+            if re.search(rf"\b{re.escape(alias)}\b", msg_for_country):
+                is_country_query = True
+                break
+    if locked_destination and not is_country_query:
         validation_passed, validation_issues = _validate_destination_lock(
             result, locked_destination
         )
@@ -1844,7 +1942,30 @@ def chat():
         user_budget_gbp, num_days, budget_mult_tier,
     )
 
-    # 9. Echo session_id so the frontend can maintain the conversation.
-    #    (Additive; does not change the existing cards/suggestions contract.)
+    # 9. Echo session_id and trip_context so the frontend can maintain state.
     result["session_id"] = session_id
+    trip_context = dict(client_trip_context) if isinstance(client_trip_context, dict) else {}
+    if locked_destination:
+        trip_context["destination"] = locked_destination.get("name") or trip_context.get("destination")
+        if locked_destination.get("country"):
+            trip_context["country"] = locked_destination["country"]
+    if num_days:
+        trip_context["days"] = num_days
+    if user_budget_gbp is not None:
+        trip_context["budget"] = user_budget_gbp
+    # Simple group inference from the last message (complements Claude-side inference)
+    msg_lower = message.lower()
+    group_guess = None
+    if re.search(r"\b(with\s+family|with\s+kids|with\s+my\s+children)\b", msg_lower):
+        group_guess = "family"
+    elif re.search(r"\b(with\s+partner|with\s+my\s+(boyfriend|girlfriend|husband|wife)|with\s+my\s+date|couple)\b", msg_lower):
+        group_guess = "couple"
+    elif re.search(r"\b(with\s+friends|with\s+mates|lads|girls\s+trip)\b", msg_lower):
+        group_guess = "friends"
+    elif re.search(r"\b(solo|by\s+myself|alone)\b", msg_lower):
+        group_guess = "solo"
+    if group_guess:
+        trip_context["group"] = group_guess
+    if trip_context:
+        result["trip_context"] = trip_context
     return jsonify(result)

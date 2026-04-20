@@ -5,10 +5,16 @@ import { sendChatMessage } from "../services/api";
 import {
   OverviewCard, ItineraryCard, HotelCard, FoodCard,
   FlightCard, VisaCard, BudgetCard, TipsCard, WeatherCard,
+  TextCard, ListCard, ComparisonCard, ItineraryUpdateCard, PlaceInfoCard,
 } from "../components/chat-cards";
 import SkeletonCard from "../components/chat-cards/SkeletonCard";
 
-const CARD_MAP = { overview: OverviewCard, itinerary: ItineraryCard, hotel: HotelCard, food: FoodCard, flight: FlightCard, visa: VisaCard, budget: BudgetCard, tips: TipsCard, weather: WeatherCard };
+const CARD_MAP = {
+  overview: OverviewCard, itinerary: ItineraryCard, hotel: HotelCard, food: FoodCard,
+  flight: FlightCard, visa: VisaCard, budget: BudgetCard, tips: TipsCard, weather: WeatherCard,
+  text: TextCard, list: ListCard, comparison: ComparisonCard,
+  itinerary_update: ItineraryUpdateCard, place_info: PlaceInfoCard,
+};
 
 const PLACEHOLDERS = [
   "Plan 5 days in Tokyo\u2026", "Day trip from London this weekend?", "Best street food in Bangkok?",
@@ -162,6 +168,8 @@ export default function Chat() {
   const [placeholderIdx, setPlaceholderIdx] = useState(0);
   const [hasSentQueryParam, setHasSentQueryParam] = useState(false);
   const [sessionId, setSessionId] = useState(null);
+  const [conversationHistory, setConversationHistory] = useState([]);
+  const [tripContext, setTripContext] = useState(null);
   const bottomRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -182,8 +190,14 @@ export default function Chat() {
     setMessages(prev => [...prev, { role: "user", content: msg, time }]);
     setLoading(true);
     try {
-      const res = await sendChatMessage(user, msg, sessionId);
+      const res = await sendChatMessage(user, msg, sessionId, conversationHistory, tripContext);
       if (res.session_id) setSessionId(res.session_id);
+      if (res.trip_context) setTripContext(res.trip_context);
+      setConversationHistory(prev => [
+        ...prev,
+        { role: "user", content: msg },
+        { role: "assistant", content: res.reply || "" },
+      ].slice(-20));
       setMessages(prev => [...prev, { role: "assistant", reply: res.reply || "", cards: res.cards || [], suggestions: res.suggestions || [], time: getTime() }]);
     } catch (err) {
       setMessages(prev => [...prev, {
@@ -194,7 +208,7 @@ export default function Chat() {
         time: getTime(),
       }]);
     } finally { setLoading(false); inputRef.current?.focus(); }
-  }, [input, loading, user, sessionId]);
+  }, [input, loading, user, sessionId, conversationHistory, tripContext]);
 
   const handleKeyDown = (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleSend(); } };
   const showWelcome = messages.length === 0 && !loading;
@@ -204,6 +218,25 @@ export default function Chat() {
       <style>{`@keyframes bounce { 0%, 60%, 100% { transform: translateY(0); } 30% { transform: translateY(-6px); } }`}</style>
 
       <div style={{ display: "flex", flexDirection: "column", height: "calc(100vh - 64px)", background: "var(--bg)", fontFamily: "'DM Sans', sans-serif" }}>
+
+        {/* Trip context banner */}
+        {tripContext?.destination && (
+          <div style={{
+            background: "#F0FDFA", borderBottom: "1px solid #CCFBF1",
+            padding: "10px 16px", display: "flex", alignItems: "center", gap: 10, justifyContent: "center",
+          }}>
+            <span style={{ fontSize: 13, color: "#0F766E", fontWeight: 600 }}>
+              Current trip: {tripContext.destination}
+              {tripContext.days ? ` \u00b7 ${tripContext.days} days` : ""}
+              {tripContext.budget ? ` \u00b7 \u00a3${tripContext.budget}` : ""}
+              {tripContext.group ? ` \u00b7 ${tripContext.group}` : ""}
+            </span>
+            <button onClick={() => { setTripContext(null); setConversationHistory([]); }} style={{
+              border: 0, background: "transparent", cursor: "pointer",
+              color: "#0F766E", fontSize: 13, fontWeight: 600,
+            }}>Clear</button>
+          </div>
+        )}
 
         {/* Messages */}
         <div style={{ flex: 1, overflowY: "auto" }}>

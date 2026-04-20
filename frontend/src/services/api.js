@@ -1,4 +1,4 @@
-const API_BASE = "/api";
+const API_BASE = "";
 
 async function getToken(user) {
   if (!user) return null;
@@ -16,14 +16,14 @@ function headers(token) {
 }
 
 export async function getAllDestinations() {
-  const res = await fetch(`${API_BASE}/destinations`);
+  const res = await fetch(`${API_BASE}/api/destinations`);
   if (!res.ok) throw new Error("Failed to fetch destinations");
   return res.json();
 }
 
 export async function getRecommendations(user, params) {
   const token = await getToken(user);
-  const res = await fetch(`${API_BASE}/recommend`, {
+  const res = await fetch(`${API_BASE}/api/recommend`, {
     method: "POST",
     headers: headers(token),
     body: JSON.stringify(params),
@@ -34,7 +34,7 @@ export async function getRecommendations(user, params) {
 
 export async function getItinerary(user, params) {
   const token = await getToken(user);
-  const res = await fetch(`${API_BASE}/itinerary`, {
+  const res = await fetch(`${API_BASE}/api/itinerary`, {
     method: "POST",
     headers: headers(token),
     body: JSON.stringify(params),
@@ -45,7 +45,7 @@ export async function getItinerary(user, params) {
 
 export async function getMultiCityItinerary(user, params) {
   const token = await getToken(user);
-  const res = await fetch(`${API_BASE}/itinerary/multi`, {
+  const res = await fetch(`${API_BASE}/api/itinerary/multi`, {
     method: "POST",
     headers: headers(token),
     body: JSON.stringify(params),
@@ -56,7 +56,7 @@ export async function getMultiCityItinerary(user, params) {
 
 export async function saveItinerary(user, itinerary) {
   const token = await getToken(user);
-  const res = await fetch(`${API_BASE}/itinerary/save`, {
+  const res = await fetch(`${API_BASE}/api/itinerary/save`, {
     method: "POST",
     headers: headers(token),
     body: JSON.stringify(itinerary),
@@ -67,7 +67,7 @@ export async function saveItinerary(user, itinerary) {
 
 export async function getItineraries(user) {
   const token = await getToken(user);
-  const res = await fetch(`${API_BASE}/itineraries`, {
+  const res = await fetch(`${API_BASE}/api/itineraries`, {
     headers: headers(token),
   });
   if (!res.ok) throw new Error((await res.json()).error || "Fetch failed");
@@ -76,7 +76,7 @@ export async function getItineraries(user) {
 
 export async function saveProfile(user, profile) {
   const token = await getToken(user);
-  const res = await fetch(`${API_BASE}/auth/profile`, {
+  const res = await fetch(`${API_BASE}/api/auth/profile`, {
     method: "POST",
     headers: headers(token),
     body: JSON.stringify(profile),
@@ -87,7 +87,7 @@ export async function saveProfile(user, profile) {
 
 export async function getProfile(user) {
   const token = await getToken(user);
-  const res = await fetch(`${API_BASE}/auth/profile`, {
+  const res = await fetch(`${API_BASE}/api/auth/profile`, {
     headers: headers(token),
   });
   if (!res.ok) throw new Error((await res.json()).error || "Fetch failed");
@@ -95,7 +95,7 @@ export async function getProfile(user) {
 }
 
 export async function checkVisa(passportCountry, destinationCountry) {
-  const res = await fetch(`${API_BASE}/visa-check`, {
+  const res = await fetch(`${API_BASE}/api/visa-check`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -107,20 +107,31 @@ export async function checkVisa(passportCountry, destinationCountry) {
   return res.json();
 }
 
-export async function sendChatMessage(user, message, sessionId) {
+export async function sendChatMessage(user, message, sessionId, conversationHistory, tripContext) {
   const token = await getToken(user);
-  const body = sessionId ? { message, session_id: sessionId } : { message };
-  const res = await fetch(`${API_BASE}/chat`, {
+  const body = { message };
+  if (sessionId) body.session_id = sessionId;
+  if (Array.isArray(conversationHistory) && conversationHistory.length) {
+    body.conversation_history = conversationHistory;
+  }
+  if (tripContext && typeof tripContext === "object") {
+    body.trip_context = tripContext;
+  }
+  const res = await fetch(`${API_BASE}/api/chat`, {
     method: "POST",
     headers: headers(token),
     body: JSON.stringify(body),
   });
-  if (!res.ok) throw new Error((await res.json()).error || "Chat request failed");
+  if (!res.ok) {
+    let detail = "Chat request failed";
+    try { detail = (await res.json()).error || detail; } catch { /* non-JSON */ }
+    throw new Error(detail);
+  }
   return res.json();
 }
 
 export async function checkVisaBatch(passportCountry, destinations) {
-  const res = await fetch(`${API_BASE}/visa-check/batch`, {
+  const res = await fetch(`${API_BASE}/api/visa-check/batch`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -133,7 +144,7 @@ export async function checkVisaBatch(passportCountry, destinations) {
 }
 
 export async function getSimilarDestinations(destinationId, topN = 5) {
-  const res = await fetch(`${API_BASE}/destinations/${destinationId}/similar?top_n=${topN}`);
+  const res = await fetch(`${API_BASE}/api/destinations/${destinationId}/similar?top_n=${topN}`);
   if (!res.ok) throw new Error((await res.json()).error || "Failed to fetch similar destinations");
   return res.json();
 }
@@ -141,14 +152,14 @@ export async function getSimilarDestinations(destinationId, topN = 5) {
 export async function getTrendingDestinations(month = null, topN = 10) {
   const params = new URLSearchParams({ top_n: topN });
   if (month) params.set("month", month);
-  const res = await fetch(`${API_BASE}/destinations/trending?${params}`);
+  const res = await fetch(`${API_BASE}/api/destinations/trending?${params}`);
   if (!res.ok) throw new Error((await res.json()).error || "Failed to fetch trending");
   return res.json();
 }
 
 export async function sendFeedback(userId, destinationId, action) {
   try {
-    await fetch(`${API_BASE}/feedback`, {
+    await fetch(`${API_BASE}/api/feedback`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
@@ -163,7 +174,7 @@ export async function sendFeedback(userId, destinationId, action) {
 }
 
 export async function getFeedbackStats() {
-  const res = await fetch(`${API_BASE}/feedback/stats`);
+  const res = await fetch(`${API_BASE}/api/feedback/stats`);
   return res.json();
 }
 
@@ -171,7 +182,7 @@ export async function getFeedbackStats() {
 
 export async function getCalendarAuthUrl(user) {
   const token = await getToken(user);
-  const res = await fetch(`${API_BASE}/calendar/auth-url`, {
+  const res = await fetch(`${API_BASE}/api/calendar/auth-url`, {
     headers: headers(token),
   });
   if (!res.ok) throw new Error((await res.json()).error || "Failed to get auth URL");
@@ -180,7 +191,7 @@ export async function getCalendarAuthUrl(user) {
 
 export async function getCalendarWindows(user) {
   const token = await getToken(user);
-  const res = await fetch(`${API_BASE}/calendar/free-windows`, {
+  const res = await fetch(`${API_BASE}/api/calendar/free-windows`, {
     headers: headers(token),
   });
   if (!res.ok) throw new Error((await res.json()).error || "Failed to fetch windows");
@@ -189,7 +200,7 @@ export async function getCalendarWindows(user) {
 
 export async function disconnectCalendar(user) {
   const token = await getToken(user);
-  const res = await fetch(`${API_BASE}/calendar/disconnect`, {
+  const res = await fetch(`${API_BASE}/api/calendar/disconnect`, {
     method: "POST",
     headers: headers(token),
   });

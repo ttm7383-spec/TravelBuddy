@@ -88,7 +88,8 @@ export default function Navbar() {
         <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
           {navLink("/dashboard", "Explore")}
           {navLink("/chat", "AI Concierge")}
-          {navLink("/history", "My Trips")}
+          {navLink("/my-trips", "My Trips")}
+          {navLink("/history", "History")}
 
           {/* Avatar */}
           <div className="relative" ref={dropRef}>

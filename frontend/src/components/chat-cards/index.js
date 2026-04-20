@@ -7,3 +7,8 @@ export { default as VisaCard } from "./VisaCard";
 export { default as BudgetCard } from "./BudgetCard";
 export { default as TipsCard } from "./TipsCard";
 export { default as WeatherCard } from "./WeatherCard";
+export { default as TextCard } from "./TextCard";
+export { default as ListCard } from "./ListCard";
+export { default as ComparisonCard } from "./ComparisonCard";
+export { default as ItineraryUpdateCard } from "./ItineraryUpdateCard";
+export { default as PlaceInfoCard } from "./PlaceInfoCard";

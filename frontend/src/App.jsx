@@ -10,6 +10,8 @@ import MultiCityItinerary from "./pages/MultiCityItinerary";
 import History from "./pages/History";
 import Profile from "./pages/Profile";
 import Chat from "./pages/Chat";
+import MyTrips from "./pages/MyTrips";
+import GDPRConsent from "./components/GDPRConsent";
 
 function ProtectedRoute({ children }) {
   const { user } = useAuth();
@@ -35,6 +37,7 @@ function AppRoutes() {
         <Route path="/itinerary/multi" element={<ProtectedRoute><MultiCityItinerary /></ProtectedRoute>} />
         <Route path="/itinerary/:destinationId" element={<ProtectedRoute><Itinerary /></ProtectedRoute>} />
         <Route path="/history" element={<ProtectedRoute><History /></ProtectedRoute>} />
+        <Route path="/my-trips" element={<ProtectedRoute><MyTrips /></ProtectedRoute>} />
         <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
 
         {/* Default redirect */}
@@ -49,6 +52,7 @@ export default function App() {
     <BrowserRouter>
       <AuthProvider>
         <div className="min-h-screen bg-slate-50">
+          <GDPRConsent />
           <AppRoutes />
         </div>
       </AuthProvider>
