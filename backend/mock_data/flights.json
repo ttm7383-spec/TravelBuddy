@@ -3,8 +3,8 @@
     "airline": "Ryanair",
     "airline_code": "FR",
     "flight_number": "FR8164",
-    "price_gbp": 156,
-    "price_per_person_gbp": 156,
+    "price_gbp": 56,
+    "price_per_person_gbp": 56,
     "departure": {
       "airport": "STN",
       "city": "London",
@@ -28,8 +28,8 @@
     "airline": "easyJet",
     "airline_code": "U2",
     "flight_number": "U28421",
-    "price_gbp": 214,
-    "price_per_person_gbp": 214,
+    "price_gbp": 78,
+    "price_per_person_gbp": 78,
     "departure": {
       "airport": "LGW",
       "city": "London",
@@ -50,11 +50,36 @@
     "badge": null
   },
   {
+    "airline": "Vueling",
+    "airline_code": "VY",
+    "flight_number": "VY7823",
+    "price_gbp": 108,
+    "price_per_person_gbp": 108,
+    "departure": {
+      "airport": "LGW",
+      "city": "London",
+      "time": "13:10",
+      "date": "2026-04-15"
+    },
+    "arrival": {
+      "airport": "BCN",
+      "city": "Barcelona",
+      "time": "16:15",
+      "date": "2026-04-15"
+    },
+    "duration": "PT2H05M",
+    "stops": 0,
+    "stops_label": "Direct",
+    "cabin_class": "Economy",
+    "baggage_included": true,
+    "badge": null
+  },
+  {
     "airline": "British Airways",
     "airline_code": "BA",
     "flight_number": "BA478",
-    "price_gbp": 345,
-    "price_per_person_gbp": 345,
+    "price_gbp": 159,
+    "price_per_person_gbp": 159,
     "departure": {
       "airport": "LHR",
       "city": "London",
@@ -75,36 +100,11 @@
     "badge": "fastest"
   },
   {
-    "airline": "Vueling",
-    "airline_code": "VY",
-    "flight_number": "VY7823",
-    "price_gbp": 478,
-    "price_per_person_gbp": 478,
-    "departure": {
-      "airport": "LGW",
-      "city": "London",
-      "time": "13:10",
-      "date": "2026-04-15"
-    },
-    "arrival": {
-      "airport": "BCN",
-      "city": "Barcelona",
-      "time": "16:15",
-      "date": "2026-04-15"
-    },
-    "duration": "PT2H05M",
-    "stops": 0,
-    "stops_label": "Direct",
-    "cabin_class": "Premium Economy",
-    "baggage_included": true,
-    "badge": null
-  },
-  {
     "airline": "Iberia",
     "airline_code": "IB",
     "flight_number": "IB3167",
-    "price_gbp": 589,
-    "price_per_person_gbp": 589,
+    "price_gbp": 185,
+    "price_per_person_gbp": 185,
     "departure": {
       "airport": "LHR",
       "city": "London",
@@ -120,7 +120,7 @@
     "duration": "PT4H35M",
     "stops": 1,
     "stops_label": "1 stop (MAD)",
-    "cabin_class": "Business",
+    "cabin_class": "Economy",
     "baggage_included": true,
     "badge": null
   },
@@ -128,8 +128,8 @@
     "airline": "British Airways",
     "airline_code": "BA",
     "flight_number": "BA482",
-    "price_gbp": 762,
-    "price_per_person_gbp": 762,
+    "price_gbp": 245,
+    "price_per_person_gbp": 245,
     "departure": {
       "airport": "LHR",
       "city": "London",
@@ -145,7 +145,7 @@
     "duration": "PT2H10M",
     "stops": 0,
     "stops_label": "Direct",
-    "cabin_class": "Business",
+    "cabin_class": "Premium Economy",
     "baggage_included": true,
     "badge": "best"
   }

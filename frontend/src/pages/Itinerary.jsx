@@ -188,7 +188,38 @@ export default function Itinerary() {
     load();
   }, [destinationId, searchParams, user]);
 
-  const handleSave = async () => { setSaving(true); try { await saveItinerary(user, itinerary); setSaved(true); } catch (err) { console.error("Save failed:", err); } finally { setSaving(false); } };
+  const handleSave = async () => {
+    setSaving(true);
+    try {
+      // Persist to localStorage so /my-trips always has something (works offline).
+      try {
+        const key = "travelbuddy_saved_trips";
+        const existing = JSON.parse(localStorage.getItem(key) || "[]");
+        const id = itinerary?.destination?.id || `custom-${Date.now()}`;
+        const entry = {
+          id,
+          destination_id: itinerary?.destination?.id,
+          name: itinerary?.destination?.name,
+          country: itinerary?.destination?.country,
+          image: getDestImage(itinerary?.destination?.id),
+          start_date: itinerary?.dates?.start,
+          end_date: itinerary?.dates?.end,
+          dates: itinerary?.dates,
+          total_cost_gbp: itinerary?.estimated_total_cost_gbp,
+          saved_at: new Date().toISOString(),
+        };
+        const deduped = existing.filter((t) => t.id !== id);
+        localStorage.setItem(key, JSON.stringify([entry, ...deduped].slice(0, 50)));
+      } catch (storageErr) {
+        console.warn("localStorage save failed:", storageErr);
+      }
+      // Also try the backend save (non-fatal if it fails — localStorage is the source of truth for MyTrips).
+      try { await saveItinerary(user, itinerary); } catch (e) { console.warn("Backend save skipped:", e); }
+      setSaved(true);
+    } finally {
+      setSaving(false);
+    }
+  };
 
   if (loading) return <LoadingScreen />;
 
@@ -572,10 +603,10 @@ export default function Itinerary() {
                   {/* Badges */}
                   <div style={{ position: "absolute", top: -1, right: 16, display: "flex", gap: 6 }}>
                     {isCheapest && (
-                      <span style={{ fontSize: 11, padding: "4px 12px", borderRadius: "0 0 8px 8px", background: "#15803D", color: "white", fontWeight: 700 }}>Cheapest</span>
+                      <span style={{ fontSize: 11, padding: "4px 12px", borderRadius: "0 0 8px 8px", background: "#15803D", color: "white", fontWeight: 700 }}>{"\uD83D\uDC9A"} Best price</span>
                     )}
                     {isFastest && (
-                      <span style={{ fontSize: 11, padding: "4px 12px", borderRadius: "0 0 8px 8px", background: "#00A3A3", color: "white", fontWeight: 700 }}>Fastest</span>
+                      <span style={{ fontSize: 11, padding: "4px 12px", borderRadius: "0 0 8px 8px", background: "#1a73e8", color: "white", fontWeight: 700 }}>{"\u26A1"} Fastest</span>
                     )}
                   </div>
 
@@ -624,21 +655,26 @@ export default function Itinerary() {
                   <div style={{ display: "flex", gap: 6, flexWrap: "wrap", alignItems: "center" }}>
                     <span style={{ fontSize: 11, padding: "4px 10px", borderRadius: 6, background: "var(--bg)", color: "var(--muted)", fontWeight: 500 }}>{f.cabin_class || "Economy"}</span>
                     <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
-                      <a href={f.google_flights_url || `https://www.google.com/travel/flights?q=Flights+from+${f.departure?.airport}+to+${f.arrival?.airport}+on+${f.departure?.date}`}
+                      <a href={f.google_flights_url || `https://www.google.com/travel/flights?q=${encodeURIComponent(`flights from ${f.departure?.airport} to ${f.arrival?.airport}${f.departure?.date ? ` on ${f.departure.date}` : ""}`)}`}
                         target="_blank" rel="noopener noreferrer"
-                        style={{ fontSize: 13, padding: "8px 18px", borderRadius: 8, background: "#00A3A3", color: "white", textDecoration: "none", fontWeight: 600 }}>
-                        Google Flights
+                        style={{ fontSize: 13, padding: "8px 16px", borderRadius: 8, background: "#1a73e8", color: "white", textDecoration: "none", fontWeight: 600 }}>
+                        {"\uD83D\uDD35"} Google Flights
                       </a>
                       <a href={f.skyscanner_url || `https://www.skyscanner.net/transport/flights/${(f.departure?.airport || "lhr").toLowerCase()}/${(f.arrival?.airport || "").toLowerCase()}/`}
                         target="_blank" rel="noopener noreferrer"
-                        style={{ fontSize: 13, padding: "8px 18px", borderRadius: 8, background: "#FF6B2B", color: "white", textDecoration: "none", fontWeight: 600 }}>
-                        Skyscanner
+                        style={{ fontSize: 13, padding: "8px 16px", borderRadius: 8, background: "#FF6B35", color: "white", textDecoration: "none", fontWeight: 600 }}>
+                        {"\uD83D\uDFE0"} Skyscanner
                       </a>
                     </div>
                   </div>
                 </div>
               );
             })}
+            {(flights && flights.length > 0) && (
+              <p style={{ fontSize: 12, color: "var(--muted)", margin: "4px 2px 0", lineHeight: 1.5 }}>
+                Prices are estimates. Click to check live prices on Google Flights or Skyscanner.
+              </p>
+            )}
           </div>
         )}
 
