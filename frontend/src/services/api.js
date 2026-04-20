@@ -1,4 +1,5 @@
-const API_BASE = "https://travel-buddy-api-3g12.onrender.com";
+const API_BASE =
+  import.meta.env.VITE_API_URL || "https://travel-buddy-api-3g12.onrender.com";
 
 async function getToken(user) {
   if (!user) return null;
@@ -122,12 +123,23 @@ export async function sendChatMessage(user, message, sessionId, conversationHist
     headers: headers(token),
     body: JSON.stringify(body),
   });
-  if (!res.ok) {
-    let detail = "Chat request failed";
-    try { detail = (await res.json()).error || detail; } catch { /* non-JSON */ }
-    throw new Error(detail);
+  const text = await res.text();
+  try {
+    return JSON.parse(text);
+  } catch (e) {
+    console.error("API returned:", text);
+    return {
+      cards: [{ type: "overview", data: {
+        city: "Server starting up",
+        country: "",
+        description: "The server is waking up \u2014 this takes 30 seconds on free tier. Please try again.",
+        vibes: [], highlights: [],
+        best_time: "", language: "", currency: "",
+        local_tip: "Wait 30 seconds and try again.",
+      } }],
+      suggestions: ["Try again", "3 days in Lisbon", "Hotels in Barcelona"],
+    };
   }
-  return res.json();
 }
 
 export async function checkVisaBatch(passportCountry, destinations) {
