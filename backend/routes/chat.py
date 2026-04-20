@@ -1386,18 +1386,83 @@ def _enrich_with_live_data(user_message):
     return "\n\n".join(out)
 
 
-def _call_claude(user_message, history=None, trip_context=None):
-    """Call OpenRouter (free Mistral model) and return parsed JSON.
-    `history` is a list of {role, content} dicts so the assistant remembers
-    prior turns. `trip_context` carries destination/days/budget/group state."""
-    import requests
+def _parse_llm_json(text):
+    """Extract JSON from an LLM response, handling code-fenced or raw text."""
+    json_match = re.search(r"```(?:json)?\s*([\s\S]*?)```", text)
+    if json_match:
+        text = json_match.group(1).strip()
+    try:
+        return json.loads(text)
+    except Exception:
+        start = text.find('{')
+        end = text.rfind('}')
+        if start != -1 and end > start:
+            try:
+                return json.loads(text[start:end + 1])
+            except Exception:
+                pass
+    return None
 
-    api_key = os.getenv("OPENROUTER_API_KEY")
-    print(f"[OpenRouter] API key present: {bool(api_key)}, starts with: {api_key[:8] if api_key else 'NONE'}")
-    if not api_key:
+
+def _call_anthropic(messages):
+    """Call Anthropic Claude. Returns parsed JSON or None."""
+    api_key = os.getenv("ANTHROPIC_API_KEY")
+    if not api_key or api_key == "your_anthropic_api_key":
+        return None
+    try:
+        import anthropic
+        client = anthropic.Anthropic(api_key=api_key)
+        # Anthropic takes system separately; strip it from messages.
+        system = next((m["content"] for m in messages if m["role"] == "system"), SYSTEM_PROMPT)
+        chat_msgs = [m for m in messages if m["role"] != "system"]
+        response = client.messages.create(
+            model="claude-haiku-4-5-20251001",
+            max_tokens=8192,
+            system=system,
+            messages=chat_msgs,
+        )
+        return _parse_llm_json(response.content[0].text.strip())
+    except Exception as e:
+        print(f"[Anthropic] request failed: {e}")
         return None
 
-    # Keep Wikipedia + Amadeus enrichment so responses stay grounded.
+
+def _call_openrouter(messages):
+    """Call OpenRouter (free Mistral). Returns parsed JSON or None."""
+    import requests
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    if not api_key or api_key == "your_openrouter_api_key":
+        return None
+    try:
+        response = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "mistralai/mistral-7b-instruct:free",
+                "messages": messages,
+                "max_tokens": 4096,
+            },
+            timeout=60,
+        )
+        data = response.json()
+        return _parse_llm_json(data["choices"][0]["message"]["content"].strip())
+    except Exception as e:
+        print(f"[OpenRouter] request failed: {e}")
+        return None
+
+
+def _call_claude(user_message, history=None, trip_context=None):
+    """Try Anthropic first, then OpenRouter. Returns parsed JSON or None."""
+    anthropic_key = os.getenv("ANTHROPIC_API_KEY")
+    openrouter_key = os.getenv("OPENROUTER_API_KEY")
+    print(f"[LLM] anthropic={bool(anthropic_key)}, openrouter={bool(openrouter_key)}")
+    if not (anthropic_key or openrouter_key):
+        return None
+
+    # Ground the user's message with Wikipedia + Amadeus context.
     wiki_context = _get_wikipedia_context(user_message)
     live_context = _enrich_with_live_data(user_message)
 
@@ -1414,7 +1479,6 @@ specific street names, specific neighbourhood names,
 specific local knowledge. Do not use generic descriptions.
 """
 
-    # Build the messages array: system prompt + prior turns + current turn.
     messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     if history:
         for turn in history[-10:]:
@@ -1424,40 +1488,13 @@ specific local knowledge. Do not use generic descriptions.
                 messages.append({"role": role, "content": content})
     messages.append({"role": "user", "content": enriched_message})
 
-    try:
-        response = requests.post(
-            "https://openrouter.ai/api/v1/chat/completions",
-            headers={
-                "Authorization": f"Bearer {api_key}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "model": "mistralai/mistral-7b-instruct:free",
-                "messages": messages,
-                "max_tokens": 4096,
-            },
-            timeout=60,
-        )
-        data = response.json()
-        text = data["choices"][0]["message"]["content"].strip()
-    except Exception as e:
-        print(f"[OpenRouter] request failed: {e}")
-        return None
-
-    json_match = re.search(r"```(?:json)?\s*([\s\S]*?)```", text)
-    if json_match:
-        text = json_match.group(1).strip()
-
-    try:
-        return json.loads(text)
-    except Exception:
-        start = text.find('{')
-        end = text.rfind('}')
-        if start != -1 and end > start:
-            try:
-                return json.loads(text[start:end + 1])
-            except Exception:
-                pass
+    # Prefer Anthropic when available; fall back to OpenRouter silently.
+    if anthropic_key:
+        result = _call_anthropic(messages)
+        if result:
+            return result
+    if openrouter_key:
+        return _call_openrouter(messages)
     return None
 
 
@@ -1954,14 +1991,17 @@ def chat():
             and h.get("role") in ("user", "assistant")
             and h.get("content")
         ][-20:]
-    api_key = os.getenv("OPENROUTER_API_KEY")
-    if api_key and api_key != "your_openrouter_api_key":
+    has_llm = (
+        (os.getenv("ANTHROPIC_API_KEY") and os.getenv("ANTHROPIC_API_KEY") != "your_anthropic_api_key")
+        or (os.getenv("OPENROUTER_API_KEY") and os.getenv("OPENROUTER_API_KEY") != "your_openrouter_api_key")
+    )
+    if has_llm:
         try:
             result = _call_claude(effective_message, history=history)
             if result:
-                source = "openrouter"
+                source = "llm"
         except Exception as e:
-            print(f"[Chat] OpenRouter API error: {e}")
+            print(f"[Chat] LLM error: {e}")
 
     if result is None:
         # Greetings get a friendly reply-only response (no random cards).
