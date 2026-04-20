@@ -68,7 +68,15 @@ def create_app():
         return response
 
     # Enable CORS so the React frontend can call the API
-    CORS(app, origins=["http://localhost:5173", "http://localhost:5174", "http://localhost:5175", "http://localhost:5176", "http://localhost:3000"])
+    CORS(app, origins=[
+        "http://localhost:5173",
+        "http://localhost:5174",
+        "http://localhost:5175",
+        "http://localhost:5176",
+        "http://localhost:3000",
+        "https://travel-buddy-five-mu.vercel.app",
+        "https://travel-buddy-git-main-ttm7383-specs-projects.vercel.app",
+    ])
 
     # Register route blueprints
     app.register_blueprint(recommend_bp)
