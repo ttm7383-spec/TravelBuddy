@@ -168,13 +168,22 @@ export default function Dashboard() {
   const { user, profile, setProfile } = useAuth();
   const navigate = useNavigate();
 
+  const today = new Date();
+  const nextMonth = new Date(today);
+  nextMonth.setMonth(today.getMonth() + 1);
+  const twoWeeks = new Date(nextMonth);
+  twoWeeks.setDate(nextMonth.getDate() + 7);
+  const formatDate = (d) => d.toISOString().split("T")[0];
+  const todayStr = formatDate(today);
+
   const [tripMode, setTripMode] = useState("international");
   const [searchMode, setSearchMode] = useState("recommend");
   const [departure, setDeparture] = useState("London");
   const [destination, setDestination] = useState("");
   const [destinationResult, setDestinationResult] = useState(null);
-  const [startDate, setStartDate] = useState("2026-04-15");
-  const [endDate, setEndDate] = useState("2026-04-22");
+  const [startDate, setStartDate] = useState(formatDate(nextMonth));
+  const [endDate, setEndDate] = useState(formatDate(twoWeeks));
+  const [calendarConnected, setCalendarConnected] = useState(false);
   const [budget, setBudget] = useState(profile?.budget_level || "medium");
   const [styles, setStyles] = useState(profile?.travel_style || ["beach", "culture"]);
   const [group, setGroup] = useState(profile?.group_type || "solo");
@@ -196,6 +205,7 @@ export default function Dashboard() {
       .catch(() => {});
     // Check for calendar connection callback
     if (searchParams.get("calendar") === "connected") {
+      setCalendarConnected(true);
       setCalendarToast(true);
       searchParams.delete("calendar");
       setSearchParams(searchParams, { replace: true });
@@ -481,12 +491,12 @@ export default function Dashboard() {
                   </div>
                   <div style={{ padding: "14px 16px", borderRight: "1px solid var(--border)" }}>
                     <div className="label-uppercase" style={{ marginBottom: 4 }}>DEPARTURE</div>
-                    <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)}
+                    <input type="date" value={startDate} min={todayStr} onChange={e => setStartDate(e.target.value)}
                       style={{ width: "100%", border: 0, padding: 0, fontSize: 15, fontWeight: 600, color: "var(--dark)", fontFamily: "'DM Sans', sans-serif", background: "transparent" }} />
                   </div>
                   <div style={{ padding: "14px 16px", borderRight: "1px solid var(--border)" }}>
                     <div className="label-uppercase" style={{ marginBottom: 4 }}>RETURN</div>
-                    <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)}
+                    <input type="date" value={endDate} min={startDate || todayStr} onChange={e => setEndDate(e.target.value)}
                       style={{ width: "100%", border: 0, padding: 0, fontSize: 15, fontWeight: 600, color: "var(--dark)", fontFamily: "'DM Sans', sans-serif", background: "transparent" }} />
                   </div>
                   <div style={{ padding: "14px 16px" }}>
@@ -515,14 +525,27 @@ export default function Dashboard() {
                 )}
               </div>
 
-              {/* Google Calendar integration */}
-              <CalendarConnect
-                user={user}
-                onWindowSelect={(start, end) => {
-                  setStartDate(start);
-                  setEndDate(end);
-                }}
-              />
+              {/* Google Calendar integration — hidden until the user opts in */}
+              {!calendarConnected ? (
+                <button
+                  onClick={() => setCalendarConnected(true)}
+                  style={{
+                    marginTop: 4, background: "transparent", border: 0, padding: "4px 0",
+                    color: "var(--primary)", fontSize: 12, fontWeight: 600,
+                    fontFamily: "'DM Sans', sans-serif", cursor: "pointer", textAlign: "left",
+                  }}
+                >
+                  + Connect Google Calendar
+                </button>
+              ) : (
+                <CalendarConnect
+                  user={user}
+                  onWindowSelect={(start, end) => {
+                    setStartDate(start);
+                    setEndDate(end);
+                  }}
+                />
+              )}
 
               {searchMode === "recommend" && (
                 <>
@@ -656,13 +679,13 @@ export default function Dashboard() {
                 </div>
                 <div style={{ flex: 1 }}>
                   <div className="label-uppercase" style={{ marginBottom: 6 }}>DATE</div>
-                  <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)}
+                  <input type="date" value={startDate} min={todayStr} onChange={e => setStartDate(e.target.value)}
                     style={{ width: "100%", padding: "12px 16px", border: "1.5px solid var(--border)", borderRadius: 10, fontSize: 14, fontWeight: 600, color: "var(--dark)", fontFamily: "'DM Sans', sans-serif" }} />
                 </div>
                 {tripMode === "uk" && (
                   <div style={{ flex: 1 }}>
                     <div className="label-uppercase" style={{ marginBottom: 6 }}>RETURN</div>
-                    <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)}
+                    <input type="date" value={endDate} min={startDate || todayStr} onChange={e => setEndDate(e.target.value)}
                       style={{ width: "100%", padding: "12px 16px", border: "1.5px solid var(--border)", borderRadius: 10, fontSize: 14, fontWeight: 600, color: "var(--dark)", fontFamily: "'DM Sans', sans-serif" }} />
                   </div>
                 )}
