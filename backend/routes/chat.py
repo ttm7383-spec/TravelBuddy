@@ -903,6 +903,18 @@ def _log_chat_debug(requested_destination, final_destination,
 # ── Claude system prompt ──────────────────────────────────────────
 SYSTEM_PROMPT = """You are TravelBuddy — a knowledgeable travel companion with deep knowledge of destinations worldwide. You respond like someone who has actually lived in every city, not a tourist who visited once.
 
+CRITICAL RULES — never break these:
+
+1. STAY ON DESTINATION — if the user asks about Spain, ONLY return Spanish cities. Never add other countries. If the user asks about Barcelona, only plan Barcelona. Never mix countries in one response.
+
+2. BUDGET MUST WORK — if the user says £600 for Spain 8 days, the total of ALL cards combined must NOT exceed £600. State clearly: "Your £600 covers X days across Y cities." Never plan a trip that costs more than the stated budget. If the budget is insufficient, shorten the trip or downgrade tier — never silently exceed.
+
+3. ACTIVITIES MUST BE UNIQUE per day — never repeat the same attraction across multiple days. Day 1, Day 2, Day 3 must each have completely different named activities.
+
+4. LUNCH must be a specific named restaurant or market — never write "Lunch — Mix of local & restaurants" or "Lunch at a local restaurant". Always write something like "Lunch at Bar del Pla, Carrer de la Montcada 2 — order the €12 menú del día".
+
+5. DAILY COST must be realistic and add up to the total — if total budget is £600 and the trip is 8 days, daily budget = £600 / 8 = £75/day maximum. Every day card must show costs within that daily limit, and the sum across days must equal the stated total.
+
 SCOPE — STRICTLY TRAVEL:
 You only help with travel topics: destinations, itineraries, hotels, food, flights, visas, weather, budgets, packing, local tips, and trip logistics. If the user asks ANYTHING unrelated to travel (coding, math, personal appearance, general chat, compliments, emotional support, any non-travel topic), respond ONLY with:
 { "reply": "I'm TravelBuddy — I can only help with travel. Ask me about destinations, hotels, food, flights, itineraries, or trip planning.", "cards": [], "suggestions": ["Plan 3 days in Tokyo", "Hotels in Paris", "Where should I go?", "Food in Bangkok"] }
@@ -1274,14 +1286,104 @@ specific metro lines, specific local dishes.
     return context
 
 
+try:
+    from services.amadeus_service import search_flights as _amadeus_flights
+    from services.amadeus_service import search_hotels as _amadeus_hotels
+    _AMADEUS_AVAILABLE = True
+except Exception as _amadeus_err:
+    print(f"[Chat] Amadeus service unavailable: {_amadeus_err}")
+    _AMADEUS_AVAILABLE = False
+
+    def _amadeus_flights(*a, **kw):
+        return []
+
+    def _amadeus_hotels(*a, **kw):
+        return []
+
+
+def _extract_origin_city(msg_lower):
+    """Pull 'from <city>' out of the message, defaulting to London."""
+    m = re.search(r"\bfrom\s+([a-z][a-z\s]{1,25}?)(?:\s+to\b|\s*$|\s*,|\s+on\b|\s+for\b|\s+in\b)", msg_lower)
+    return m.group(1).strip().title() if m else "London"
+
+
+def _extract_departure_date(msg):
+    """Heuristic: grab an ISO date from the message, else default to +30 days.
+    Amadeus needs a real future date or it returns nothing."""
+    m = re.search(r"\b(20\d{2}-\d{2}-\d{2})\b", msg)
+    if m:
+        return m.group(1)
+    from datetime import datetime as _dt, timedelta
+    return (_dt.utcnow() + timedelta(days=30)).strftime("%Y-%m-%d")
+
+
 def _enrich_with_live_data(user_message):
     """
-    Placeholder for live data enrichment (Amadeus flights/hotels, etc.).
-    Returns an empty string until a live data source is wired in —
-    keeps _call_claude's signature forward-compatible without affecting
-    current behaviour.
+    Amadeus live enrichment. When the user's message mentions flights or
+    hotels AND AMADEUS_API_KEY is set, we fetch 2-3 real offers per type and
+    format them as a context block for Claude to ground its response.
+    Silent no-op when keys missing or the API returns nothing — never fatal.
     """
-    return ""
+    if not _AMADEUS_AVAILABLE:
+        return ""
+    if not (os.getenv("AMADEUS_API_KEY") and os.getenv("AMADEUS_API_SECRET")):
+        return ""
+
+    msg = (user_message or "").lower()
+    locked = _resolve_locked_destination(user_message, msg, [])
+    if not locked:
+        return ""
+
+    dest_city = locked.get("name")
+    if not dest_city:
+        return ""
+
+    wants_flight = bool(re.search(r"\b(flight|flights|fly|airline|airfare)\b", msg))
+    wants_hotel = bool(re.search(r"\b(hotel|hotels|stay|accommodation|hostel)\b", msg))
+
+    # If the user didn't ask for either, don't spend API credits.
+    if not (wants_flight or wants_hotel):
+        return ""
+
+    origin = _extract_origin_city(msg)
+    depart_date = _extract_departure_date(msg)
+
+    out = []
+    if wants_flight:
+        try:
+            flights = _amadeus_flights(origin, dest_city, depart_date, adults=1) or []
+            if flights:
+                lines = [f"- {f.get('airline', '?')} {f.get('flight_number', '')}: "
+                         f"{f.get('departure', {}).get('time', '')} → "
+                         f"{f.get('arrival', {}).get('time', '')}, "
+                         f"{f.get('duration', '')}, £{f.get('price_gbp', '?')}"
+                         for f in flights[:3]]
+                out.append(
+                    "LIVE FLIGHTS from Amadeus (" + origin + " → " + dest_city +
+                    " on " + depart_date + "):\n" + "\n".join(lines)
+                )
+        except Exception as e:
+            print(f"[Amadeus flights] {e}")
+
+    if wants_hotel:
+        try:
+            from datetime import datetime as _dt, timedelta
+            checkin = depart_date
+            checkout = (_dt.fromisoformat(depart_date) + timedelta(days=3)).strftime("%Y-%m-%d")
+            hotels = _amadeus_hotels(dest_city, checkin, checkout, adults=1) or []
+            if hotels:
+                lines = [f"- {h.get('name', '?')} ({h.get('stars', '?')}★): "
+                         f"£{h.get('price_per_night_gbp', '?')} /night, "
+                         f"{h.get('neighbourhood') or h.get('area') or ''}"
+                         for h in hotels[:3]]
+                out.append(
+                    "LIVE HOTELS from Amadeus (" + dest_city +
+                    " " + checkin + " to " + checkout + "):\n" + "\n".join(lines)
+                )
+        except Exception as e:
+            print(f"[Amadeus hotels] {e}")
+
+    return "\n\n".join(out)
 
 
 def _call_claude(user_message, history=None):
