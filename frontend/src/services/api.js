@@ -1,5 +1,4 @@
-// Use Vercel's proxy (same-origin → no CORS) unless VITE_API_URL overrides it.
-const API_BASE = import.meta.env.VITE_API_URL || "";
+const API_BASE = "https://travel-buddy-api-3g12.onrender.com";
 
 async function getToken(user) {
   if (!user) return null;
