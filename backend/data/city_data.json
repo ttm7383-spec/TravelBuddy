@@ -34,9 +34,10 @@
       {"name": "W Barcelona", "price_per_night_gbp": 280, "rating": 4.7, "stars": 5, "amenities": ["Beachfront", "Infinity pool", "Spa", "Fine dining", "Sea view"], "room_type": "Fabulous Room Sea View", "cancellation": "Non-refundable", "board_type": "Breakfast Included"}
     ],
     "flights_from_london": [
-      {"airline": "Ryanair", "airline_code": "FR", "price_gbp": 35, "departure_time": "06:25", "arrival_time": "09:40", "duration": "2h 15m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "Vueling", "airline_code": "VY", "price_gbp": 52, "departure_time": "10:30", "arrival_time": "13:40", "duration": "2h 10m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "British Airways", "airline_code": "BA", "price_gbp": 115, "departure_time": "08:00", "arrival_time": "11:10", "duration": "2h 10m", "stops": 0, "stops_label": "Direct"}
+      {"airline": "Ryanair", "airline_code": "FR", "origin_airport": "STN", "price_gbp": 45, "departure_time": "06:25", "arrival_time": "09:40", "duration": "2h 15m", "stops": 0, "stops_label": "Direct", "badge": "cheapest"},
+      {"airline": "easyJet", "airline_code": "U2", "origin_airport": "LGW", "price_gbp": 67, "departure_time": "07:10", "arrival_time": "10:30", "duration": "2h 20m", "stops": 0, "stops_label": "Direct"},
+      {"airline": "Vueling", "airline_code": "VY", "origin_airport": "LHR", "price_gbp": 89, "departure_time": "10:30", "arrival_time": "13:50", "duration": "2h 20m", "stops": 0, "stops_label": "Direct"},
+      {"airline": "British Airways", "airline_code": "BA", "origin_airport": "LHR", "price_gbp": 145, "departure_time": "08:00", "arrival_time": "11:15", "duration": "2h 15m", "stops": 0, "stops_label": "Direct", "badge": "fastest"}
     ],
     "restaurants": [
       {"name": "Cal Pep", "cuisine": "Catalan Tapas", "price_level": "££", "rating": 4.6, "dietary": ["gluten-free-options"], "address": "Plaça de les Olles 8", "must_try": "Fried baby squid"},
@@ -142,9 +143,10 @@
       {"name": "Hotel de Russie", "price_per_night_gbp": 420, "rating": 4.8, "stars": 5, "amenities": ["Secret garden", "Spa", "Piazza del Popolo location"], "room_type": "Deluxe Room Garden View", "cancellation": "Non-refundable", "board_type": "Breakfast Included"}
     ],
     "flights_from_london": [
-      {"airline": "Ryanair", "airline_code": "FR", "price_gbp": 32, "departure_time": "06:40", "arrival_time": "10:15", "duration": "2h 35m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "Wizz Air", "airline_code": "W6", "price_gbp": 40, "departure_time": "15:30", "arrival_time": "19:00", "duration": "2h 30m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "British Airways", "airline_code": "BA", "price_gbp": 110, "departure_time": "09:00", "arrival_time": "12:35", "duration": "2h 35m", "stops": 0, "stops_label": "Direct"}
+      {"airline": "Ryanair", "airline_code": "FR", "origin_airport": "STN", "price_gbp": 52, "departure_time": "06:40", "arrival_time": "10:25", "duration": "2h 45m", "stops": 0, "stops_label": "Direct", "badge": "cheapest"},
+      {"airline": "easyJet", "airline_code": "U2", "origin_airport": "LGW", "price_gbp": 78, "departure_time": "07:30", "arrival_time": "11:20", "duration": "2h 50m", "stops": 0, "stops_label": "Direct"},
+      {"airline": "ITA Airways", "airline_code": "AZ", "origin_airport": "LHR", "price_gbp": 112, "departure_time": "10:00", "arrival_time": "13:40", "duration": "2h 40m", "stops": 0, "stops_label": "Direct", "badge": "fastest"},
+      {"airline": "British Airways", "airline_code": "BA", "origin_airport": "LHR", "price_gbp": 156, "departure_time": "09:00", "arrival_time": "12:45", "duration": "2h 45m", "stops": 0, "stops_label": "Direct"}
     ],
     "restaurants": [
       {"name": "Da Enzo al 29", "cuisine": "Roman Trattoria", "price_level": "££", "rating": 4.7, "dietary": ["vegetarian-options", "gluten-free-options"], "address": "Via dei Vascellari 29, Trastevere", "must_try": "Cacio e pepe"},
@@ -250,9 +252,10 @@
       {"name": "Bairro Alto Hotel", "price_per_night_gbp": 250, "rating": 4.7, "stars": 5, "amenities": ["Rooftop terrace", "Spa", "River views", "BAHR restaurant"], "room_type": "Deluxe Room", "cancellation": "Non-refundable", "board_type": "Breakfast Included"}
     ],
     "flights_from_london": [
-      {"airline": "Ryanair", "airline_code": "FR", "price_gbp": 28, "departure_time": "06:45", "arrival_time": "09:15", "duration": "2h 30m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "TAP Portugal", "airline_code": "TP", "price_gbp": 75, "departure_time": "10:00", "arrival_time": "12:30", "duration": "2h 30m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "easyJet", "airline_code": "U2", "price_gbp": 42, "departure_time": "14:20", "arrival_time": "16:50", "duration": "2h 30m", "stops": 0, "stops_label": "Direct"}
+      {"airline": "Ryanair", "airline_code": "FR", "origin_airport": "STN", "price_gbp": 34, "departure_time": "06:45", "arrival_time": "09:20", "duration": "2h 35m", "stops": 0, "stops_label": "Direct", "badge": "cheapest"},
+      {"airline": "easyJet", "airline_code": "U2", "origin_airport": "LGW", "price_gbp": 58, "departure_time": "07:40", "arrival_time": "10:20", "duration": "2h 40m", "stops": 0, "stops_label": "Direct"},
+      {"airline": "TAP Portugal", "airline_code": "TP", "origin_airport": "LHR", "price_gbp": 89, "departure_time": "10:00", "arrival_time": "12:30", "duration": "2h 30m", "stops": 0, "stops_label": "Direct", "badge": "fastest"},
+      {"airline": "British Airways", "airline_code": "BA", "origin_airport": "LHR", "price_gbp": 128, "departure_time": "09:00", "arrival_time": "11:35", "duration": "2h 35m", "stops": 0, "stops_label": "Direct"}
     ],
     "restaurants": [
       {"name": "Time Out Market", "cuisine": "Food Hall", "price_level": "£-£££", "rating": 4.5, "dietary": ["vegan-options", "vegetarian-options", "gluten-free-options", "halal-options"], "address": "Av. 24 de Julho 49", "must_try": "Pastel de nata from Manteigaria"},
@@ -466,9 +469,9 @@
       {"name": "Electra Metropolis Hotel", "price_per_night_gbp": 110, "rating": 4.5, "stars": 5, "amenities": ["Rooftop restaurant", "Spa", "Pool", "Free WiFi"], "room_type": "Superior Room", "cancellation": "Free cancellation", "board_type": "Breakfast Included"}
     ],
     "flights_from_london": [
-      {"airline": "Ryanair", "airline_code": "FR", "price_gbp": 35, "departure_time": "06:30", "arrival_time": "12:30", "duration": "3h 30m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "easyJet", "airline_code": "U2", "price_gbp": 48, "departure_time": "11:00", "arrival_time": "16:50", "duration": "3h 50m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "British Airways", "airline_code": "BA", "price_gbp": 120, "departure_time": "09:00", "arrival_time": "14:50", "duration": "3h 50m", "stops": 0, "stops_label": "Direct"}
+      {"airline": "Ryanair", "airline_code": "FR", "origin_airport": "STN", "price_gbp": 67, "departure_time": "06:30", "arrival_time": "12:00", "duration": "3h 30m", "stops": 0, "stops_label": "Direct", "badge": "cheapest"},
+      {"airline": "easyJet", "airline_code": "U2", "origin_airport": "LGW", "price_gbp": 89, "departure_time": "11:00", "arrival_time": "16:35", "duration": "3h 35m", "stops": 0, "stops_label": "Direct"},
+      {"airline": "British Airways", "airline_code": "BA", "origin_airport": "LHR", "price_gbp": 178, "departure_time": "09:00", "arrival_time": "14:30", "duration": "3h 30m", "stops": 0, "stops_label": "Direct", "badge": "fastest"}
     ],
     "restaurants": [
       {"name": "Thanasis", "cuisine": "Greek", "price_level": "£", "rating": 4.4, "dietary": ["halal-options", "gluten-free-options"], "address": "Mitropoleos 69, Monastiraki", "must_try": "Kebab platter with pitta"},
@@ -547,9 +550,9 @@
       {"name": "Waldorf Astoria Amsterdam", "price_per_night_gbp": 450, "rating": 4.8, "stars": 5, "amenities": ["Canal mansion", "Spa", "Pool", "2 Michelin restaurant", "Garden"], "room_type": "Deluxe King Canal View", "cancellation": "Non-refundable", "board_type": "Breakfast Included"}
     ],
     "flights_from_london": [
-      {"airline": "easyJet", "airline_code": "U2", "price_gbp": 35, "departure_time": "07:00", "arrival_time": "09:20", "duration": "1h 20m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "KLM", "airline_code": "KL", "price_gbp": 85, "departure_time": "10:00", "arrival_time": "12:20", "duration": "1h 20m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "British Airways", "airline_code": "BA", "price_gbp": 110, "departure_time": "08:30", "arrival_time": "10:50", "duration": "1h 20m", "stops": 0, "stops_label": "Direct"}
+      {"airline": "easyJet", "airline_code": "U2", "origin_airport": "LGW", "price_gbp": 38, "departure_time": "07:00", "arrival_time": "09:20", "duration": "1h 20m", "stops": 0, "stops_label": "Direct", "badge": "cheapest"},
+      {"airline": "KLM", "airline_code": "KL", "origin_airport": "LHR", "price_gbp": 87, "departure_time": "10:00", "arrival_time": "12:20", "duration": "1h 20m", "stops": 0, "stops_label": "Direct", "badge": "fastest"},
+      {"airline": "British Airways", "airline_code": "BA", "origin_airport": "LHR", "price_gbp": 98, "departure_time": "08:30", "arrival_time": "10:55", "duration": "1h 25m", "stops": 0, "stops_label": "Direct"}
     ],
     "restaurants": [
       {"name": "The Pancake Bakery", "cuisine": "Dutch", "price_level": "£", "rating": 4.3, "dietary": ["vegetarian-options", "gluten-free-options"], "address": "Prinsengracht 191", "must_try": "Dutch bacon and cheese pancake"},
@@ -1897,9 +1900,10 @@
       {"name": "Hotel Ritz Madrid (Mandarin Oriental)", "price_per_night_gbp": 420, "rating": 4.9, "stars": 5, "amenities": ["Spa", "Garden terrace", "Prado views", "Fine dining", "Butler service"], "room_type": "Deluxe Room Prado View", "cancellation": "Non-refundable", "board_type": "Breakfast Included"}
     ],
     "flights_from_london": [
-      {"airline": "Ryanair", "airline_code": "FR", "price_gbp": 30, "departure_time": "06:30", "arrival_time": "09:55", "duration": "2h 25m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "Iberia", "airline_code": "IB", "price_gbp": 85, "departure_time": "10:00", "arrival_time": "13:25", "duration": "2h 25m", "stops": 0, "stops_label": "Direct"},
-      {"airline": "British Airways", "airline_code": "BA", "price_gbp": 110, "departure_time": "08:30", "arrival_time": "11:55", "duration": "2h 25m", "stops": 0, "stops_label": "Direct"}
+      {"airline": "Ryanair", "airline_code": "FR", "origin_airport": "STN", "price_gbp": 39, "departure_time": "06:30", "arrival_time": "09:55", "duration": "2h 25m", "stops": 0, "stops_label": "Direct", "badge": "cheapest"},
+      {"airline": "easyJet", "airline_code": "U2", "origin_airport": "LGW", "price_gbp": 72, "departure_time": "07:30", "arrival_time": "11:00", "duration": "2h 30m", "stops": 0, "stops_label": "Direct"},
+      {"airline": "Iberia", "airline_code": "IB", "origin_airport": "LHR", "price_gbp": 98, "departure_time": "10:00", "arrival_time": "13:20", "duration": "2h 20m", "stops": 0, "stops_label": "Direct", "badge": "fastest"},
+      {"airline": "British Airways", "airline_code": "BA", "origin_airport": "LHR", "price_gbp": 132, "departure_time": "08:30", "arrival_time": "11:55", "duration": "2h 25m", "stops": 0, "stops_label": "Direct"}
     ],
     "restaurants": [
       {"name": "Sobrino de Botín", "cuisine": "Traditional Castilian", "price_level": "£££", "rating": 4.5, "dietary": ["gluten-free-options"], "address": "Calle Cuchilleros 17", "must_try": "Roast suckling pig (world's oldest restaurant)"},

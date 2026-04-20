@@ -383,16 +383,19 @@ def _mock_flights(origin_city, destination_city, departure_date):
     dest_iata = IATA_CACHE.get(destination_city.lower(), "")
 
     if city and "flights_from_london" in city:
-        # Use curated city-specific flight data
+        # Use curated city-specific flight data. `origin_airport` on each
+        # entry wins when present so budget carriers correctly show STN/LGW
+        # instead of defaulting to LHR/LON.
         flights = []
         for f in city["flights_from_london"]:
+            dep_airport = f.get("origin_airport") or origin_iata
             flights.append({
                 "airline": f["airline"],
                 "airline_code": f["airline_code"],
                 "flight_number": f"{f['airline_code']}{random.randint(100,999)}",
                 "price_gbp": f["price_gbp"],
                 "price_per_person_gbp": f["price_gbp"],
-                "departure": {"airport": origin_iata, "city": origin_city,
+                "departure": {"airport": dep_airport, "city": origin_city,
                               "time": f["departure_time"], "date": departure_date},
                 "arrival": {"airport": dest_iata, "city": destination_city,
                             "time": f["arrival_time"], "date": departure_date},

@@ -1,152 +1,29 @@
 [
-  {
-    "airline": "Ryanair",
-    "airline_code": "FR",
-    "flight_number": "FR8164",
-    "price_gbp": 56,
-    "price_per_person_gbp": 56,
-    "departure": {
-      "airport": "STN",
-      "city": "London",
-      "time": "06:00",
-      "date": "2026-04-15"
-    },
-    "arrival": {
-      "airport": "BCN",
-      "city": "Barcelona",
-      "time": "09:20",
-      "date": "2026-04-15"
-    },
-    "duration": "PT2H20M",
-    "stops": 0,
-    "stops_label": "Direct",
-    "cabin_class": "Economy",
-    "baggage_included": false,
-    "badge": "cheapest"
-  },
-  {
-    "airline": "easyJet",
-    "airline_code": "U2",
-    "flight_number": "U28421",
-    "price_gbp": 78,
-    "price_per_person_gbp": 78,
-    "departure": {
-      "airport": "LGW",
-      "city": "London",
-      "time": "07:45",
-      "date": "2026-04-15"
-    },
-    "arrival": {
-      "airport": "BCN",
-      "city": "Barcelona",
-      "time": "10:55",
-      "date": "2026-04-15"
-    },
-    "duration": "PT2H10M",
-    "stops": 0,
-    "stops_label": "Direct",
-    "cabin_class": "Economy",
-    "baggage_included": false,
-    "badge": null
-  },
-  {
-    "airline": "Vueling",
-    "airline_code": "VY",
-    "flight_number": "VY7823",
-    "price_gbp": 108,
-    "price_per_person_gbp": 108,
-    "departure": {
-      "airport": "LGW",
-      "city": "London",
-      "time": "13:10",
-      "date": "2026-04-15"
-    },
-    "arrival": {
-      "airport": "BCN",
-      "city": "Barcelona",
-      "time": "16:15",
-      "date": "2026-04-15"
-    },
-    "duration": "PT2H05M",
-    "stops": 0,
-    "stops_label": "Direct",
-    "cabin_class": "Economy",
-    "baggage_included": true,
-    "badge": null
-  },
-  {
-    "airline": "British Airways",
-    "airline_code": "BA",
-    "flight_number": "BA478",
-    "price_gbp": 159,
-    "price_per_person_gbp": 159,
-    "departure": {
-      "airport": "LHR",
-      "city": "London",
-      "time": "09:30",
-      "date": "2026-04-15"
-    },
-    "arrival": {
-      "airport": "BCN",
-      "city": "Barcelona",
-      "time": "12:45",
-      "date": "2026-04-15"
-    },
-    "duration": "PT2H15M",
-    "stops": 0,
-    "stops_label": "Direct",
-    "cabin_class": "Economy",
-    "baggage_included": true,
-    "badge": "fastest"
-  },
-  {
-    "airline": "Iberia",
-    "airline_code": "IB",
-    "flight_number": "IB3167",
-    "price_gbp": 185,
-    "price_per_person_gbp": 185,
-    "departure": {
-      "airport": "LHR",
-      "city": "London",
-      "time": "10:45",
-      "date": "2026-04-15"
-    },
-    "arrival": {
-      "airport": "BCN",
-      "city": "Barcelona",
-      "time": "16:20",
-      "date": "2026-04-15"
-    },
-    "duration": "PT4H35M",
-    "stops": 1,
-    "stops_label": "1 stop (MAD)",
-    "cabin_class": "Economy",
-    "baggage_included": true,
-    "badge": null
-  },
-  {
-    "airline": "British Airways",
-    "airline_code": "BA",
-    "flight_number": "BA482",
-    "price_gbp": 245,
-    "price_per_person_gbp": 245,
-    "departure": {
-      "airport": "LHR",
-      "city": "London",
-      "time": "17:20",
-      "date": "2026-04-15"
-    },
-    "arrival": {
-      "airport": "BCN",
-      "city": "Barcelona",
-      "time": "20:30",
-      "date": "2026-04-15"
-    },
-    "duration": "PT2H10M",
-    "stops": 0,
-    "stops_label": "Direct",
-    "cabin_class": "Premium Economy",
-    "baggage_included": true,
-    "badge": "best"
-  }
+  {"airline": "Ryanair", "airline_code": "FR", "flight_number": "FR8164", "price_gbp": 45, "price_per_person_gbp": 45, "departure": {"airport": "STN", "city": "London", "time": "06:25", "date": "2026-04-15"}, "arrival": {"airport": "BCN", "city": "Barcelona", "time": "09:40", "date": "2026-04-15"}, "duration": "2h 15m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": false, "badge": "cheapest"},
+  {"airline": "easyJet", "airline_code": "U2", "flight_number": "U28421", "price_gbp": 67, "price_per_person_gbp": 67, "departure": {"airport": "LGW", "city": "London", "time": "07:10", "date": "2026-04-15"}, "arrival": {"airport": "BCN", "city": "Barcelona", "time": "10:30", "date": "2026-04-15"}, "duration": "2h 20m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": false, "badge": null},
+  {"airline": "Vueling", "airline_code": "VY", "flight_number": "VY7823", "price_gbp": 89, "price_per_person_gbp": 89, "departure": {"airport": "LHR", "city": "London", "time": "10:30", "date": "2026-04-15"}, "arrival": {"airport": "BCN", "city": "Barcelona", "time": "13:50", "date": "2026-04-15"}, "duration": "2h 20m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": true, "badge": null},
+  {"airline": "British Airways", "airline_code": "BA", "flight_number": "BA478", "price_gbp": 145, "price_per_person_gbp": 145, "departure": {"airport": "LHR", "city": "London", "time": "08:00", "date": "2026-04-15"}, "arrival": {"airport": "BCN", "city": "Barcelona", "time": "11:15", "date": "2026-04-15"}, "duration": "2h 15m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": true, "badge": "fastest"},
+
+  {"airline": "Ryanair", "airline_code": "FR", "flight_number": "FR2910", "price_gbp": 39, "price_per_person_gbp": 39, "departure": {"airport": "STN", "city": "London", "time": "06:30", "date": "2026-04-15"}, "arrival": {"airport": "MAD", "city": "Madrid", "time": "09:55", "date": "2026-04-15"}, "duration": "2h 25m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": false, "badge": "cheapest"},
+  {"airline": "easyJet", "airline_code": "U2", "flight_number": "U28012", "price_gbp": 72, "price_per_person_gbp": 72, "departure": {"airport": "LGW", "city": "London", "time": "07:30", "date": "2026-04-15"}, "arrival": {"airport": "MAD", "city": "Madrid", "time": "11:00", "date": "2026-04-15"}, "duration": "2h 30m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": false, "badge": null},
+  {"airline": "Iberia", "airline_code": "IB", "flight_number": "IB7451", "price_gbp": 98, "price_per_person_gbp": 98, "departure": {"airport": "LHR", "city": "London", "time": "10:00", "date": "2026-04-15"}, "arrival": {"airport": "MAD", "city": "Madrid", "time": "13:20", "date": "2026-04-15"}, "duration": "2h 20m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": true, "badge": "fastest"},
+  {"airline": "British Airways", "airline_code": "BA", "flight_number": "BA458", "price_gbp": 132, "price_per_person_gbp": 132, "departure": {"airport": "LHR", "city": "London", "time": "08:30", "date": "2026-04-15"}, "arrival": {"airport": "MAD", "city": "Madrid", "time": "11:55", "date": "2026-04-15"}, "duration": "2h 25m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": true, "badge": null},
+
+  {"airline": "Ryanair", "airline_code": "FR", "flight_number": "FR3422", "price_gbp": 34, "price_per_person_gbp": 34, "departure": {"airport": "STN", "city": "London", "time": "06:45", "date": "2026-04-15"}, "arrival": {"airport": "LIS", "city": "Lisbon", "time": "09:20", "date": "2026-04-15"}, "duration": "2h 35m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": false, "badge": "cheapest"},
+  {"airline": "easyJet", "airline_code": "U2", "flight_number": "U28553", "price_gbp": 58, "price_per_person_gbp": 58, "departure": {"airport": "LGW", "city": "London", "time": "07:40", "date": "2026-04-15"}, "arrival": {"airport": "LIS", "city": "Lisbon", "time": "10:20", "date": "2026-04-15"}, "duration": "2h 40m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": false, "badge": null},
+  {"airline": "TAP Portugal", "airline_code": "TP", "flight_number": "TP1335", "price_gbp": 89, "price_per_person_gbp": 89, "departure": {"airport": "LHR", "city": "London", "time": "10:00", "date": "2026-04-15"}, "arrival": {"airport": "LIS", "city": "Lisbon", "time": "12:30", "date": "2026-04-15"}, "duration": "2h 30m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": true, "badge": "fastest"},
+  {"airline": "British Airways", "airline_code": "BA", "flight_number": "BA500", "price_gbp": 128, "price_per_person_gbp": 128, "departure": {"airport": "LHR", "city": "London", "time": "09:00", "date": "2026-04-15"}, "arrival": {"airport": "LIS", "city": "Lisbon", "time": "11:35", "date": "2026-04-15"}, "duration": "2h 35m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": true, "badge": null},
+
+  {"airline": "Ryanair", "airline_code": "FR", "flight_number": "FR9902", "price_gbp": 52, "price_per_person_gbp": 52, "departure": {"airport": "STN", "city": "London", "time": "06:40", "date": "2026-04-15"}, "arrival": {"airport": "FCO", "city": "Rome", "time": "10:25", "date": "2026-04-15"}, "duration": "2h 45m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": false, "badge": "cheapest"},
+  {"airline": "easyJet", "airline_code": "U2", "flight_number": "U28778", "price_gbp": 78, "price_per_person_gbp": 78, "departure": {"airport": "LGW", "city": "London", "time": "07:30", "date": "2026-04-15"}, "arrival": {"airport": "FCO", "city": "Rome", "time": "11:20", "date": "2026-04-15"}, "duration": "2h 50m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": false, "badge": null},
+  {"airline": "ITA Airways", "airline_code": "AZ", "flight_number": "AZ221", "price_gbp": 112, "price_per_person_gbp": 112, "departure": {"airport": "LHR", "city": "London", "time": "10:00", "date": "2026-04-15"}, "arrival": {"airport": "FCO", "city": "Rome", "time": "13:40", "date": "2026-04-15"}, "duration": "2h 40m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": true, "badge": "fastest"},
+  {"airline": "British Airways", "airline_code": "BA", "flight_number": "BA554", "price_gbp": 156, "price_per_person_gbp": 156, "departure": {"airport": "LHR", "city": "London", "time": "09:00", "date": "2026-04-15"}, "arrival": {"airport": "FCO", "city": "Rome", "time": "12:45", "date": "2026-04-15"}, "duration": "2h 45m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": true, "badge": null},
+
+  {"airline": "easyJet", "airline_code": "U2", "flight_number": "U22211", "price_gbp": 38, "price_per_person_gbp": 38, "departure": {"airport": "LGW", "city": "London", "time": "07:00", "date": "2026-04-15"}, "arrival": {"airport": "AMS", "city": "Amsterdam", "time": "09:20", "date": "2026-04-15"}, "duration": "1h 20m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": false, "badge": "cheapest"},
+  {"airline": "KLM", "airline_code": "KL", "flight_number": "KL1010", "price_gbp": 87, "price_per_person_gbp": 87, "departure": {"airport": "LHR", "city": "London", "time": "10:00", "date": "2026-04-15"}, "arrival": {"airport": "AMS", "city": "Amsterdam", "time": "12:20", "date": "2026-04-15"}, "duration": "1h 20m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": true, "badge": "fastest"},
+  {"airline": "British Airways", "airline_code": "BA", "flight_number": "BA428", "price_gbp": 98, "price_per_person_gbp": 98, "departure": {"airport": "LHR", "city": "London", "time": "08:30", "date": "2026-04-15"}, "arrival": {"airport": "AMS", "city": "Amsterdam", "time": "10:55", "date": "2026-04-15"}, "duration": "1h 25m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": true, "badge": null},
+
+  {"airline": "Ryanair", "airline_code": "FR", "flight_number": "FR4180", "price_gbp": 67, "price_per_person_gbp": 67, "departure": {"airport": "STN", "city": "London", "time": "06:30", "date": "2026-04-15"}, "arrival": {"airport": "ATH", "city": "Athens", "time": "12:00", "date": "2026-04-15"}, "duration": "3h 30m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": false, "badge": "cheapest"},
+  {"airline": "easyJet", "airline_code": "U2", "flight_number": "U28877", "price_gbp": 89, "price_per_person_gbp": 89, "departure": {"airport": "LGW", "city": "London", "time": "11:00", "date": "2026-04-15"}, "arrival": {"airport": "ATH", "city": "Athens", "time": "16:35", "date": "2026-04-15"}, "duration": "3h 35m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": false, "badge": null},
+  {"airline": "British Airways", "airline_code": "BA", "flight_number": "BA632", "price_gbp": 178, "price_per_person_gbp": 178, "departure": {"airport": "LHR", "city": "London", "time": "09:00", "date": "2026-04-15"}, "arrival": {"airport": "ATH", "city": "Athens", "time": "14:30", "date": "2026-04-15"}, "duration": "3h 30m", "stops": 0, "stops_label": "Direct", "cabin_class": "Economy", "baggage_included": true, "badge": "fastest"}
 ]
