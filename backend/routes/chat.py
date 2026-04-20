@@ -1386,16 +1386,17 @@ def _enrich_with_live_data(user_message):
     return "\n\n".join(out)
 
 
-def _call_claude(user_message, history=None):
-    """Call Claude Haiku API with optional prior conversation history and
-    return parsed JSON. `history` is a list of {role, content} dicts from
-    the current session so the assistant remembers prior turns."""
-    import anthropic
+def _call_claude(user_message, history=None, trip_context=None):
+    """Call OpenRouter (free Mistral model) and return parsed JSON.
+    `history` is a list of {role, content} dicts so the assistant remembers
+    prior turns. `trip_context` carries destination/days/budget/group state."""
+    import requests
 
-    api_key = os.getenv("ANTHROPIC_API_KEY")
+    api_key = os.getenv("OPENROUTER_API_KEY")
     if not api_key:
         return None
 
+    # Keep Wikipedia + Amadeus enrichment so responses stay grounded.
     wiki_context = _get_wikipedia_context(user_message)
     live_context = _enrich_with_live_data(user_message)
 
@@ -1412,9 +1413,8 @@ specific street names, specific neighbourhood names,
 specific local knowledge. Do not use generic descriptions.
 """
 
-    # Build the messages array: prior conversation history + current turn.
-    # Keep at most the last 10 turns (5 exchanges) to stay within context limits.
-    messages = []
+    # Build the messages array: system prompt + prior turns + current turn.
+    messages = [{"role": "system", "content": SYSTEM_PROMPT}]
     if history:
         for turn in history[-10:]:
             role = turn.get("role")
@@ -1423,42 +1423,41 @@ specific local knowledge. Do not use generic descriptions.
                 messages.append({"role": role, "content": content})
     messages.append({"role": "user", "content": enriched_message})
 
-    client = anthropic.Anthropic(api_key=api_key)
-    response = client.messages.create(
-        model="claude-haiku-4-5-20251001",
-        max_tokens=8192,
-        system=SYSTEM_PROMPT,
-        messages=messages,
-    )
-
-    text = response.content[0].text.strip()
+    try:
+        response = requests.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            headers={
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+            },
+            json={
+                "model": "mistralai/mistral-7b-instruct:free",
+                "messages": messages,
+                "max_tokens": 4096,
+            },
+            timeout=60,
+        )
+        data = response.json()
+        text = data["choices"][0]["message"]["content"].strip()
+    except Exception as e:
+        print(f"[OpenRouter] request failed: {e}")
+        return None
 
     json_match = re.search(r"```(?:json)?\s*([\s\S]*?)```", text)
     if json_match:
         text = json_match.group(1).strip()
 
-    # Try direct parse
     try:
         return json.loads(text)
-    except json.JSONDecodeError:
-        pass
-
-    # Try extracting outermost {}
-    try:
+    except Exception:
         start = text.find('{')
         end = text.rfind('}')
         if start != -1 and end > start:
-            return json.loads(text[start:end+1])
-    except json.JSONDecodeError:
-        pass
-
-    # Fallback reply when Claude's JSON couldn't be parsed
-    return {
-        "reply": "I couldn't quite parse that — could you rephrase? Try asking about one specific city, trip, or topic at a time.",
-        "cards": [],
-        "suggestions": ["Hotels in Paris", "3 days in Bordeaux",
-                        "Food in Lyon", "Things to do in Nice"]
-    }
+            try:
+                return json.loads(text[start:end + 1])
+            except Exception:
+                pass
+    return None
 
 
 def _build_itinerary_card(d, num_days, cost_per_day, _accom_note, food_note):
@@ -1953,14 +1952,14 @@ def chat():
             and h.get("role") in ("user", "assistant")
             and h.get("content")
         ][-20:]
-    api_key = os.getenv("ANTHROPIC_API_KEY")
-    if api_key and api_key != "your_anthropic_api_key":
+    api_key = os.getenv("OPENROUTER_API_KEY")
+    if api_key and api_key != "your_openrouter_api_key":
         try:
             result = _call_claude(effective_message, history=history)
             if result:
-                source = "claude"
+                source = "openrouter"
         except Exception as e:
-            print(f"[Chat] Claude API error: {e}")
+            print(f"[Chat] OpenRouter API error: {e}")
 
     if result is None:
         # Greetings get a friendly reply-only response (no random cards).
