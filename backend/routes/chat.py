@@ -1393,6 +1393,7 @@ def _call_claude(user_message, history=None, trip_context=None):
     import requests
 
     api_key = os.getenv("OPENROUTER_API_KEY")
+    print(f"[OpenRouter] API key present: {bool(api_key)}, starts with: {api_key[:8] if api_key else 'NONE'}")
     if not api_key:
         return None
 
@@ -1911,6 +1912,7 @@ def chat():
     Uses Claude API if available, otherwise falls back to local data. The
     frontend may optionally supply a session_id to enable follow-up memory.
     """
+    print(f"[Chat] OpenRouter key: {bool(os.getenv('OPENROUTER_API_KEY'))}, Anthropic key: {bool(os.getenv('ANTHROPIC_API_KEY'))}")
     data = request.get_json() or {}
     message = (data.get("message") or "").strip()
     session_id = data.get("session_id") or str(uuid.uuid4())
