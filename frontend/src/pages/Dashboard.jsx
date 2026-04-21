@@ -394,47 +394,104 @@ export default function Dashboard() {
         </div>
       )}
 
-      {/* ═══ HERO ═══ */}
-      <div style={{ background: "var(--dark)", position: "relative", overflow: "hidden" }}>
-        <div style={{ maxWidth: 1120, margin: "0 auto", padding: "64px 24px 130px", display: "flex", gap: 40, alignItems: "center" }}>
+      {/* ═══ HERO — ocean / beach theme ═══ */}
+      <div style={{
+        background: "var(--deep-ocean)", position: "relative", overflow: "hidden",
+        backgroundImage: `
+          radial-gradient(ellipse at top right, rgba(30,96,145,0.40), transparent 60%),
+          radial-gradient(ellipse at bottom left, rgba(72,202,228,0.10), transparent 50%)
+        `,
+      }}>
+        {/* Animated ocean waves at the bottom of the hero */}
+        <svg
+          viewBox="0 0 1440 140"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+          style={{ position: "absolute", left: 0, right: 0, bottom: 0, width: "100%", height: 140, pointerEvents: "none", zIndex: 1 }}
+        >
+          <defs>
+            <path id="dash-wave" d="M0,80 C240,140 480,20 720,80 S1200,140 1440,80 L1440,140 L0,140 Z" />
+          </defs>
+          <g style={{ animation: "wave 14s linear infinite" }}>
+            <use href="#dash-wave" x="0" fill="#48CAE4" opacity="0.08" />
+            <use href="#dash-wave" x="1440" fill="#48CAE4" opacity="0.08" />
+          </g>
+          <g style={{ animation: "wave 22s linear infinite" }}>
+            <use href="#dash-wave" x="0" y="18" fill="#1E6091" opacity="0.14" />
+            <use href="#dash-wave" x="1440" y="18" fill="#1E6091" opacity="0.14" />
+          </g>
+        </svg>
+
+        <div style={{ maxWidth: 1200, margin: "0 auto", padding: "84px 28px 160px", display: "flex", gap: 48, alignItems: "center", position: "relative", zIndex: 2 }}>
 
           {/* Left: Text */}
-          <div style={{ flex: "0 0 55%", position: "relative", zIndex: 2 }}>
-            <p className="label-uppercase" style={{ color: "var(--primary)", marginBottom: 16 }}>Your personal travel concierge</p>
-            <h1 style={{ fontSize: 52, color: "white", margin: "0 0 8px 0", fontFamily: "'Playfair Display', serif" }}>
-              The world is waiting.
+          <div style={{ flex: "0 0 55%", position: "relative", zIndex: 3 }}>
+            <p style={{
+              color: "var(--seafoam)", margin: "0 0 20px 0",
+              fontFamily: "var(--font-body)", fontWeight: 500, fontSize: 11,
+              textTransform: "uppercase", letterSpacing: "2px",
+            }}>{"\uD83C\uDF0A"} Your ocean-inspired travel guide</p>
+            <h1 style={{
+              fontSize: 76, lineHeight: 1.05, color: "var(--white)",
+              margin: "0 0 10px 0",
+              fontFamily: "var(--font-display)", fontStyle: "italic",
+              fontWeight: 700,
+            }}>
+              The ocean calls.
             </h1>
-            <h1 style={{ fontSize: 52, color: "var(--primary)", margin: "0 0 20px 0", fontFamily: "'Playfair Display', serif" }}>
-              Where will you go?
+            <h1 style={{
+              fontSize: 76, lineHeight: 1.05, color: "var(--seafoam)",
+              margin: "0 0 26px 0",
+              fontFamily: "var(--font-display)", fontStyle: "italic",
+              fontWeight: 700,
+            }}>
+              Answer it.
             </h1>
-            <p style={{ fontSize: 18, color: "rgba(255,255,255,0.6)", margin: "0 0 28px 0", maxWidth: 440, lineHeight: 1.65 }}>
-              From a day trip to Brighton to a month across Southeast Asia &mdash; AI-powered recommendations tailored to you.
+            <p style={{
+              fontSize: 17, color: "var(--muted)", margin: "0 0 28px 0",
+              maxWidth: 480, lineHeight: 1.75,
+              fontFamily: "var(--font-body)", fontWeight: 300,
+            }}>
+              Personalised journeys built around you &mdash; your budget, your passport, your next adventure.
             </p>
-            <p style={{ fontSize: 13, fontWeight: 500, color: "var(--primary)", margin: "0 0 16px 0", display: "flex", alignItems: "center", gap: 12 }}>
-              <span>150+ Destinations</span>
-              <span style={{ color: "rgba(255,255,255,0.25)" }}>&middot;</span>
-              <span>15 Passport Countries</span>
-              <span style={{ color: "rgba(255,255,255,0.25)" }}>&middot;</span>
-              <span>Real-time prices</span>
+            <p style={{
+              fontSize: 12, fontWeight: 500, color: "var(--seafoam)",
+              margin: "0 0 16px 0", letterSpacing: "1px",
+              display: "flex", alignItems: "center", gap: 10,
+            }}>
+              <span>154 destinations</span>
+              <span style={{ color: "var(--subtle)" }}>&middot;</span>
+              <span>15 passports</span>
+              <span style={{ color: "var(--subtle)" }}>&middot;</span>
+              <span>Live prices</span>
             </p>
-            {/* Trust bar */}
-            <div style={{ display: "flex", gap: 20, fontSize: 12, color: "rgba(255,255,255,0.45)" }}>
-              <span>{"✓"} Free cancellation on most bookings</span>
-              <span>{"✓"} Best price guarantee</span>
-              <span>{"✓"} 24/7 AI travel support</span>
-            </div>
           </div>
 
-          {/* Right: Image mosaic */}
-          <div style={{ flex: "0 0 42%", display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", gap: 10, height: 340, position: "relative", zIndex: 2 }}>
-            <div style={{ gridRow: "1/2", gridColumn: "1/2", borderRadius: 12, overflow: "hidden", backgroundImage: "url(https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=400&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-            <div style={{ gridRow: "2/3", gridColumn: "1/2", borderRadius: 12, overflow: "hidden", backgroundImage: "url(https://images.unsplash.com/photo-1541849546-216549ae216d?w=400&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
-            <div style={{ gridRow: "1/3", gridColumn: "2/3", borderRadius: 12, overflow: "hidden", backgroundImage: "url(https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=800&q=80)", backgroundSize: "cover", backgroundPosition: "center" }} />
+          {/* Right: Image mosaic — beach / ocean / tropical */}
+          <div style={{ flex: "0 0 42%", display: "grid", gridTemplateColumns: "1fr 1fr", gridTemplateRows: "1fr 1fr", gap: 14, height: 380, position: "relative", zIndex: 3 }}>
+            <div style={{
+              gridRow: "1/2", gridColumn: "1/2", borderRadius: 20, overflow: "hidden",
+              backgroundImage: "linear-gradient(rgba(10,22,40,0.3), rgba(10,22,40,0.3)), url(https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80)",
+              backgroundSize: "cover", backgroundPosition: "center",
+              transform: "rotate(-2deg)", boxShadow: "var(--shadow-medium)",
+            }} />
+            <div style={{
+              gridRow: "2/3", gridColumn: "1/2", borderRadius: 20, overflow: "hidden",
+              backgroundImage: "linear-gradient(rgba(10,22,40,0.3), rgba(10,22,40,0.3)), url(https://images.unsplash.com/photo-1505118380757-91f5f5632de0?w=600&q=80)",
+              backgroundSize: "cover", backgroundPosition: "center",
+              transform: "rotate(1.5deg)", boxShadow: "var(--shadow-medium)",
+            }} />
+            <div style={{
+              gridRow: "1/3", gridColumn: "2/3", borderRadius: 20, overflow: "hidden",
+              backgroundImage: "linear-gradient(rgba(10,22,40,0.3), rgba(10,22,40,0.3)), url(https://images.unsplash.com/photo-1519046904884-53103b34b206?w=900&q=80)",
+              backgroundSize: "cover", backgroundPosition: "center",
+              boxShadow: "var(--shadow-medium)",
+            }} />
           </div>
         </div>
 
         {/* Mode tabs on hero */}
-        <div style={{ position: "absolute", bottom: 80, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 4, zIndex: 10 }}>
+        <div style={{ position: "absolute", bottom: 96, left: "50%", transform: "translateX(-50%)", display: "flex", gap: 4, zIndex: 10 }}>
           {[
             { id: "international", label: "International" },
             { id: "uk", label: "UK & Local" },
@@ -442,12 +499,13 @@ export default function Dashboard() {
           ].map(tab => (
             <button key={tab.id} onClick={() => { setTripMode(tab.id); setResults(null); setDestinationResult(null); }}
               style={{
-                padding: "10px 24px", borderRadius: 8, border: 0, cursor: "pointer",
-                fontSize: 14, fontWeight: 600, fontFamily: "'DM Sans', sans-serif",
+                padding: "10px 24px", borderRadius: 100, border: 0, cursor: "pointer",
+                fontSize: 14, fontWeight: 600, fontFamily: "var(--font-body)",
                 transition: "all 200ms",
-                background: tripMode === tab.id ? "white" : "transparent",
-                color: tripMode === tab.id ? "var(--dark)" : "rgba(255,255,255,0.55)",
-                boxShadow: tripMode === tab.id ? "0 4px 16px rgba(0,0,0,0.2)" : "none",
+                background: tripMode === tab.id ? "var(--seafoam)" : "var(--glass)",
+                color: tripMode === tab.id ? "var(--deep-ocean)" : "rgba(255,255,255,0.65)",
+                boxShadow: tripMode === tab.id ? "var(--shadow-glow)" : "none",
+                border: tripMode === tab.id ? 0 : "1px solid var(--glass-border)",
               }}>
               {tab.label}
             </button>

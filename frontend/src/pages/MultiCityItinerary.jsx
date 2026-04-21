@@ -3,14 +3,12 @@ import { useSearchParams, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { getMultiCityItinerary, saveItinerary } from "../services/api";
 import DESTINATION_IMAGES from "../data/destinationImages";
+import { toTitleCase as cap, FALLBACK_IMG } from "../utils/helpers";
 
-const getDestImage = (id) =>
-  DESTINATION_IMAGES[id] || `https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=600&h=400&fit=crop`;
+const getDestImage = (id) => DESTINATION_IMAGES[id] || FALLBACK_IMG;
 
 const getHotelImage = (name, city) =>
   `https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop`;
-
-const cap = (s) => s ? s.charAt(0).toUpperCase() + s.slice(1) : "";
 
 const WEATHER_ICONS = {
   "01d": "\u2600\uFE0F", "01n": "\uD83C\uDF19", "02d": "\u26C5", "02n": "\u2601\uFE0F",

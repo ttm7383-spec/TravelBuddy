@@ -31,15 +31,16 @@ export default function Navbar() {
     <Link to={to}
       className="no-underline transition-all"
       style={{
+        fontFamily: "var(--font-body)",
         fontSize: 14,
-        fontWeight: 500,
-        fontFamily: "'DM Sans', sans-serif",
-        color: isActive(to) ? "var(--primary)" : "var(--body)",
-        borderBottom: isActive(to) ? "2px solid var(--primary)" : "2px solid transparent",
+        fontWeight: 400,
+        color: isActive(to) ? "var(--seafoam)" : "var(--muted)",
+        letterSpacing: "0.2px",
         paddingBottom: 4,
+        borderBottom: isActive(to) ? "2px solid var(--seafoam)" : "2px solid transparent",
       }}
-      onMouseEnter={e => { if (!isActive(to)) e.currentTarget.style.color = "var(--primary-dark)"; }}
-      onMouseLeave={e => { if (!isActive(to)) e.currentTarget.style.color = "var(--body)"; }}
+      onMouseEnter={e => { if (!isActive(to)) e.currentTarget.style.color = "var(--seafoam)"; }}
+      onMouseLeave={e => { if (!isActive(to)) e.currentTarget.style.color = "var(--muted)"; }}
     >
       {label}
     </Link>
@@ -47,61 +48,72 @@ export default function Navbar() {
 
   return (
     <nav style={{
-      background: "var(--surface)",
-      borderBottom: "1px solid var(--border)",
+      background: "rgba(10,22,40,0.85)",
+      backdropFilter: "blur(16px)",
+      WebkitBackdropFilter: "blur(16px)",
+      borderBottom: "1px solid var(--glass-border)",
       position: "sticky",
       top: 0,
       zIndex: 50,
-      boxShadow: "0 1px 4px rgba(0,0,0,0.04)",
     }}>
       <div style={{
-        maxWidth: 1120,
-        margin: "0 auto",
-        padding: "0 24px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "space-between",
-        height: 64,
+        maxWidth: 1200, margin: "0 auto",
+        padding: "0 28px", height: 68,
+        display: "flex", alignItems: "center", justifyContent: "space-between",
       }}>
         {/* Logo */}
-        <Link to="/dashboard" className="no-underline" style={{ display: "flex", alignItems: "center", gap: 10 }}>
-          {/* Compass SVG icon */}
-          <div style={{
-            width: 34, height: 34, borderRadius: 8,
-            background: "var(--primary)", display: "flex",
-            alignItems: "center", justifyContent: "center",
-          }}>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="white" stroke="white"/>
-            </svg>
-          </div>
-          <span style={{
-            fontFamily: "'Playfair Display', Georgia, serif",
-            fontSize: 22, fontWeight: 700, color: "var(--dark)",
-          }}>
-            Travel<span style={{ color: "var(--primary)" }}>Buddy</span>
+        <Link to="/dashboard" className="no-underline" style={{
+          display: "flex", alignItems: "center", gap: 10, color: "inherit",
+        }}>
+          <span style={{ fontSize: 22, lineHeight: 1 }} role="img" aria-label="wave">{"\uD83C\uDF0A"}</span>
+          <span style={{ fontSize: 24, lineHeight: 1, display: "inline-flex", alignItems: "baseline", gap: 2 }}>
+            <span style={{
+              fontFamily: "var(--font-display)", fontStyle: "italic",
+              fontWeight: 700, color: "var(--white)",
+            }}>Travel</span>
+            <span style={{
+              fontFamily: "var(--font-body)", fontWeight: 600,
+              color: "var(--seafoam)", letterSpacing: "-0.2px",
+            }}>Buddy</span>
           </span>
         </Link>
 
         {/* Nav links */}
-        <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 32 }}>
           {navLink("/dashboard", "Explore")}
           {navLink("/chat", "AI Concierge")}
           {navLink("/my-trips", "My Trips")}
           {navLink("/history", "History")}
+
+          <button onClick={() => navigate("/dashboard")} style={{
+            background: "linear-gradient(135deg, var(--sunset), var(--coral))",
+            color: "var(--white)",
+            border: 0,
+            padding: "8px 20px",
+            borderRadius: 100,
+            fontFamily: "var(--font-body)",
+            fontWeight: 600,
+            fontSize: 13,
+            boxShadow: "var(--shadow-sunset)",
+            transition: "transform 150ms ease, filter 150ms ease",
+          }}
+            onMouseEnter={e => { e.currentTarget.style.transform = "scale(1.03)"; e.currentTarget.style.filter = "brightness(1.05)"; }}
+            onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.filter = "none"; }}
+          >
+            Plan a Trip
+          </button>
 
           {/* Avatar */}
           <div className="relative" ref={dropRef}>
             <button
               onClick={() => setShowDropdown(!showDropdown)}
               style={{
-                width: 36, height: 36, borderRadius: 8,
-                background: "var(--primary-light)", color: "var(--primary-dark)",
-                border: "1.5px solid var(--border)",
+                width: 38, height: 38, borderRadius: "50%",
+                background: "var(--ocean-blue)",
+                color: "var(--seafoam)",
+                border: "1px solid var(--glass-border)",
                 fontSize: 13, fontWeight: 700,
-                fontFamily: "'DM Sans', sans-serif",
-                cursor: "pointer",
+                fontFamily: "var(--font-body)",
                 display: "flex", alignItems: "center", justifyContent: "center",
               }}
             >
@@ -109,30 +121,33 @@ export default function Navbar() {
             </button>
             {showDropdown && (
               <div style={{
-                position: "absolute", right: 0, marginTop: 8, width: 192,
-                background: "var(--surface)", borderRadius: 12,
-                boxShadow: "var(--shadow-lifted)", border: "1px solid var(--border)",
-                padding: "8px 0", zIndex: 50,
+                position: "absolute", right: 0, marginTop: 10, width: 200,
+                background: "var(--midnight-blue)",
+                borderRadius: 12,
+                boxShadow: "var(--shadow-medium)",
+                border: "1px solid var(--glass-border)",
+                padding: "6px 0",
+                zIndex: 60,
               }}>
                 <Link to="/profile" onClick={() => setShowDropdown(false)}
                   className="no-underline"
                   style={{
-                    display: "block", padding: "10px 16px",
-                    fontSize: 14, color: "var(--body)",
-                    fontFamily: "'DM Sans', sans-serif",
+                    display: "block", padding: "10px 18px",
+                    fontSize: 14, color: "var(--white)",
+                    fontFamily: "var(--font-body)",
                   }}
-                  onMouseEnter={e => e.currentTarget.style.background = "var(--bg)"}
+                  onMouseEnter={e => e.currentTarget.style.background = "var(--ocean-dark)"}
                   onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
                   Profile & Settings
                 </Link>
                 <button onClick={handleLogout}
                   style={{
-                    width: "100%", textAlign: "left", padding: "10px 16px",
-                    fontSize: 14, color: "#E53E3E",
-                    fontFamily: "'DM Sans', sans-serif",
-                    border: 0, background: "transparent", cursor: "pointer",
+                    width: "100%", textAlign: "left", padding: "10px 18px",
+                    fontSize: 14, color: "var(--coral)",
+                    fontFamily: "var(--font-body)",
+                    border: 0, background: "transparent",
                   }}
-                  onMouseEnter={e => e.currentTarget.style.background = "#FFF5F5"}
+                  onMouseEnter={e => e.currentTarget.style.background = "rgba(231,111,81,0.08)"}
                   onMouseLeave={e => e.currentTarget.style.background = "transparent"}>
                   Sign Out
                 </button>

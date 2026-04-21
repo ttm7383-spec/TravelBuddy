@@ -3,9 +3,9 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { getItineraries } from "../services/api";
 import DESTINATION_IMAGES from "../data/destinationImages";
+import { toTitleCase, FALLBACK_IMG } from "../utils/helpers";
 
-const getDestImage = (id) =>
-  DESTINATION_IMAGES[id] || "/images/destinations/bangkok.jpg";
+const getDestImage = (id) => DESTINATION_IMAGES[id] || FALLBACK_IMG;
 
 export default function History() {
   const { user } = useAuth();
@@ -52,7 +52,7 @@ export default function History() {
         <div className="rounded-2xl p-8 text-white mb-6"
           style={{ backgroundImage: `linear-gradient(135deg, rgba(79,70,229,0.85), rgba(147,51,234,0.8)), url(${getDestImage(t.destination?.id)})`, backgroundSize: "cover", backgroundPosition: "center" }}>
           <h1 className="text-2xl font-bold">
-            {t.destination?.name}, {t.destination?.country}
+            {toTitleCase(t.destination?.name)}, {t.destination?.country}
           </h1>
           <p className="text-indigo-200 text-sm mt-2">
             📅 {t.dates?.start} to {t.dates?.end} · {t.dates?.duration_days} days
@@ -136,7 +136,7 @@ export default function History() {
               <div className="h-32 w-full" style={{ backgroundImage: `linear-gradient(transparent 40%, rgba(0,0,0,0.45)), url(${getDestImage(trip.destination?.id)})`, backgroundSize: "cover", backgroundPosition: "center" }} />
               <div className="p-5">
                 <h3 className="font-bold text-slate-800">
-                  {trip.destination?.name}, {trip.destination?.country}
+                  {toTitleCase(trip.destination?.name)}, {trip.destination?.country}
                 </h3>
                 <p className="text-sm text-slate-500 mt-1">
                   📅 {trip.dates?.start} to {trip.dates?.end}

@@ -119,11 +119,11 @@ function WelcomeScreen({ onSend }) {
         <div style={{ width: 64, height: 64, borderRadius: 16, background: "var(--primary)", display: "flex", alignItems: "center", justifyContent: "center", margin: "0 auto 20px" }}>
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="white" stroke="white"/></svg>
         </div>
-        <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 28, fontWeight: 700, color: "var(--dark)", margin: "0 0 8px" }}>
-          Your personal travel concierge
+        <h2 style={{ fontFamily: "var(--font-display)", fontStyle: "italic", fontSize: 52, fontWeight: 700, color: "var(--white)", margin: "0 0 10px", lineHeight: 1.1 }}>
+          Your personal travel curator
         </h2>
-        <p style={{ fontSize: 15, color: "var(--muted)", margin: 0, maxWidth: 400, marginLeft: "auto", marginRight: "auto", lineHeight: 1.65 }}>
-          Ask me anything &mdash; from a day trip to Brighton to a month across Southeast Asia.
+        <p style={{ fontSize: 16, color: "var(--muted)", margin: 0, maxWidth: 420, marginLeft: "auto", marginRight: "auto", lineHeight: 1.7, fontWeight: 300 }}>
+          From beach escapes to city breaks &mdash; ask me anything.
         </p>
       </div>
 

@@ -1,116 +1,196 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@500;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --primary: #00A3A3;
-  --primary-dark: #007A7A;
-  --primary-light: #E6F7F7;
-  --accent: #FF6B2B;
-  --accent-light: #FFF0E9;
-  --dark: #1A1A2E;
-  --body: #4A4A68;
-  --muted: #9B9BB5;
-  --surface: #FFFFFF;
-  --bg: #F5F5F7;
-  --border: #EAEAF0;
-  --success: #00C896;
-  --warning: #FFB020;
-  --shadow-card: 0 2px 16px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.04);
-  --shadow-lifted: 0 8px 40px rgba(0,0,0,0.12);
-  --shadow-float: 0 20px 60px rgba(0,0,0,0.18);
+  /* Ocean depths */
+  --deep-ocean: #0A1628;
+  --midnight-blue: #0D1F3C;
+  --navy: #112244;
+  --ocean-dark: #0F2A4A;
+
+  /* Ocean mid tones */
+  --ocean-blue: #1A4A7A;
+  --sea-blue: #1E6091;
+  --horizon: #2980B9;
+
+  /* Ocean light / foam */
+  --seafoam: #48CAE4;
+  --aqua: #90E0EF;
+  --foam: #CAF0F8;
+  --mist: #E8F8FD;
+
+  /* Golden-hour accent */
+  --sunset: #F4A261;
+  --coral: #E76F51;
+  --sand: #E9C46A;
+
+  /* Neutrals */
+  --white: #FFFFFF;
+  --off-white: #F0F8FF;
+  --glass: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --subtle: rgba(255, 255, 255, 0.25);
+
+  /* Typography */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Sora', system-ui, -apple-system, sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  /* Spacing */
   --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+
+  /* Shadows */
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 8px 40px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(72, 202, 228, 0.15);
+  --shadow-sunset: 0 8px 32px rgba(244, 162, 97, 0.25);
+
+  /* ── Back-compat aliases ────────────────────────────────────────
+     All existing components reference these legacy variable names.
+     Remapping them here re-skins the whole app without touching
+     thousands of inline styles. */
+  --bg: var(--deep-ocean);
+  --surface: var(--midnight-blue);
+  --dark: var(--white);
+  --body: rgba(255, 255, 255, 0.82);
+  --muted: rgba(255, 255, 255, 0.5);
+  --border: var(--glass-border);
+  --primary: var(--seafoam);
+  --primary-light: rgba(72, 202, 228, 0.14);
+  --primary-dark: var(--aqua);
+  --accent: var(--sunset);
+  --accent-light: rgba(244, 162, 97, 0.16);
+  --success: #4ADE80;
+  --warning: var(--sand);
+  --shadow-card: var(--shadow-soft);
+  --shadow-lifted: var(--shadow-medium);
+  --shadow-float: var(--shadow-medium);
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  font-family: 'DM Sans', system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--bg);
-  color: var(--body);
+  background: var(--deep-ocean);
+  color: var(--white);
   font-size: 15px;
   line-height: 1.65;
 }
 
-h1, h2 {
-  font-family: 'Playfair Display', Georgia, serif;
-  color: var(--dark);
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--white);
   line-height: 1.2;
 }
 
-h1 { font-weight: 700; letter-spacing: -0.5px; }
-h2 { font-weight: 600; }
+h1 { font-weight: 700; letter-spacing: -0.3px; }
 
-/* Hide scrollbar for trending cards */
-.overflow-x-auto::-webkit-scrollbar {
-  display: none;
-}
-.overflow-x-auto {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+button { cursor: pointer; font-family: var(--font-body); }
+input, select, textarea { font-family: var(--font-body); color: var(--white); }
 
-/* Better focus styles */
-input:focus, select:focus, textarea:focus {
-  outline: none;
-}
+input::placeholder, textarea::placeholder { color: rgba(255, 255, 255, 0.45); }
 
-/* Date input fix */
 input[type="date"] {
   -webkit-appearance: none;
   appearance: none;
+  color-scheme: dark;
 }
 input[type="date"]::-webkit-calendar-picker-indicator {
-  opacity: 0.5;
+  opacity: 0.55;
+  filter: invert(1);
   cursor: pointer;
 }
 
-/* Utility: label style */
+.overflow-x-auto::-webkit-scrollbar { display: none; }
+.overflow-x-auto { -ms-overflow-style: none; scrollbar-width: none; }
+::-webkit-scrollbar { width: 0; height: 0; }
+* { scrollbar-width: none; }
+
+input:focus, select:focus, textarea:focus { outline: none; }
+
 .label-uppercase {
-  font-family: 'DM Sans', sans-serif;
+  font-family: var(--font-body);
   font-weight: 600;
-  font-size: 11px;
-  letter-spacing: 0.8px;
+  font-size: 10px;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--seafoam);
 }
 
-/* Utility: price style */
 .price-text {
-  font-family: 'DM Mono', monospace;
-  font-weight: 700;
-  color: var(--primary);
+  font-family: var(--font-mono);
+  font-weight: 600;
+  color: var(--seafoam);
 }
 
-/* Card hover */
 .card-hover {
-  transition: transform 200ms ease, box-shadow 200ms ease;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
 }
 .card-hover:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lifted);
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-glow), var(--shadow-medium);
+  border-color: var(--seafoam);
 }
 
-/* Smooth transitions */
 .transition-all {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 200ms;
 }
 
-/* Match bar */
 .match-bar {
   position: absolute;
   bottom: 0;
   left: 0;
   height: 3px;
-  background: var(--primary);
+  background: var(--seafoam);
   transition: width 600ms ease;
 }
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, var(--sunset), var(--coral));
+  color: var(--white);
+  border: 0;
+  border-radius: 12px;
+  font-family: var(--font-body);
+  font-weight: 600;
+  box-shadow: var(--shadow-sunset);
+  transition: transform 150ms ease, filter 150ms ease;
+}
+.btn-primary:hover { transform: scale(1.02); filter: brightness(1.05); }
+
+.btn-ghost {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--white);
+}
+.btn-ghost:hover { border-color: var(--seafoam); color: var(--seafoam); }
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes wave {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.shimmer {
+  background: linear-gradient(90deg, var(--midnight-blue) 25%, var(--ocean-dark) 50%, var(--midnight-blue) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+/* Tailwind bg-slate-50 override for the root wrapper so dark theme wins */
+.min-h-screen.bg-slate-50 { background: var(--deep-ocean); }
